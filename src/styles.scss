@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@use "palettes" as pal;
+
+@include mat.core();
+
+$custom-primary: mat.define-palette(pal.$custom-blue, 600);
+$custom-accent: mat.define-palette(pal.$custom-gray, 200);
+$custom-warn: mat.define-palette(mat.$red-palette);
+
+$custom-typography: mat.define-typography-config(
+  $font-family: 'Inter',
+  $button: mat.define-typography-level(14px, 14px, 700)
+);
+$custom-theme: mat.define-light-theme((
+  color: (
+    primary: $custom-primary,
+    accent: $custom-accent,
+    warn: $custom-warn
+  ),
+  typography: $custom-typography
+));
+
+@include mat.all-component-themes($custom-theme);
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0
+}
