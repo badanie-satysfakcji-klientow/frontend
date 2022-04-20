@@ -1,5 +1,6 @@
 @use '@angular/material' as mat;
 @use "palettes" as pal;
+@use 'src/app/shared/navbar/navbar.component' as navbar;
 
 @include mat.core();
 
@@ -21,6 +22,7 @@ $custom-theme: mat.define-light-theme((
 ));
 
 @include mat.all-component-themes($custom-theme);
+@include navbar.theme($custom-theme);
 
 html,
 body {

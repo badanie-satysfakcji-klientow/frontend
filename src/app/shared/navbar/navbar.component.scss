@@ -1,1 +1,77 @@
+:host{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+nav{
+  padding-left: 65px;
+  padding-right: 65px;
+  background-color: #FFF;
+}
+
+#app-name{
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 61px;
+  font-style: normal;
+  cursor: pointer;
+}
+
+#app-name:hover{
+  opacity: 60%;
+}
+
+#user-name{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+#sign-out-button{
+  padding: 0;
+  margin-left: 17px;
+  line-height: 1em;
+}
+
+.top-container,
+.bottom-container{
+  display: flex;
+  align-items: center;
+}
+
+.top-container{
+  padding-top: 0.5em;
+  justify-content: flex-end;
+}
+
+.bottom-container{
+  padding-bottom: 26.4px;
+  justify-content: space-between;
+}
+
+.search-bar{
+  max-width: 211px;
+  max-height: 65px;
+  width: 100%;
+  height: 100%;
+}
+
+.menu-button,
+.menu-item{
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.menu-button{
+  font-size: 20px;
+}
+
+.menu-item{
+  font-size: 16px;
+}
+
+.menu-item-active,
+.menu-button-active{
+  font-weight: 800;
+}
 
