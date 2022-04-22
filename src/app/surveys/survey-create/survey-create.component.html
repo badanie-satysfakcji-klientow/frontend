@@ -1,1 +1,48 @@
-<p>survey-create works!</p>
+<mat-stepper [linear]="false" labelPosition="bottom">
+  <mat-step [stepControl]="initialPhase">
+    <form [formGroup]="initialPhase" id="id">
+      <ng-template matStepLabel>Konfiguracja ankiety</ng-template>
+      <div class="buttons-container">
+        <button mat-flat-button matStepperNext color="primary" class="navigation-button">Dodaj pytania</button>
+        <button mat-flat-button routerLink="" color="accent" class="navigation-button">Anuluj</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="initialPhase">
+    <form [formGroup]="initialPhase">
+      <ng-template matStepLabel>Dodawanie pytań</ng-template>
+      <ng-template matStepContent>
+        <div class="buttons-container">
+          <button mat-flat-button matStepperNext color="primary" class="navigation-button">Dodaj reguły przejść</button>
+          <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
+          <button mat-flat-button routerLink="" color="accent" class="navigation-button">Odrzuć</button>
+        </div>
+      </ng-template>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="initialPhase">
+    <form [formGroup]="initialPhase">
+      <ng-template matStepLabel>Reguły przejść</ng-template>
+      <ng-template matStepContent>
+        <div class="buttons-container">
+          <button mat-flat-button matStepperNext color="primary" class="navigation-button">Podsumowanie</button>
+          <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
+          <button mat-flat-button routerLink="" color="accent" class="navigation-button">Odrzuć</button>
+        </div>
+      </ng-template>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="initialPhase">
+    <form [formGroup]="initialPhase">
+      <ng-template matStepLabel>Podsumowanie</ng-template>
+      <ng-template matStepContent>
+        <div class="buttons-container">
+          <button mat-flat-button matStepperNext color="primary" class="navigation-button">Gotowe</button>
+          <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
+          <button mat-flat-button routerLink="" color="accent" class="navigation-button">Odrzuć</button>
+        </div>
+      </ng-template>
+    </form>
+  </mat-step>
+
+</mat-stepper>

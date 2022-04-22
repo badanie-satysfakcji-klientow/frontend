@@ -3,14 +3,24 @@
 
 @mixin color($theme) {
   $color-config: mat.get-color-config($theme);
-  $primary-color: mat.get-color-config($color-config, 'primary');
+  $primary-color: map.get($color-config, 'primary');
   $accent-color: map.get($color-config, 'accent');
 
-  app-navbar{
-    .search-bar{
-      div.mat-form-field-flex{
+  app-navbar {
+    .search-bar {
+      div.mat-form-field-flex {
         background-color: mat.get-color-from-palette($accent-color, 50);
         border: 2px solid mat.get-color-from-palette($primary-color);
+      }
+    }
+  }
+
+  app-survey-create {
+    .mat-horizontal-stepper-header-container {
+      .mat-horizontal-stepper-header {
+        .mat-step-label {
+          color: mat.get-color-from-palette($primary-color);
+        }
       }
     }
   }
