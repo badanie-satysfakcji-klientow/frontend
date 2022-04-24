@@ -1,6 +1,28 @@
 import {Component} from '@angular/core';
-import {FormGroup} from "@angular/forms";
-import {FormControl} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+
+interface ISurvey {
+  surveyName: string;
+  description: string;
+  greeting: string;
+  farewell: string;
+  anonymous: boolean;
+  startDate: Date;
+  endDate: Date
+}
+
+export interface ISurveyFormGroup extends FormGroup {
+  value: ISurvey,
+  controls: {
+    surveyName: FormControl;
+    description: FormControl;
+    greeting: FormControl;
+    farewell: FormControl;
+    anonymous: FormControl;
+    startDate: FormControl;
+    endDate: FormControl;
+  }
+}
 
 @Component({
   selector: 'app-survey-create',
@@ -9,14 +31,21 @@ import {FormControl} from "@angular/forms";
 })
 
 export class SurveyCreateComponent {
-  initialPhase = new FormGroup({
-      surveyName: new FormControl(''),
-      description: new FormControl(''),
-      greeting: new FormControl(''),
-      farewell: new FormControl(''),
-      anonymous: new FormControl(false),
-      startDate: new FormControl(new Date()),
-      endDate: new FormControl(new Date())
-    }
-  )
+  form: ISurveyFormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      surveyName: [''],
+      description: [''],
+      greeting: [''],
+      farewell: [''],
+      anonymous: [false],
+      startDate: [new Date().toISOString()],
+      endDate: [new Date().toISOString()]
+    }) as ISurveyFormGroup
+  }
+
+  onClick(){
+    console.log(this.form.value);
+  }
 }
