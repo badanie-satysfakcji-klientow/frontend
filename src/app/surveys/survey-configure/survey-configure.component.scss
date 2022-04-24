@@ -1,32 +1,32 @@
-.main-container{
+.main-container {
   display: flex;
-  align-items:end;
+  align-items: flex-end;
   justify-content: flex-start;
   padding-bottom: 100px;
 }
 
 .left-container,
-.right-container{
+.right-container {
   display: inherit;
   flex-direction: column;
   align-items: start;
   height: 100%;
 }
 
-.left-input{
+.left-input {
   width: 890px;
 }
 
-.left-container{
+.left-container {
   justify-content: space-between;
 }
 
-.right-container{
+.right-container {
   justify-content: flex-end;
   margin-left: 71px;
 }
 
-.date-label{
+.date-label {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
