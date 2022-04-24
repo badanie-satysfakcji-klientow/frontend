@@ -1,13 +1,11 @@
 <mat-stepper [linear]="false" labelPosition="bottom">
-  <mat-step [stepControl]="initialPhase">
-    <form [formGroup]="initialPhase" id="id">
-      <ng-template matStepLabel>Konfiguracja ankiety</ng-template>
-      <app-survey-configure></app-survey-configure>
+  <mat-step [stepControl]="initialPhase" label="Konfiguracja ankiety">
+    <app-survey-configure [controlGroup]="initialPhase">
       <div class="buttons-container">
         <button mat-flat-button matStepperNext color="primary" class="navigation-button">Dodaj pytania</button>
         <button mat-flat-button routerLink="" color="accent" class="navigation-button">Anuluj</button>
       </div>
-    </form>
+    </app-survey-configure>
   </mat-step>
   <mat-step [stepControl]="initialPhase">
     <form [formGroup]="initialPhase">

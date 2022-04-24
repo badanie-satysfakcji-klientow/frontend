@@ -19,6 +19,4 @@ export class SurveyCreateComponent {
       endDate: new FormControl(new Date())
     }
   )
-
-
 }

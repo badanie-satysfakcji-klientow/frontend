@@ -1,15 +1,18 @@
-<div class="main-container">
-  <div class="left-container">
-    <input type="text" placeholder="Nazwa ankiety" class="left-input">
-    <input type="text" placeholder="Opis ankiety" class="left-input">
-    <textarea placeholder="Powitanie" class="left-input"></textarea>
-    <textarea placeholder="Pożegnanie" class="left-input"></textarea>
+<form [formGroup]="controlGroup">
+  <div class="main-container">
+    <div class="left-container">
+      <input type="text" placeholder="Nazwa ankiety" class="left-input" formControlName="surveyName">
+      <input type="text" placeholder="Opis ankiety" class="left-input" formControlName="description">
+      <textarea placeholder="Powitanie" class="left-input" formControlName="greeting"></textarea>
+      <textarea placeholder="Pożegnanie" class="left-input" formControlName="farewell"></textarea>
+    </div>
+    <div class="right-container">
+      <mat-slide-toggle color="primary" formControlName="anonymous">Ankieta anonimowa</mat-slide-toggle>
+      <span class="date-label">Data rozpoczęcia ankiety</span>
+      <input type="datetime-local" formControlName="startDate">
+      <span class="date-label">Data zakończenia ankiety</span>
+      <input type="datetime-local" formControlName="endDate">
+    </div>
   </div>
-  <div class="right-container">
-    <mat-slide-toggle color="primary">Ankieta anonimowa</mat-slide-toggle>
-    <span class="date-label">Data rozpoczęcia ankiety</span>
-    <input type="datetime-local">
-    <span class="date-label">Data zakończenia ankiety</span>
-    <input type="datetime-local">
-  </div>
-</div>
+  <ng-content></ng-content>
+</form>
