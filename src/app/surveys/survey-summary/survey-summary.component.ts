@@ -36,5 +36,4 @@ export class SurveySummaryComponent {
   getAnonymity() {
     return `ankieta ${this.surveyConfiguration.anonymous ? 'anonimowa' : 'jawna'}`;
   }
-
 }
