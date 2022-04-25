@@ -17,15 +17,12 @@
       <textarea placeholder="Pożegnanie" class="left-input" [formControl]="controlGroup.controls.farewell"></textarea>
     </div>
     <div class="right-container">
-      <mat-slide-toggle
-        color="primary"
-        [formControl]="controlGroup.controls.anonymous"
-      >
+      <mat-slide-toggle color="primary" [formControl]="controlGroup.controls.anonymous">
         Ankieta anonimowa
       </mat-slide-toggle>
-      <span class="date-label">Data rozpoczęcia ankiety</span>
+      <span class="label" style="margin-top: 42px">Data rozpoczęcia ankiety</span>
       <input type="datetime-local" [formControl]="controlGroup.controls.startDate">
-      <span class="date-label">Data zakończenia ankiety</span>
+      <span class="label" style="margin-top: 48px">Data zakończenia ankiety</span>
       <input type="datetime-local" [formControl]="controlGroup.controls.endDate">
     </div>
   </div>

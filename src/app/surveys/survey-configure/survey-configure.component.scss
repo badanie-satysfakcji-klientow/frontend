@@ -18,7 +18,7 @@
 }
 
 .left-container {
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .right-container {
@@ -26,9 +26,10 @@
   margin-left: 71px;
 }
 
-.date-label {
+.label {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
+  margin-bottom: 9px;
 }
