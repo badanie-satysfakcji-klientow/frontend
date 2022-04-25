@@ -10,6 +10,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { SurveyConfigureComponent } from './survey-configure/survey-configure.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { SurveySummaryComponent } from './survey-summary/survey-summary.component';
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -19,13 +20,14 @@ import { SurveySummaryComponent } from './survey-summary/survey-summary.componen
     SurveyConfigureComponent,
     SurveySummaryComponent
   ],
-  imports: [
-    CommonModule,
-    SurveysRoutingModule,
-    MatStepperModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatSlideToggleModule
-  ]
+    imports: [
+        CommonModule,
+        SurveysRoutingModule,
+        MatStepperModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatSlideToggleModule,
+        MatIconModule
+    ]
 })
 export class SurveysModule { }

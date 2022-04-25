@@ -29,15 +29,22 @@
       </ng-template>
     </form>
   </mat-step>
-  <mat-step [stepControl]="surveyConfiguration" label="Podsumowanie">
-    <form [formGroup]="surveyConfiguration">
-      <ng-template matStepContent>
-        <div class="buttons-container">
-          <button mat-flat-button matStepperNext color="primary" class="navigation-button">Gotowe</button>
-          <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
-          <button mat-flat-button routerLink="" color="accent" class="navigation-button">Odrzuć</button>
-        </div>
-      </ng-template>
-    </form>
+  <mat-step label="Podsumowanie">
+<!--    <form [formGroup]="surveyConfiguration">-->
+<!--      <ng-template matStepContent>-->
+<!--        <div class="buttons-container">-->
+<!--          <button mat-flat-button matStepperNext color="primary" class="navigation-button">Gotowe</button>-->
+<!--          <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>-->
+<!--          <button mat-flat-button routerLink="" color="accent" class="navigation-button">Odrzuć</button>-->
+<!--        </div>-->
+<!--      </ng-template>-->
+<!--    </form>-->
+    <app-survey-summary [surveyConfiguration]="surveyConfiguration.value">
+      <div class="buttons-container">
+        <button mat-flat-button matStepperNext color="primary" class="navigation-button">Gotowe</button>
+        <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
+        <button mat-flat-button routerLink="" color="accent" class="navigation-button">Odrzuć</button>
+      </div>
+    </app-survey-summary>
   </mat-step>
 </mat-stepper>

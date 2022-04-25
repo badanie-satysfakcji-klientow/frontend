@@ -1,1 +1,32 @@
-<p>survey-summary works!</p>
+<div class="main-container">
+  <div class="column-container">
+    <div class="left-column">
+      <span class="label">Nazwa ankiety</span>
+      <span class="value">{{surveyConfiguration.surveyName}}</span>
+      <span class="label">Opis ankiety</span>
+      <span class="value">{{surveyConfiguration.description}}</span>
+      <span class="label">Okres ankietyzacji</span>
+      <span class="value">{{surveyConfiguration.startDate}} - {{surveyConfiguration.endDate}}</span>
+      <span class="label">Liczba pytań</span>
+      <span class="value">-10</span>
+      <span class="label">Anonimowość ankiety</span>
+      <span class="value">{{surveyConfiguration.anonymous}}</span>
+    </div>
+    <div class="right-column">
+      <span class="label">Powitanie</span>
+      <span class="value">{{surveyConfiguration.greeting}}</span>
+      <span class="label">Pożegnanie</span>
+      <span class="value">{{surveyConfiguration.farewell}}</span>
+      <span class="label">Reguły przejść</span>
+      <span class="value">reguła 1</span>
+      <span class="value">reguła 2</span>
+    </div>
+  </div>
+  <div class="button-container">
+    <button mat-flat-button color="primary" class="preview-button" type="button">
+      <mat-icon aria-hidden="true" class="preview-icon">visibility</mat-icon>
+      Podgląd ankiety
+    </button>
+  </div>
+</div>
+<ng-content></ng-content>
