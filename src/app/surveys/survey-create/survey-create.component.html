@@ -7,9 +7,8 @@
       </div>
     </app-survey-configure>
   </mat-step>
-  <mat-step [stepControl]="surveyConfiguration">
+  <mat-step [stepControl]="surveyConfiguration" label="Dodawanie pytań">
     <form [formGroup]="surveyConfiguration">
-      <ng-template matStepLabel>Dodawanie pytań</ng-template>
       <ng-template matStepContent>
         <div class="buttons-container">
           <button mat-flat-button matStepperNext color="primary" class="navigation-button">Dodaj reguły przejść</button>
@@ -19,9 +18,8 @@
       </ng-template>
     </form>
   </mat-step>
-  <mat-step [stepControl]="surveyConfiguration">
+  <mat-step [stepControl]="surveyConfiguration" label="Reguły przejść">
     <form [formGroup]="surveyConfiguration">
-      <ng-template matStepLabel>Reguły przejść</ng-template>
       <ng-template matStepContent>
         <div class="buttons-container">
           <button mat-flat-button matStepperNext color="primary" class="navigation-button">Podsumowanie</button>
@@ -31,9 +29,8 @@
       </ng-template>
     </form>
   </mat-step>
-  <mat-step [stepControl]="surveyConfiguration">
+  <mat-step [stepControl]="surveyConfiguration" label="Podsumowanie">
     <form [formGroup]="surveyConfiguration">
-      <ng-template matStepLabel>Podsumowanie</ng-template>
       <ng-template matStepContent>
         <div class="buttons-container">
           <button mat-flat-button matStepperNext color="primary" class="navigation-button">Gotowe</button>
@@ -43,5 +40,4 @@
       </ng-template>
     </form>
   </mat-step>
-
 </mat-stepper>
