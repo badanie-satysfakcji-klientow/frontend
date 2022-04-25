@@ -1,14 +1,5 @@
 import {FormControl, FormGroup} from "@angular/forms";
-
-interface SurveyConfiguration {
-  surveyName: string;
-  description: string;
-  greeting: string;
-  farewell: string;
-  anonymous: boolean;
-  startDate: string;
-  endDate: string;
-}
+import {SurveyConfiguration} from "./survey-configuration";
 
 export interface SurveyConfigurationFormGroup extends FormGroup {
   value: SurveyConfiguration;

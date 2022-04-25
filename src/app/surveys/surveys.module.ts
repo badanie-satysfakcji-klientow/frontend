@@ -9,13 +9,15 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import { SurveyConfigureComponent } from './survey-configure/survey-configure.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { SurveySummaryComponent } from './survey-summary/survey-summary.component';
 
 
 @NgModule({
   declarations: [
     SurveyCreateComponent,
     SurveyBrowseComponent,
-    SurveyConfigureComponent
+    SurveyConfigureComponent,
+    SurveySummaryComponent
   ],
   imports: [
     CommonModule,
