@@ -32,4 +32,8 @@ export class SurveySummaryComponent {
     return `${value < 10 ? '0' : ''}${value}`;
   }
 
+  getAnonymity(){
+    return this.surveyConfiguration.anonymous ? 'tak' : 'nie';
+  }
+
 }
