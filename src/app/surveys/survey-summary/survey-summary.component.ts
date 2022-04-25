@@ -17,7 +17,8 @@ export class SurveySummaryComponent {
 
   private static getDateFormatted(dateRepresentation: string) {
     const date = new Date(Date.parse(dateRepresentation));
-    const dateString = date.toLocaleDateString().length < 10 ? `0${date.toLocaleDateString()}` : `${date.toLocaleDateString()}`;
+    const localDateString = date.toLocaleDateString();
+    const dateString = `${localDateString.length < 10 ? '0' : ''}${localDateString}`;
 
     return `${dateString}, godz. ${SurveySummaryComponent.getHourMinutesFormatted(date)}`;
   }
@@ -32,8 +33,8 @@ export class SurveySummaryComponent {
     return `${value < 10 ? '0' : ''}${value}`;
   }
 
-  getAnonymity(){
-    return this.surveyConfiguration.anonymous ? 'tak' : 'nie';
+  getAnonymity() {
+    return `ankieta ${this.surveyConfiguration.anonymous ? 'anonimowa' : 'jawna'}`;
   }
 
 }
