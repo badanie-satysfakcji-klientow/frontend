@@ -11,6 +11,7 @@ import { SurveyConfigureComponent } from './survey-configure/survey-configure.co
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { SurveySummaryComponent } from './survey-summary/survey-summary.component';
 import {MatIconModule} from "@angular/material/icon";
+import { SurveyQuestionsComponent } from './survey-questions/survey-questions.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {MatIconModule} from "@angular/material/icon";
     SurveyCreateComponent,
     SurveyBrowseComponent,
     SurveyConfigureComponent,
-    SurveySummaryComponent
+    SurveySummaryComponent,
+    SurveyQuestionsComponent
   ],
     imports: [
         CommonModule,

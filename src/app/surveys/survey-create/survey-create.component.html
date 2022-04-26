@@ -18,11 +18,15 @@
   <mat-step [completed]="surveyConfiguration.valid" label="Dodawanie pytań">
     <form [formGroup]="surveyConfiguration">
       <ng-template matStepContent>
-        <div class="buttons-container">
-          <button mat-flat-button matStepperNext color="primary" class="navigation-button">Dodaj reguły przejść</button>
-          <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
-          <button mat-flat-button routerLink="" color="accent" class="navigation-button">Odrzuć</button>
-        </div>
+        <app-survey-questions>
+          <div class="buttons-container">
+            <button mat-flat-button matStepperNext color="primary" class="navigation-button">
+              Dodaj reguły przejść
+            </button>
+            <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
+            <button mat-flat-button routerLink="" color="accent" class="navigation-button" type="button">Odrzuć</button>
+          </div>
+        </app-survey-questions>
       </ng-template>
     </form>
   </mat-step>
