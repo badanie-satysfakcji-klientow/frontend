@@ -6,7 +6,8 @@
   $primary-palette: map.get($color-config, 'primary');
 
   .menu-item-active,
-  .search-bar {
+  .search-bar,
+  .switch{
     color: mat.get-color-from-palette($primary-palette);
   }
 }

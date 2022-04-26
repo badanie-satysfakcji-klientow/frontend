@@ -10,7 +10,6 @@
   display: inherit;
   flex-direction: column;
   align-items: start;
-  height: 100%;
 }
 
 .left-input {
@@ -32,4 +31,23 @@
   font-size: 16px;
   line-height: 19px;
   margin-bottom: 9px;
+}
+
+.switch{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.survey-name {
+  margin-bottom: 44px;
+}
+
+.description {
+  margin-bottom: 83.96px;
+}
+
+.greeting {
+  margin-bottom: 89.96px;
 }

@@ -4,20 +4,21 @@
       <input
         type="text"
         placeholder="Nazwa ankiety"
-        class="left-input"
+        class="left-input survey-name"
         [formControl]="controlGroup.controls.surveyName"
       >
       <input
         type="text"
         placeholder="Opis ankiety"
-        class="left-input"
+        class="left-input description"
         [formControl]="controlGroup.controls.description"
       >
-      <textarea placeholder="Powitanie" class="left-input" [formControl]="controlGroup.controls.greeting"></textarea>
+      <textarea placeholder="Powitanie" class="left-input greeting" [formControl]="controlGroup.controls.greeting">
+      </textarea>
       <textarea placeholder="Pożegnanie" class="left-input" [formControl]="controlGroup.controls.farewell"></textarea>
     </div>
     <div class="right-container">
-      <mat-slide-toggle color="primary" [formControl]="controlGroup.controls.anonymous">
+      <mat-slide-toggle color="primary" [formControl]="controlGroup.controls.anonymous" class="switch">
         Ankieta anonimowa
       </mat-slide-toggle>
       <span class="label" style="margin-top: 42px">Data rozpoczęcia ankiety</span>
