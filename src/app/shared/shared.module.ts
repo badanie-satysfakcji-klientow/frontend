@@ -8,17 +8,21 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
+import { DropdownComponent } from './dropdown/dropdown.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
     declarations: [
         NavbarComponent,
-        FooterComponent
+        FooterComponent,
+        DropdownComponent
     ],
-  exports: [
-    NavbarComponent,
-    FooterComponent
-  ],
+    exports: [
+        NavbarComponent,
+        FooterComponent,
+        DropdownComponent
+    ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -26,7 +30,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   ]
 })
 export class SharedModule { }
