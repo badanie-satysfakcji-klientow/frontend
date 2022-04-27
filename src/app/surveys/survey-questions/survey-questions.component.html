@@ -2,5 +2,6 @@
   placeholder="Nowe pytanie"
   style="width: 100%; margin-bottom: 1.5em"
   [items]="questions" (itemSelect)="foo($event)"
+  [resetOption]="true"
 ></app-dropdown>
 <ng-content></ng-content>

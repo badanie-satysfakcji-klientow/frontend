@@ -11,6 +11,7 @@ import {Output} from "@angular/core";
 })
 export class DropdownComponent {
   @Input() placeholder!: string;
+  @Input() resetOption = false;
   @Input() style?: string;
   @Input() items!: DropdownItem[];
   @Output() itemSelect = new EventEmitter();

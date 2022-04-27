@@ -8,14 +8,14 @@ import {QuestionTypeItem} from "../interfaces/question-type-item";
 })
 export class SurveyQuestionsComponent {
   questions: QuestionTypeItem[] = [
-    {viewValue: 'Lista rozwijana', value: 'list'},
-    {viewValue: "Pytanie otwarte", value: 'open'},
-    {viewValue: "Pytanie zamknięte", value: 'closed'},
-    {viewValue: 'Siatka pól wyboru', value: 'grid'},
-    {viewValue: 'Skala', value: 'scale'}
+    {viewValue: 'lista rozwijana', value: 'list'},
+    {viewValue: "pytanie otwarte", value: 'open'},
+    {viewValue: "pytanie zamknięte", value: 'closed'},
+    {viewValue: 'siatka pól wyboru', value: 'grid'},
+    {viewValue: 'skala', value: 'scale'}
   ]
 
   foo(event:Event) {
-    console.log(event);
+
   }
 }

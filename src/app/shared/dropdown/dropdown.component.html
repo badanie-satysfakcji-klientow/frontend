@@ -1,12 +1,8 @@
 <mat-form-field appearance="fill" [style]="style">
   <mat-label>{{placeholder}}</mat-label>
-  <mat-select
-    panelClass="dropdown-panel-custom-9d2132"
-    disableOptionCentering
-    (selectionChange)="onSelectionChange()"
-    [formControl]="selection"
-  >
-    <mat-option *ngFor="let item of items" [value]="item.value">
+  <mat-select panelClass="dropdown-panel-custom-9d2132" disableOptionCentering [formControl]="selection">
+    <mat-option *ngIf="resetOption">Wyczyść</mat-option>
+    <mat-option *ngFor="let item of items" [value]="item.value" (click)="onSelectionChange()">
       {{item.viewValue}}
     </mat-option>
   </mat-select>
