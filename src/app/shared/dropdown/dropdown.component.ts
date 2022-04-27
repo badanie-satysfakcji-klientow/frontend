@@ -1,9 +1,5 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
+import {DropdownItem} from "../interfaces/dropdown-item";
 
 @Component({
   selector: 'app-dropdown',
@@ -14,15 +10,8 @@ interface Food {
 export class DropdownComponent {
   @Input() placeholder!: string;
   @Input() style?: string;
+  @Input() items!: DropdownItem[];
 
   constructor() {
   }
-
-
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
-
 }

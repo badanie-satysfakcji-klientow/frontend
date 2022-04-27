@@ -1,8 +1,8 @@
 <mat-form-field appearance="fill" [style]="style">
   <mat-label>{{placeholder}}</mat-label>
   <mat-select panelClass="dropdown-panel-custom-9d2132">
-    <mat-option *ngFor="let food of foods" [value]="food.value">
-      {{food.viewValue}}
+    <mat-option *ngFor="let item of items" [value]="item.value">
+      {{item.viewValue}}
     </mat-option>
   </mat-select>
 </mat-form-field>
