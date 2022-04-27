@@ -1,5 +1,7 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, ViewEncapsulation} from '@angular/core';
 import {DropdownItem} from "../interfaces/dropdown-item";
+import {FormControl} from "@angular/forms";
+import {Output} from "@angular/core";
 
 @Component({
   selector: 'app-dropdown',
@@ -11,7 +13,14 @@ export class DropdownComponent {
   @Input() placeholder!: string;
   @Input() style?: string;
   @Input() items!: DropdownItem[];
+  @Output() itemSelect = new EventEmitter();
+
+  selection = new FormControl('');
 
   constructor() {
+  }
+
+  onSelectionChange() {
+    this.itemSelect.emit(this.selection.value);
   }
 }

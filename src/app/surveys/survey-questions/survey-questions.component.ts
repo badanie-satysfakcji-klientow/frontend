@@ -14,4 +14,8 @@ export class SurveyQuestionsComponent {
     {viewValue: 'Siatka pól wyboru', value: 'grid'},
     {viewValue: 'Skala', value: 'scale'}
   ]
+
+  foo(event:Event) {
+    console.log(event);
+  }
 }

@@ -1,2 +1,6 @@
-<app-dropdown placeholder="Nowe pytanie" style="width: 100%; margin-bottom: 1.5em" [items]="questions"></app-dropdown>
+<app-dropdown
+  placeholder="Nowe pytanie"
+  style="width: 100%; margin-bottom: 1.5em"
+  [items]="questions" (itemSelect)="foo($event)"
+></app-dropdown>
 <ng-content></ng-content>

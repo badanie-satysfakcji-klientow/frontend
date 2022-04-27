@@ -1,6 +1,11 @@
 <mat-form-field appearance="fill" [style]="style">
   <mat-label>{{placeholder}}</mat-label>
-  <mat-select panelClass="dropdown-panel-custom-9d2132">
+  <mat-select
+    panelClass="dropdown-panel-custom-9d2132"
+    disableOptionCentering
+    (selectionChange)="onSelectionChange()"
+    [formControl]="selection"
+  >
     <mat-option *ngFor="let item of items" [value]="item.value">
       {{item.viewValue}}
     </mat-option>

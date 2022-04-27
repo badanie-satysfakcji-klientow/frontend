@@ -10,6 +10,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
 import { DropdownComponent } from './dropdown/dropdown.component';
 import {MatSelectModule} from "@angular/material/select";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {MatSelectModule} from "@angular/material/select";
     MatInputModule,
     MatMenuModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
