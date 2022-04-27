@@ -1,7 +1,7 @@
-import {DropdownItem} from "../../shared/interfaces/dropdown-item";
-import {QuestionTypeValue} from "../enums/question-type-value";
+import {QuestionViewValue} from "../types/question-view-value";
+import {QuestionValue} from "../types/question-value";
 
-export interface QuestionTypeItem extends DropdownItem {
-  viewValue: "Lista rozwijana" | "Pytanie otwarte" | "Pytanie zamknięte" | "Siatka pól wyboru" | "Skala";
-  value: QuestionTypeValue
+export interface QuestionTypeItem {
+  viewValue: QuestionViewValue;
+  value: QuestionValue;
 }

@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {QuestionTypeItem} from "../interfaces/question-type-item";
-import {QuestionTypeValue} from "../enums/question-type-value";
 
 @Component({
   selector: 'app-survey-questions',
@@ -9,25 +8,10 @@ import {QuestionTypeValue} from "../enums/question-type-value";
 })
 export class SurveyQuestionsComponent {
   questions: QuestionTypeItem[] = [
-    {
-      viewValue: 'Lista rozwijana',
-      value: QuestionTypeValue.LIST
-    },
-    {
-      viewValue: 'Pytanie otwarte',
-      value: QuestionTypeValue.OPEN
-    },
-    {
-      viewValue: 'Pytanie zamknięte',
-      value: QuestionTypeValue.CLOSED
-    },
-    {
-      viewValue: 'Siatka pól wyboru',
-      value: QuestionTypeValue.GRID
-    },
-    {
-      viewValue: 'Skala',
-      value: QuestionTypeValue.SCALE
-    }
+    {viewValue: 'Lista rozwijana', value: 'list'},
+    {viewValue: "Pytanie otwarte", value: 'open'},
+    {viewValue: "Pytanie zamknięte", value: 'closed'},
+    {viewValue: 'Siatka pól wyboru', value: 'grid'},
+    {viewValue: 'Skala', value: 'scale'}
   ]
 }
