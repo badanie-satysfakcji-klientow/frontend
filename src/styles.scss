@@ -4,6 +4,7 @@
 @use 'src/app/shared/navbar/navbar.component.theme' as navbar;
 @use "src/app/surveys/survey-configure/survey-configure.component.theme" as survey-configure;
 @use "src/app/shared/dropdown/dropdown.component.theme" as dpdwn;
+@use "src/app/surveys/survey-item/survey-item.component.theme" as survey-item;
 
 @include mat.core();
 
@@ -29,6 +30,7 @@ $custom-theme: mat.define-light-theme((
 @include thm.theme($custom-theme);
 @include survey-configure.theme($custom-theme);
 @include dpdwn.theme($custom-theme);
+@include survey-item.theme($custom-theme);
 
 html,
 body {

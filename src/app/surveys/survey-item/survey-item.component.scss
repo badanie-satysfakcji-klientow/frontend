@@ -1,0 +1,45 @@
+.main-container-survey-item {
+  border-radius: 10px;
+  max-width: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-container {
+  display: inherit;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#add-button {
+  margin-right: 23px;
+}
+
+#question-view-value {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.buttons-container {
+  display: inherit;
+  justify-content: flex-end;
+}
+
+.bottom-button {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  padding: 11.72px 46px;
+  border-radius: 10px;
+}
+
+.bottom-button:first-child {
+  margin-right: 1.125em;
+}

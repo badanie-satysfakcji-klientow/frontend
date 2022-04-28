@@ -13,6 +13,8 @@ import {SurveySummaryComponent} from './survey-summary/survey-summary.component'
 import {MatIconModule} from "@angular/material/icon";
 import {SurveyQuestionsComponent} from './survey-questions/survey-questions.component';
 import {SharedModule} from "../shared/shared.module";
+import { SurveyItemComponent } from './survey-item/survey-item.component';
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -21,18 +23,20 @@ import {SharedModule} from "../shared/shared.module";
     SurveyBrowseComponent,
     SurveyConfigureComponent,
     SurveySummaryComponent,
-    SurveyQuestionsComponent
+    SurveyQuestionsComponent,
+    SurveyItemComponent
   ],
-  imports: [
-    CommonModule,
-    SurveysRoutingModule,
-    MatStepperModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatSlideToggleModule,
-    MatIconModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        SurveysRoutingModule,
+        MatStepperModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatSlideToggleModule,
+        MatIconModule,
+        SharedModule,
+        MatCardModule
+    ]
 })
 export class SurveysModule {
 }
