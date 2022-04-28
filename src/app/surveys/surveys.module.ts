@@ -15,6 +15,7 @@ import {SurveyQuestionsComponent} from './survey-questions/survey-questions.comp
 import {SharedModule} from "../shared/shared.module";
 import { SurveyItemComponent } from './survey-item/survey-item.component';
 import {MatCardModule} from "@angular/material/card";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 @NgModule({
@@ -26,17 +27,18 @@ import {MatCardModule} from "@angular/material/card";
     SurveyQuestionsComponent,
     SurveyItemComponent
   ],
-    imports: [
-        CommonModule,
-        SurveysRoutingModule,
-        MatStepperModule,
-        ReactiveFormsModule,
-        MatButtonModule,
-        MatSlideToggleModule,
-        MatIconModule,
-        SharedModule,
-        MatCardModule
-    ]
+  imports: [
+    CommonModule,
+    SurveysRoutingModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatSlideToggleModule,
+    MatIconModule,
+    SharedModule,
+    MatCardModule,
+    MatTooltipModule
+  ]
 })
 export class SurveysModule {
 }
