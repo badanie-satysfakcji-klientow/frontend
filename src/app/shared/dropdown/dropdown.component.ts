@@ -14,7 +14,7 @@ export class DropdownComponent {
   @Input() resetOption = false;
   @Input() style?: string;
   @Input() items!: DropdownItem[];
-  @Output() itemSelect = new EventEmitter();
+  @Output() itemSelect = new EventEmitter<DropdownItem | null>();
 
   selection = new FormControl('');
 

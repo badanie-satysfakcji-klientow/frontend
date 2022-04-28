@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {QuestionTypeItem} from "../interfaces/question-type-item";
+import {DropdownItem} from "../../shared/interfaces/dropdown-item";
 
 @Component({
   selector: 'app-survey-questions',
@@ -15,7 +16,9 @@ export class SurveyQuestionsComponent {
     {viewValue: 'skala', value: 'scale'}
   ]
 
-  foo(event:Event) {
+  selected?: QuestionTypeItem | null;
 
+  foo(selection: DropdownItem | null) {
+    this.selected = selection as QuestionTypeItem | null;
   }
 }

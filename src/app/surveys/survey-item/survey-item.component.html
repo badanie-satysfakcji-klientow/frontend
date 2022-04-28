@@ -1,9 +1,9 @@
 <div class="main-container-survey-item">
   <div class="top-container">
-    <span id="question-view-value">Lista rozwijana</span>
+    <span id="question-view-value">{{questionType.viewValue}}</span>
     <div>
       <button mat-icon-button id="add-button">
-        <mat-icon >add_circle_outline</mat-icon>
+        <mat-icon>add_circle_outline</mat-icon>
       </button>
       <button mat-icon-button>
         <mat-icon>remove_red_eye</mat-icon>
@@ -11,7 +11,11 @@
     </div>
   </div>
   <div class="content-container">
-
+    <span *ngIf="questionType.value==='list'">{{questionType.value}}</span>
+    <span *ngIf="questionType.value==='grid'">{{questionType.value}}</span>
+    <span *ngIf="questionType.value==='open'">{{questionType.value}}</span>
+    <span *ngIf="questionType.value==='closed'">{{questionType.value}}</span>
+    <span *ngIf="questionType.value==='scale'">{{questionType.value}}</span>
   </div>
   <div class="buttons-container">
     <button mat-flat-button color="primary" class="bottom-button">Dodaj</button>
