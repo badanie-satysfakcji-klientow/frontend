@@ -1,9 +1,16 @@
 <app-dropdown
   placeholder="Nowe pytanie"
-  style="width: 100%; margin-bottom: 1.5em"
+  style="width: 100%; margin-bottom: 1.25em"
   [items]="questions"
-  (itemSelect)="foo($event)"
+  (itemSelect)="handleItemSelection($event)"
   [resetOption]="true"
-></app-dropdown>
-<app-survey-item *ngIf="selected" [questionType]="selected"></app-survey-item>
+>
+</app-dropdown>
+<app-survey-item
+  *ngIf="selected"
+  [questionType]="selected"
+  (itemAction)="handleItemAction($event)"
+  style="margin-bottom: 1.25em"
+>
+</app-survey-item>
 <ng-content></ng-content>

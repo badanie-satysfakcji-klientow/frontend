@@ -1,8 +1,8 @@
-<div class="main-container-survey-item">
+<div class="main-container-survey-item" [style]="style">
   <div class="top-container">
     <span id="question-view-value">{{questionType.viewValue}}</span>
-    <div>
-      <button mat-icon-button id="add-button" matTooltip="Dodaj sekcję">
+    <div class="buttons-container">
+      <button mat-icon-button matTooltip="Dodaj sekcję">
         <mat-icon>add_circle_outline</mat-icon>
       </button>
       <button mat-icon-button matTooltip="Podgląd pytania">
@@ -18,7 +18,7 @@
     <span *ngIf="questionType.value==='scale'">{{questionType.value}}</span>
   </div>
   <div class="buttons-container">
-    <button mat-flat-button color="primary" class="bottom-button">Dodaj</button>
-    <button mat-flat-button color="accent" class="bottom-button">Anuluj</button>
+    <button mat-flat-button color="primary" class="bottom-button" (click)="onAddClick()">Dodaj</button>
+    <button mat-flat-button color="accent" class="bottom-button" (click)="onCancelClick()">Anuluj</button>
   </div>
 </div>

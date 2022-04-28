@@ -13,8 +13,11 @@
   align-items: center;
 }
 
-#add-button {
-  margin-right: 23px;
+.buttons-container{
+  display: inherit;
+  justify-content: center;
+  align-items: inherit;
+  gap: 23px;
 }
 
 #question-view-value {
@@ -28,6 +31,7 @@
 .buttons-container {
   display: inherit;
   justify-content: flex-end;
+  gap: 1.125em;
 }
 
 .bottom-button {
@@ -38,8 +42,4 @@
   line-height: 24px;
   padding: 11.72px 46px;
   border-radius: 10px;
-}
-
-.bottom-button:first-child {
-  margin-right: 1.125em;
 }

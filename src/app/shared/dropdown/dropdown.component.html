@@ -2,7 +2,8 @@
   <mat-label>{{placeholder}}</mat-label>
   <mat-select
     panelClass="dropdown-panel-custom-9d2132"
-    disableOptionCentering [formControl]="selection"
+    disableOptionCentering
+    [formControl]="selection"
     (selectionChange)="onSelectionChange()"
   >
     <mat-option *ngIf="resetOption" [value]="null">Wyczyść</mat-option>
