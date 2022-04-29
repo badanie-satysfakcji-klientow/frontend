@@ -2,13 +2,13 @@
   placeholder="Nowe pytanie"
   style="width: 100%; margin-bottom: 1.25em"
   [items]="questions"
-  (itemSelect)="handleItemSelection($event)"
   [resetOption]="true"
+  [control]="newQuestion"
 >
 </app-dropdown>
 <app-survey-item
-  *ngIf="selected"
-  [questionType]="selected"
+  *ngIf="newQuestion.value"
+  [questionType]="newQuestion.value"
   (itemAction)="handleItemAction($event)"
   style="margin-bottom: 1.25em"
 >

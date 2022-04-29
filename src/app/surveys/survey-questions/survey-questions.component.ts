@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {QuestionTypeItem} from "../interfaces/question-type-item";
-import {DropdownItem} from "../../shared/interfaces/dropdown-item";
 import {SurveyItemAction} from "../types/survey-item-action";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-survey-questions',
@@ -17,15 +17,11 @@ export class SurveyQuestionsComponent {
     {viewValue: 'skala', value: 'scale'}
   ]
 
-  selected?: QuestionTypeItem | null;
-
-  handleItemSelection(selection: DropdownItem | null) {
-    this.selected = selection as QuestionTypeItem | null;
-  }
+  newQuestion = new FormControl(null);
 
   handleItemAction($event: SurveyItemAction) {
     if ($event === 'cancel') {
-      this.selected = null;
+      this.newQuestion.setValue(null);
     }
   }
 }
