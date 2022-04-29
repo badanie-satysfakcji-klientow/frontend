@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {OnInit} from "@angular/core";
 import {OnDestroy} from "@angular/core";
 
@@ -26,8 +26,12 @@ export class SurveyItemContentListComponent implements OnInit, OnDestroy {
     return this.itemForm.controls['options'] as FormArray;
   }
 
+  optionsControl(index: number) {
+    return this.options.at(index) as FormControl;
+  }
+
   addOption() {
-    this.options.push(this.formBuilder.group({value: ['']}))
+    this.options.push(this.formBuilder.control(''));
   }
 
   deleteOption(optionIndex: number) {
