@@ -1,0 +1,13 @@
+<div [formGroup]="itemForm">
+  <ng-container formArrayName="options">
+    <div *ngFor="let option of options.controls; let i = index">
+      <ng-container [formGroupName]="i">
+        <input type="text" placeholder="Wprowadź treść opcji" formControlName="value">
+        <button mat-icon-button (click)="deleteOption(i)" matTooltip="Usuń opcję" matTooltipPosition="right">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </ng-container>
+    </div>
+  </ng-container>
+  <button mat-flat-button color="primary" (click)="addOption()">Dodaj opcję</button>
+</div>

@@ -8,7 +8,7 @@
 </app-dropdown>
 <app-survey-item
   *ngIf="newQuestion.value"
-  [questionType]="newQuestion.value"
+  [itemType]="newQuestion.value"
   (itemAction)="handleItemAction($event)"
   style="margin-bottom: 1.25em"
 >
