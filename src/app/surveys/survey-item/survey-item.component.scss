@@ -13,7 +13,7 @@
   align-items: center;
 }
 
-.buttons-container{
+.buttons-container {
   display: inherit;
   justify-content: center;
   align-items: inherit;
@@ -42,4 +42,9 @@
   line-height: 24px;
   padding: 11.72px 46px;
   border-radius: 10px;
+}
+
+#question-content {
+  width: 100%;
+  margin-bottom: 31.96px;
 }

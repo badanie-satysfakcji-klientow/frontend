@@ -2,15 +2,16 @@
   <div class="top-container">
     <span id="question-view-value">{{questionType.viewValue}}</span>
     <div class="buttons-container">
-      <button mat-icon-button matTooltip="Dodaj sekcję">
+      <button mat-icon-button matTooltip="Dodaj sekcję" matTooltipPosition="above">
         <mat-icon>add_circle_outline</mat-icon>
       </button>
-      <button mat-icon-button matTooltip="Podgląd pytania">
+      <button mat-icon-button matTooltip="Podgląd pytania" matTooltipPosition="above">
         <mat-icon>remove_red_eye</mat-icon>
       </button>
     </div>
   </div>
   <div class="content-container">
+    <input type="text" id="question-content" placeholder="Wprowadź treść pytania">
     <span *ngIf="questionType.value==='list'">{{questionType.value}}</span>
     <span *ngIf="questionType.value==='grid'">{{questionType.value}}</span>
     <span *ngIf="questionType.value==='open'">{{questionType.value}}</span>
