@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl} from "@angular/forms";
+import {SurveyItemGroup} from "../interfaces/survey-item-group";
 
 @Component({
   selector: 'app-survey-item-content-list',
@@ -7,16 +8,16 @@ import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./survey-item-content-list.component.scss']
 })
 export class SurveyItemContentListComponent {
-  @Input() itemForm!: FormGroup;
+  @Input() itemForm!: SurveyItemGroup;
 
   constructor(private formBuilder: FormBuilder) {
   }
 
   get options() {
-    return this.itemForm.controls['options'] as FormArray;
+    return this.itemForm.controls.options;
   }
 
-  optionsControl(index: number) {
+  optionAt(index: number) {
     return this.options.at(index) as FormControl;
   }
 

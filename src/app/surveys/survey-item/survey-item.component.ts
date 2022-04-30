@@ -5,6 +5,7 @@ import {Output} from "@angular/core";
 import {EventEmitter} from "@angular/core";
 import {FormArray, FormBuilder, FormControl} from "@angular/forms";
 import {OnChanges} from "@angular/core";
+import {SurveyItemGroup} from "../interfaces/survey-item-group";
 
 @Component({
   selector: 'app-survey-item',
@@ -20,7 +21,7 @@ export class SurveyItemComponent implements OnChanges {
     questionContent: new FormControl(''),
     type: new FormControl(''),
     options: new FormArray([])
-  })
+  }) as SurveyItemGroup;
 
   ngOnChanges(changes: SimpleChanges) {
     this.itemForm.patchValue({type: this.itemType.value});
