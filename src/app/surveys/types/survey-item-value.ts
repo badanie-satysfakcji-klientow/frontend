@@ -1,14 +1,11 @@
-const values = [
-  'list',
-  'gridSingle',
-  'gridMultiple',
-  'scale5',
-  'scale10',
-  'scaleNPS',
-  'openShort',
-  'openLong',
-  'openNumeric',
-  'closedSingle',
-  'closedMultiple'
-] as const;
-export type SurveyItemValue = typeof values[number];
+export type SurveyItemValueList = 'list';
+export type SurveyItemValueGrid = 'gridSingle' | 'gridMultiple';
+export type SurveyItemValueScale = 'scale5' | 'scale10' | 'scaleNPS';
+export type SurveyItemValueOpen = 'openShort' | 'openLong' | 'openNumeric';
+export type SurveyItemValueClosed = 'closedSingle' | 'closedMultiple';
+export type SurveyItemValue =
+  SurveyItemValueClosed |
+  SurveyItemValueGrid |
+  SurveyItemValueScale |
+  SurveyItemValueOpen |
+  SurveyItemValueList;
