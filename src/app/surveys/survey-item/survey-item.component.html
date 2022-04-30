@@ -12,11 +12,24 @@
   </div>
   <div class="content-container" [formGroup]="itemForm">
     <input type="text" id="question-content" placeholder="Wprowadź treść pytania" formControlName="questionContent">
-    <app-survey-item-content-list *ngIf="itemType.value==='list'" [itemForm]="itemForm"></app-survey-item-content-list>
-    <span *ngIf="itemType.value==='gridSingle'">{{itemType.value}}</span>
-    <span *ngIf="itemType.value==='openShort'">{{itemType.value}}</span>
-    <span *ngIf="itemType.value==='closedSingle'">{{itemType.value}}</span>
-    <span *ngIf="itemType.value==='scale5'">{{itemType.value}}</span>
+    <app-survey-item-list
+      *ngIf="itemType.label==='lista rozwijana'"
+      [itemForm]="itemForm"
+      (addOption)="addOption()"
+      (deleteOption)="deleteOption($event)"
+    >
+    </app-survey-item-list>
+    <span *ngIf="itemType.label==='siatka pól wyboru'">{{itemType.value}}</span>
+    <span *ngIf="itemType.label==='pytanie otwarte'">{{itemType.value}}</span>
+    <app-survey-item-closed
+      *ngIf="itemType.label==='pytanie zamknięte'"
+      [itemForm]="itemForm"
+      (changeType)="changeTypeClosed($event)"
+      (addOption)="addOption()"
+      (deleteOption)="deleteOption($event)"
+    >
+    </app-survey-item-closed>
+    <span *ngIf="itemType.label==='skala'">{{itemType.value}}</span>
   </div>
   <div class="buttons-container">
     <button mat-flat-button color="primary" class="bottom-button" (click)="onAddClick()">Dodaj</button>

@@ -1,7 +1,8 @@
 import {SurveyItemLabel} from "../types/survey-item-label";
-import {SurveyItemValue} from "../types/survey-item-value";
+import {SurveyItemType} from "../types/survey-item-type";
+import {DropdownItem} from "../../shared/interfaces/dropdown-item";
 
-export interface SurveyItem {
+export interface SurveyItem extends DropdownItem {
   label: SurveyItemLabel;
-  value: SurveyItemValue;
+  value: SurveyItemType;
 }

@@ -16,7 +16,10 @@ import {SharedModule} from "../shared/shared.module";
 import { SurveyItemComponent } from './survey-item/survey-item.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import { SurveyItemContentListComponent } from './survey-item-content-list/survey-item-content-list.component';
+import { SurveyItemListComponent } from './survey-item-list/survey-item-list.component';
+import { SurveyItemClosedComponent } from './survey-item-closed/survey-item-closed.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatRadioModule} from "@angular/material/radio";
 
 
 @NgModule({
@@ -27,7 +30,8 @@ import { SurveyItemContentListComponent } from './survey-item-content-list/surve
     SurveySummaryComponent,
     SurveyQuestionsComponent,
     SurveyItemComponent,
-    SurveyItemContentListComponent
+    SurveyItemListComponent,
+    SurveyItemClosedComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +43,9 @@ import { SurveyItemContentListComponent } from './survey-item-content-list/surve
     MatIconModule,
     SharedModule,
     MatCardModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCheckboxModule,
+    MatRadioModule
   ]
 })
 export class SurveysModule {

@@ -2,10 +2,10 @@
   <ng-container formArrayName="options">
     <div *ngFor="let option of options.controls; let i = index">
       <input type="text" placeholder="Wprowadź treść opcji" [formControl]="optionAt(i)">
-      <button mat-icon-button (click)="deleteOption(i)" matTooltip="Usuń opcję" matTooltipPosition="right">
+      <button mat-icon-button (click)="onDeleteOption(i)" matTooltip="Usuń opcję" matTooltipPosition="right">
         <mat-icon>delete</mat-icon>
       </button>
     </div>
   </ng-container>
-  <button mat-flat-button color="primary" (click)="addOption()">Dodaj opcję</button>
+  <button mat-flat-button color="primary" (click)="onAddOption()">Dodaj opcję</button>
 </div>
