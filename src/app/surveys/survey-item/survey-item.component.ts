@@ -1,6 +1,6 @@
 import {Component, SimpleChanges} from '@angular/core';
 import {Input} from "@angular/core";
-import {QuestionTypeItem} from "../interfaces/question-type-item";
+import {SurveyItem} from "../interfaces/survey-item";
 import {Output} from "@angular/core";
 import {EventEmitter} from "@angular/core";
 import {SurveyItemAction} from "../types/survey-item-action";
@@ -13,7 +13,7 @@ import {OnChanges} from "@angular/core";
   styleUrls: ['./survey-item.component.scss']
 })
 export class SurveyItemComponent implements OnChanges {
-  @Input() itemType!: QuestionTypeItem;
+  @Input() itemType!: SurveyItem;
   @Input() style?: string;
   @Output() itemAction = new EventEmitter<SurveyItemAction>();
 

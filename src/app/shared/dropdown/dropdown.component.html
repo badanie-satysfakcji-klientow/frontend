@@ -6,6 +6,6 @@
     [formControl]="control"
   >
     <mat-option *ngIf="resetOption" [value]="null">Wyczyść</mat-option>
-    <mat-option *ngFor="let item of items" [value]="item">{{item.viewValue}}</mat-option>
+    <mat-option *ngFor="let item of items" [value]="item">{{item.label}}</mat-option>
   </mat-select>
 </mat-form-field>

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {QuestionTypeItem} from "../interfaces/question-type-item";
+import {SurveyItem} from "../interfaces/survey-item";
 import {SurveyItemAction} from "../types/survey-item-action";
 import {FormControl} from "@angular/forms";
 
@@ -9,12 +9,12 @@ import {FormControl} from "@angular/forms";
   styleUrls: ['./survey-questions.component.scss']
 })
 export class SurveyQuestionsComponent {
-  questions: QuestionTypeItem[] = [
-    {viewValue: 'lista rozwijana', value: 'list'},
-    {viewValue: "pytanie otwarte", value: 'open'},
-    {viewValue: "pytanie zamknięte", value: 'closed'},
-    {viewValue: 'siatka pól wyboru', value: 'grid'},
-    {viewValue: 'skala', value: 'scale'}
+  questions: SurveyItem[] = [
+    {label: 'lista rozwijana', value: 'list'},
+    {label: "pytanie otwarte", value: 'open'},
+    {label: "pytanie zamknięte", value: 'closed'},
+    {label: 'siatka pól wyboru', value: 'grid'},
+    {label: 'skala', value: 'scale'}
   ]
 
   newQuestion = new FormControl(null);
