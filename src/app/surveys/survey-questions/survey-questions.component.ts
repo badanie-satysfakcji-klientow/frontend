@@ -11,10 +11,10 @@ import {FormControl} from "@angular/forms";
 export class SurveyQuestionsComponent {
   questions: SurveyItem[] = [
     {label: 'lista rozwijana', value: 'list'},
-    {label: "pytanie otwarte", value: 'open'},
-    {label: "pytanie zamknięte", value: 'closed'},
-    {label: 'siatka pól wyboru', value: 'grid'},
-    {label: 'skala', value: 'scale'}
+    {label: "pytanie otwarte", value: 'openShort'},
+    {label: "pytanie zamknięte", value: 'closedSingle'},
+    {label: 'siatka pól wyboru', value: 'gridSingle'},
+    {label: 'skala', value: 'scale5'}
   ]
 
   newQuestion = new FormControl(null);
