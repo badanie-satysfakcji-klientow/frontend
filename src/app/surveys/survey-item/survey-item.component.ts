@@ -4,7 +4,7 @@ import {QuestionTypeItem} from "../interfaces/question-type-item";
 import {Output} from "@angular/core";
 import {EventEmitter} from "@angular/core";
 import {SurveyItemAction} from "../types/survey-item-action";
-import {FormBuilder, FormControl} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl} from "@angular/forms";
 import {OnChanges} from "@angular/core";
 
 @Component({
@@ -20,7 +20,7 @@ export class SurveyItemComponent implements OnChanges {
   itemForm = this.formBuilder.group({
     questionContent: new FormControl(''),
     type: new FormControl(''),
-    multiple: new FormControl(false)
+    options: new FormArray([])
   })
 
   ngOnChanges(changes: SimpleChanges) {
