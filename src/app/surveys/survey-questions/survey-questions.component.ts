@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {SurveyItem} from "../interfaces/survey-item";
-import {SurveyItemAction} from "../types/survey-item-action";
 import {FormControl} from "@angular/forms";
 
 @Component({
@@ -19,8 +18,10 @@ export class SurveyQuestionsComponent {
 
   newQuestion = new FormControl(null);
 
-  handleItemAction($event: SurveyItemAction) {
-    if ($event === 'cancel') {
+  handleItemAction($event: any) {
+    if ($event) {
+      //todo
+    } else {
       this.newQuestion.setValue(null);
     }
   }

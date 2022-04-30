@@ -3,7 +3,6 @@ import {Input} from "@angular/core";
 import {SurveyItem} from "../interfaces/survey-item";
 import {Output} from "@angular/core";
 import {EventEmitter} from "@angular/core";
-import {SurveyItemAction} from "../types/survey-item-action";
 import {FormArray, FormBuilder, FormControl} from "@angular/forms";
 import {OnChanges} from "@angular/core";
 
@@ -15,7 +14,7 @@ import {OnChanges} from "@angular/core";
 export class SurveyItemComponent implements OnChanges {
   @Input() itemType!: SurveyItem;
   @Input() style?: string;
-  @Output() itemAction = new EventEmitter<SurveyItemAction>();
+  @Output() itemAction = new EventEmitter();
 
   itemForm = this.formBuilder.group({
     questionContent: new FormControl(''),
@@ -36,6 +35,6 @@ export class SurveyItemComponent implements OnChanges {
   }
 
   onCancelClick() {
-    this.itemAction.emit('cancel');
+    this.itemAction.emit(null);
   }
 }
