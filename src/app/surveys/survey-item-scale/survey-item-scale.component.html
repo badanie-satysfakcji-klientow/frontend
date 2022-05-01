@@ -10,7 +10,13 @@
     </app-dropdown>
   </div>
   <div id="right-container">
-    <input type="text" placeholder="Wartość skrajna minimalna" style="width:100%">
-    <input type="text" placeholder="Wartość skrajna maksymalna" id="option-max" style="width:100%">
+    <input type="text" placeholder="Wartość skrajna minimalna" style="width:100%" [formControl]="optionAt(0)">
+    <input
+      type="text"
+      placeholder="Wartość skrajna maksymalna"
+      id="option-max"
+      style="width:100%"
+      [formControl]="optionAt(1)"
+    >
   </div>
 </div>

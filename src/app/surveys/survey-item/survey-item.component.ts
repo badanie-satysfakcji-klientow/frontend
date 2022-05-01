@@ -19,7 +19,7 @@ export class SurveyItemComponent implements OnChanges {
   @Output() itemAction = new EventEmitter();
 
   itemForm = this.formBuilder.group({
-    questionContent: new FormControl(''),
+    questionContent: new FormControl('',{initialValueIsDefault: true}),
     type: new FormControl(''),
     options: new FormArray([])
   }) as SurveyItemGroup;
@@ -44,11 +44,6 @@ export class SurveyItemComponent implements OnChanges {
     let oldClosedValue = event as SurveyItemTypeClosed;
     let newClosedValue: SurveyItemTypeClosed = oldClosedValue === 'closedSingle' ? 'closedMultiple' : 'closedSingle';
     this.itemForm.patchValue({type: newClosedValue});
-  }
-
-  changeTypeOpen(event: SurveyItemType){
-    let newOpenValue = event as SurveyItemTypeOpen;
-    this.itemForm.patchValue({type: newOpenValue});
   }
 
   onOptionAddition() {
