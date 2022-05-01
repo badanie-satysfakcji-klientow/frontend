@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {AbstractContent} from "../classes/abstract-content.component";
-import {SurveyItemOpen} from "./survey-item-open";
+import {SurveyOpenItem} from "./survey-open-item";
 
 @Component({
   selector: 'app-survey-item-open',
@@ -13,7 +13,7 @@ export class SurveyItemOpenComponent extends AbstractContent {
     super();
   }
 
-  items: SurveyItemOpen[] = [
+  items: SurveyOpenItem[] = [
     {
       label: 'krótka odpowiedź tekstowa',
       value: 'openShort'

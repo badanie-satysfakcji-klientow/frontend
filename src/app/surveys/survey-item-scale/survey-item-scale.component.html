@@ -1,1 +1,16 @@
-<p>survey-item-scale works!</p>
+<div id="main-container">
+  <div id="left-container">
+    <app-dropdown
+      [items]="items"
+      [labeledValue]="false"
+      [control]="itemForm.controls.type"
+      placeholder="Liczba stopni"
+      style="width: 100%"
+    >
+    </app-dropdown>
+  </div>
+  <div id="right-container">
+    <input type="text" placeholder="Wartość skrajna minimalna" style="width:100%">
+    <input type="text" placeholder="Wartość skrajna maksymalna" id="option-max" style="width:100%">
+  </div>
+</div>
