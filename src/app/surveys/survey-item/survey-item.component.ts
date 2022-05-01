@@ -51,11 +51,11 @@ export class SurveyItemComponent implements OnChanges {
     this.itemForm.patchValue({type: newOpenValue});
   }
 
-  addOption() {
+  onOptionAddition() {
     this.itemForm.controls.options.push(this.formBuilder.control(''));
   }
 
-  deleteOption(event: number) {
+  onOptionDeletion(event: number) {
     this.itemForm.controls.options.removeAt(event);
   }
 }

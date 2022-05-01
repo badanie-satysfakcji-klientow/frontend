@@ -15,8 +15,8 @@
     <app-survey-item-list
       *ngIf="itemType.label==='lista rozwijana'"
       [itemForm]="itemForm"
-      (addOption)="addOption()"
-      (deleteOption)="deleteOption($event)"
+      (optionAddition)="onOptionAddition()"
+      (optionDeletion)="onOptionDeletion($event)"
     >
     </app-survey-item-list>
     <span *ngIf="itemType.label==='siatka pól wyboru'">{{itemType.value}}</span>
@@ -25,11 +25,11 @@
       *ngIf="itemType.label==='pytanie zamknięte'"
       [itemForm]="itemForm"
       (changeType)="changeTypeClosed($event)"
-      (addOption)="addOption()"
-      (deleteOption)="deleteOption($event)"
+      (optionAddition)="onOptionAddition()"
+      (optionDeletion)="onOptionDeletion($event)"
     >
     </app-survey-item-closed>
-    <span *ngIf="itemType.label==='skala'">{{itemType.value}}</span>
+    <app-survey-item-scale *ngIf="itemType.label==='skala'" [itemForm]="itemForm"></app-survey-item-scale>
   </div>
   <div class="buttons-container">
     <button mat-flat-button color="primary" class="bottom-button" (click)="onAddClick()">Dodaj</button>
