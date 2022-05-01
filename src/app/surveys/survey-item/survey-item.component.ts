@@ -6,7 +6,7 @@ import {EventEmitter} from "@angular/core";
 import {FormArray, FormBuilder, FormControl} from "@angular/forms";
 import {OnChanges} from "@angular/core";
 import {SurveyItemGroup} from "../interfaces/survey-item-group";
-import {SurveyItemType, SurveyItemTypeClosed, SurveyItemTypeOpen} from "../types/survey-item-type";
+import {SurveyItemType, SurveyItemTypeClosed} from "../types/survey-item-type";
 
 @Component({
   selector: 'app-survey-item',
@@ -26,6 +26,7 @@ export class SurveyItemComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     this.itemForm.patchValue({type: this.itemType.value});
+    this.itemForm.controls.questionContent.reset();
   }
 
   constructor(private formBuilder: FormBuilder) {

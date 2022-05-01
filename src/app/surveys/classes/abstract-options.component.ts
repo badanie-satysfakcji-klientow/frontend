@@ -8,8 +8,7 @@ export abstract class AbstractOptions extends AbstractContent implements OnDestr
   @Output() optionAddition = new EventEmitter<null>();
   @Output() optionDeletion = new EventEmitter<number>();
 
-  override ngOnDestroy() {
-    super.ngOnDestroy();
+  ngOnDestroy() {
     this.itemForm.controls.options.clear();
   }
 
