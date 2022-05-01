@@ -14,4 +14,5 @@ export class DropdownComponent {
   @Input() style?: string;
   @Input() items!: DropdownItem[];
   @Input() control!: FormControl;
+  @Input() labeledValue = true;
 }

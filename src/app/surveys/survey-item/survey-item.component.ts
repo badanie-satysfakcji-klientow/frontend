@@ -6,7 +6,7 @@ import {EventEmitter} from "@angular/core";
 import {FormArray, FormBuilder, FormControl} from "@angular/forms";
 import {OnChanges} from "@angular/core";
 import {SurveyItemGroup} from "../interfaces/survey-item-group";
-import {SurveyItemType, SurveyItemTypeClosed} from "../types/survey-item-type";
+import {SurveyItemType, SurveyItemTypeClosed, SurveyItemTypeOpen} from "../types/survey-item-type";
 
 @Component({
   selector: 'app-survey-item',
@@ -44,6 +44,11 @@ export class SurveyItemComponent implements OnChanges {
     let oldClosedValue = event as SurveyItemTypeClosed;
     let newClosedValue: SurveyItemTypeClosed = oldClosedValue === 'closedSingle' ? 'closedMultiple' : 'closedSingle';
     this.itemForm.patchValue({type: newClosedValue});
+  }
+
+  changeTypeOpen(event: SurveyItemType){
+    let newOpenValue = event as SurveyItemTypeOpen;
+    this.itemForm.patchValue({type: newOpenValue});
   }
 
   addOption() {

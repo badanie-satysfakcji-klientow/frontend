@@ -20,7 +20,7 @@
     >
     </app-survey-item-list>
     <span *ngIf="itemType.label==='siatka pól wyboru'">{{itemType.value}}</span>
-    <span *ngIf="itemType.label==='pytanie otwarte'">{{itemType.value}}</span>
+    <app-survey-item-open *ngIf="itemType.label==='pytanie otwarte'" [itemForm]="itemForm"></app-survey-item-open>
     <app-survey-item-closed
       *ngIf="itemType.label==='pytanie zamknięte'"
       [itemForm]="itemForm"
