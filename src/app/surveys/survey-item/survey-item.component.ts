@@ -5,7 +5,7 @@ import {Output} from "@angular/core";
 import {EventEmitter} from "@angular/core";
 import {FormArray, FormBuilder, FormControl} from "@angular/forms";
 import {OnChanges} from "@angular/core";
-import {SurveyItemGroup} from "../interfaces/survey-item-group";
+import {SurveyItemFormGroup} from "../interfaces/survey-item-form-group";
 import {SurveyItemType, SurveyItemTypeClosed} from "../types/survey-item-type";
 
 @Component({
@@ -19,10 +19,10 @@ export class SurveyItemComponent implements OnChanges {
   @Output() itemAction = new EventEmitter();
 
   itemForm = this.formBuilder.group({
-    questionContent: new FormControl('',{initialValueIsDefault: true}),
+    questionContent: new FormControl('', {initialValueIsDefault: true}),
     type: new FormControl(''),
     options: new FormArray([])
-  }) as SurveyItemGroup;
+  }) as SurveyItemFormGroup;
 
   ngOnChanges(changes: SimpleChanges) {
     this.itemForm.patchValue({type: this.itemType.value});

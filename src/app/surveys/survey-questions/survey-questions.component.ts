@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {SurveyItem} from "../interfaces/survey-item";
 import {FormControl} from "@angular/forms";
+import {SurveyItemFormGroup} from "../interfaces/survey-item-form-group";
 
 @Component({
   selector: 'app-survey-questions',
@@ -18,9 +19,9 @@ export class SurveyQuestionsComponent {
 
   newQuestion = new FormControl(null);
 
-  handleItemAction($event: any) {
+  handleItemAction($event: SurveyItemFormGroup | null) {
     if ($event) {
-      //todo
+      console.log($event.value)
     } else {
       this.newQuestion.setValue(null);
     }
