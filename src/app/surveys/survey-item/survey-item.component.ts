@@ -39,7 +39,7 @@ export class SurveyItemComponent implements OnChanges {
     this.itemAction.emit(null);
   }
 
-  changeTypeClosed(event: SurveyItemType) {
+  switchClosed(event: SurveyItemType) {
     let oldClosedValue = event as SurveyItemTypeClosed;
     let newClosedValue: SurveyItemTypeClosed = oldClosedValue === 'closedSingle' ? 'closedMultiple' : 'closedSingle';
     this.itemForm.patchValue({type: newClosedValue});

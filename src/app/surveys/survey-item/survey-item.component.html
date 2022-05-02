@@ -24,7 +24,7 @@
     <app-survey-item-closed
       *ngIf="itemType.label==='pytanie zamknięte'"
       [itemForm]="itemForm"
-      (switchMultiple)="changeTypeClosed($event)"
+      (switchMultiple)="switchClosed($event)"
       (optionAddition)="onOptionAddition()"
       (optionDeletion)="onOptionDeletion($event)"
     >
