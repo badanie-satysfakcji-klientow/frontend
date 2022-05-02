@@ -1,7 +1,7 @@
 import {SurveyItemType} from "../types/survey-item-type";
 
 export interface SurveyItemFormValue {
-  questionContent: string;
+  content: string;
   type: SurveyItemType;
   options: string[]
 }

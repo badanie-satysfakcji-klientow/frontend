@@ -19,7 +19,7 @@ export class SurveyItemComponent implements OnChanges {
   @Output() itemAction = new EventEmitter<SurveyItemFormGroup | null>();
 
   itemForm = this.formBuilder.group({
-    questionContent: new FormControl('', {initialValueIsDefault: true}),
+    content: new FormControl('', {initialValueIsDefault: true}),
     type: new FormControl(''),
     options: new FormArray([])
   }) as SurveyItemFormGroup;

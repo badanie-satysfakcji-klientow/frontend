@@ -4,7 +4,7 @@ import {SurveyItemFormValue} from "./survey-item-form-value";
 export interface SurveyItemFormGroup extends FormGroup {
   value: SurveyItemFormValue,
   controls: {
-    questionContent: FormControl;
+    content: FormControl;
     type: FormControl;
     options: FormArray;
   }
