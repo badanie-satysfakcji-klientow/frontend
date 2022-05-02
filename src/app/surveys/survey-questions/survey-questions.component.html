@@ -3,14 +3,13 @@
   style="width: 100%; margin-bottom: 1.25em"
   [items]="questions"
   [resetOption]="true"
-  [control]="newQuestion"
+  [control]="newItemType"
 >
 </app-dropdown>
 <app-survey-item
-  *ngIf="newQuestion.value"
-  [itemType]="newQuestion.value"
+  *ngIf="newItemType.value"
+  [itemType]="newItemType.value"
   (itemAction)="handleItemAction($event)"
   style="margin-bottom: 1.25em"
 >
 </app-survey-item>
-<ng-content></ng-content>

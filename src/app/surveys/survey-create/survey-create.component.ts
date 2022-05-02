@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, Validators} from "@angular/forms";
 import {SurveyConfigurationFormGroup} from "../interfaces/survey-configuration-form-group";
 import {DatesChronological} from "../validators/dates-chronological";
 
@@ -11,6 +11,7 @@ import {DatesChronological} from "../validators/dates-chronological";
 
 export class SurveyCreateComponent {
   surveyConfiguration: SurveyConfigurationFormGroup;
+  surveyQuestions: FormArray;
 
   constructor(private formBuilder: FormBuilder,
               private datesChronological: DatesChronological
@@ -24,5 +25,6 @@ export class SurveyCreateComponent {
       startDate: [new Date().toISOString(), [Validators.required]],
       endDate: [new Date().toISOString(), [Validators.required]]
     }, {validators: datesChronological.validate}) as SurveyConfigurationFormGroup;
+    this.surveyQuestions = this.formBuilder.array([]);
   }
 }

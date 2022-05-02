@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {SurveyItem} from "../interfaces/survey-item";
-import {FormControl} from "@angular/forms";
+import {FormArray, FormControl} from "@angular/forms";
 import {SurveyItemFormGroup} from "../interfaces/survey-item-form-group";
+import {Input} from "@angular/core";
 
 @Component({
   selector: 'app-survey-questions',
@@ -9,6 +10,8 @@ import {SurveyItemFormGroup} from "../interfaces/survey-item-form-group";
   styleUrls: ['./survey-questions.component.scss']
 })
 export class SurveyQuestionsComponent {
+  @Input() questionsArray!: FormArray;
+
   questions: SurveyItem[] = [
     {label: 'lista rozwijana', value: 'list'},
     {label: "pytanie otwarte", value: 'openShort'},
@@ -17,13 +20,13 @@ export class SurveyQuestionsComponent {
     {label: 'skala', value: 'scale5'}
   ]
 
-  newQuestion = new FormControl(null);
+  newItemType = new FormControl(null, {initialValueIsDefault: true});
 
   handleItemAction($event: SurveyItemFormGroup | null) {
     if ($event) {
       console.log($event.value)
     } else {
-      this.newQuestion.setValue(null);
+      this.newItemType.reset();
     }
   }
 }
