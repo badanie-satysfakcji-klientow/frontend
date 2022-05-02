@@ -1,16 +1,12 @@
-import {EventEmitter, OnDestroy, Output} from "@angular/core";
+import {EventEmitter, Output} from "@angular/core";
 import {Component} from "@angular/core";
 import {AbstractContent} from "./abstract-content.component";
 import {FormControl} from "@angular/forms";
 
 @Component({template: ''})
-export abstract class AbstractOptions extends AbstractContent implements OnDestroy {
+export abstract class AbstractOptions extends AbstractContent {
   @Output() optionAddition = new EventEmitter<null>();
   @Output() optionDeletion = new EventEmitter<number>();
-
-  ngOnDestroy() {
-    this.itemForm.controls.options.clear();
-  }
 
   get options() {
     return this.itemForm.controls.options;

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {SurveyItem} from "../interfaces/survey-item";
 import {FormArray, FormControl} from "@angular/forms";
+import {FormBuilder} from "@angular/forms";
 import {SurveyItemFormGroup} from "../interfaces/survey-item-form-group";
 import {Input} from "@angular/core";
 
@@ -11,6 +12,7 @@ import {Input} from "@angular/core";
 })
 export class SurveyQuestionsComponent {
   @Input() questionsArray!: FormArray;
+  newItemType: FormControl;
 
   questions: SurveyItem[] = [
     {label: 'lista rozwijana', value: 'list'},
@@ -20,13 +22,12 @@ export class SurveyQuestionsComponent {
     {label: 'skala', value: 'scale5'}
   ]
 
-  newItemType = new FormControl(null, {initialValueIsDefault: true});
+  constructor(private formBuilder: FormBuilder) {
+    this.newItemType = this.formBuilder.control(null, {initialValueIsDefault: true})
+  }
 
   handleItemAction($event: SurveyItemFormGroup | null) {
-    if ($event) {
-      console.log($event.value)
-    } else {
-      this.newItemType.reset();
-    }
+    if ($event) this.questionsArray.push(this.formBuilder.group($event.controls));
+    this.newItemType.reset();
   }
 }

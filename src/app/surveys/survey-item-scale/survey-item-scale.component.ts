@@ -1,4 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {OnDestroy} from "@angular/core";
 import {FormBuilder} from "@angular/forms";
 import {AbstractOptions} from "../classes/abstract-options.component";
 import {SurveyScaleItem} from "./survey-scale-item";
@@ -19,9 +20,18 @@ export class SurveyItemScaleComponent extends AbstractOptions implements OnInit,
     super();
   }
 
+  private clearOptions(){
+    this.itemForm.controls.options.clear();
+  }
+
   ngOnInit() {
+    this.clearOptions();
     for (let i = 0; i < 2; i++) {
       this.itemForm.controls.options.push(this.formBuilder.control(''));
     }
+  }
+
+  ngOnDestroy() {
+    this.clearOptions();
   }
 }

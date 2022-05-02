@@ -16,7 +16,7 @@ import {SurveyItemType, SurveyItemTypeClosed} from "../types/survey-item-type";
 export class SurveyItemComponent implements OnChanges {
   @Input() itemType!: SurveyItem;
   @Input() style?: string;
-  @Output() itemAction = new EventEmitter();
+  @Output() itemAction = new EventEmitter<SurveyItemFormGroup | null>();
 
   itemForm = this.formBuilder.group({
     questionContent: new FormControl('', {initialValueIsDefault: true}),
@@ -26,15 +26,13 @@ export class SurveyItemComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     this.itemForm.patchValue({type: this.itemType.value});
-    this.itemForm.controls.questionContent.reset();
   }
 
   constructor(private formBuilder: FormBuilder) {
   }
 
   onAddClick() {
-    console.log(this.itemForm.value)
-    this.itemAction.emit('add');
+    this.itemAction.emit(this.itemForm);
   }
 
   onCancelClick() {
