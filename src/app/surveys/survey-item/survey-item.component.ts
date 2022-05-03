@@ -7,6 +7,7 @@ import {FormArray, FormBuilder, FormControl} from "@angular/forms";
 import {OnChanges} from "@angular/core";
 import {SurveyItemFormGroup} from "../interfaces/survey-item-form-group";
 import {SurveyItemType, SurveyItemTypeClosed} from "../types/survey-item-type";
+import {ItemTypeResolveService} from "../services/item-type-resolve.service";
 
 @Component({
   selector: 'app-survey-item',
@@ -17,6 +18,7 @@ export class SurveyItemComponent implements OnChanges {
   @Input() itemType!: SurveyItem;
   @Input() style?: string;
   @Output() itemAction = new EventEmitter<SurveyItemFormGroup | null>();
+  label = '';
 
   itemForm = this.formBuilder.group({
     content: new FormControl('', {initialValueIsDefault: true}),
@@ -24,11 +26,14 @@ export class SurveyItemComponent implements OnChanges {
     options: new FormArray([])
   }) as SurveyItemFormGroup;
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.itemForm.patchValue({type: this.itemType.value});
+  constructor(private formBuilder: FormBuilder,
+              public itemTypeResolve: ItemTypeResolveService
+  ) {
   }
 
-  constructor(private formBuilder: FormBuilder) {
+  ngOnChanges(changes: SimpleChanges) {
+    this.itemForm.patchValue({type: this.itemType.value});
+    this.label = this.itemTypeResolve.getLabel(this.itemType.value);
   }
 
   onAddClick() {
