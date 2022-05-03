@@ -15,7 +15,7 @@ import {ItemTypeResolveService} from "../services/item-type-resolve.service";
   styleUrls: ['./survey-item.component.scss']
 })
 export class SurveyItemComponent implements OnChanges {
-  @Input() itemType!: SurveyItem;
+  @Input() itemType!: SurveyItemType;
   @Input() style?: string;
   @Output() itemAction = new EventEmitter<SurveyItemFormGroup | null>();
   label = '';
@@ -32,8 +32,8 @@ export class SurveyItemComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.itemForm.patchValue({type: this.itemType.value});
-    this.label = this.itemTypeResolve.getLabel(this.itemType.value);
+    this.itemForm.patchValue({type: this.itemType});
+    this.label = this.itemTypeResolve.getLabel(this.itemType);
   }
 
   onAddClick() {
