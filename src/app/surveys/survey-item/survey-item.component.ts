@@ -1,6 +1,5 @@
 import {Component, SimpleChanges} from '@angular/core';
 import {Input} from "@angular/core";
-import {SurveyItem} from "../interfaces/survey-item";
 import {Output} from "@angular/core";
 import {EventEmitter} from "@angular/core";
 import {FormArray, FormBuilder, FormControl} from "@angular/forms";
@@ -8,6 +7,7 @@ import {OnChanges} from "@angular/core";
 import {SurveyItemFormGroup} from "../interfaces/survey-item-form-group";
 import {SurveyItemType, SurveyItemTypeClosed} from "../types/survey-item-type";
 import {ItemTypeResolveService} from "../services/item-type-resolve.service";
+import {QuestionsStateService} from "../services/questions-state.service";
 
 @Component({
   selector: 'app-survey-item',
@@ -17,7 +17,7 @@ import {ItemTypeResolveService} from "../services/item-type-resolve.service";
 export class SurveyItemComponent implements OnChanges {
   @Input() itemType!: SurveyItemType;
   @Input() style?: string;
-  @Output() itemAction = new EventEmitter<SurveyItemFormGroup | null>();
+  @Output() complete = new EventEmitter<null>();
   label = '';
 
   itemForm = this.formBuilder.group({
@@ -27,7 +27,8 @@ export class SurveyItemComponent implements OnChanges {
   }) as SurveyItemFormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              public itemTypeResolve: ItemTypeResolveService
+              public itemTypeResolve: ItemTypeResolveService,
+              private questionsState: QuestionsStateService
   ) {
   }
 
@@ -37,11 +38,12 @@ export class SurveyItemComponent implements OnChanges {
   }
 
   onAddClick() {
-    this.itemAction.emit(this.itemForm);
+    this.questionsState.addQuestion(this.itemForm);
+    this.onCancelClick();
   }
 
   onCancelClick() {
-    this.itemAction.emit(null);
+    this.complete.emit(null);
   }
 
   switchClosed(event: SurveyItemType) {

@@ -9,7 +9,7 @@
 <app-survey-item
   *ngIf="newItemType.value"
   [itemType]="newItemType.value"
-  (itemAction)="handleItemAction($event)"
+  (complete)="onItemComplete()"
   style="margin-bottom: 1.25em"
 >
 </app-survey-item>
