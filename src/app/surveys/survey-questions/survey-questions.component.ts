@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {SurveyItem} from "../interfaces/survey-item";
 import {FormControl} from "@angular/forms";
 import {FormBuilder} from "@angular/forms";
+import {QuestionsStateService} from "../services/questions-state.service";
 
 @Component({
   selector: 'app-survey-questions',
@@ -11,7 +12,7 @@ import {FormBuilder} from "@angular/forms";
 export class SurveyQuestionsComponent {
   newItemType: FormControl;
 
-  questions: SurveyItem[] = [
+  questionItems: SurveyItem[] = [
     {label: 'lista rozwijana', value: 'list'},
     {label: "pytanie otwarte", value: 'openShort'},
     {label: "pytanie zamknięte", value: 'closedSingle'},
@@ -19,7 +20,9 @@ export class SurveyQuestionsComponent {
     {label: 'skala', value: 'scale5'}
   ]
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              public questionsState: QuestionsStateService
+  ) {
     this.newItemType = this.formBuilder.control(null, {initialValueIsDefault: true})
   }
 

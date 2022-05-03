@@ -1,4 +1,5 @@
 import {Component, SimpleChanges} from '@angular/core';
+import {OnInit} from "@angular/core";
 import {Input} from "@angular/core";
 import {Output} from "@angular/core";
 import {EventEmitter} from "@angular/core";
@@ -16,25 +17,33 @@ import {QuestionsStateService} from "../services/questions-state.service";
 })
 export class SurveyItemComponent implements OnChanges {
   @Input() itemType!: SurveyItemType;
+  @Input() index?: number;
   @Input() style?: string;
   @Output() complete = new EventEmitter<null>();
-  label = '';
-
-  itemForm = this.formBuilder.group({
-    content: new FormControl('', {initialValueIsDefault: true}),
-    type: new FormControl(''),
-    options: new FormArray([])
-  }) as SurveyItemFormGroup;
+  label: string;
+  itemForm!: SurveyItemFormGroup;
 
   constructor(private formBuilder: FormBuilder,
               public itemTypeResolve: ItemTypeResolveService,
               private questionsState: QuestionsStateService
   ) {
+    this.label = '';
+    this.itemForm = this.formBuilder.group({
+      content: new FormControl('', {initialValueIsDefault: true}),
+      type: new FormControl(''),
+      options: new FormArray([])
+    }) as SurveyItemFormGroup;
   }
 
   ngOnChanges(changes: SimpleChanges) {
     this.itemForm.patchValue({type: this.itemType});
     this.label = this.itemTypeResolve.getLabel(this.itemType);
+  }
+
+  ngOnInit() {
+    if (this.index !== undefined) {
+      this.itemForm = this.questionsState.getQuestionFormGroupAt(this.index);
+    }
   }
 
   onAddClick() {
