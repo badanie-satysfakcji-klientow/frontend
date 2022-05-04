@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {OnDestroy} from "@angular/core";
 import {FormBuilder} from "@angular/forms";
 import {AbstractOptions} from "../classes/abstract-options.component";
 import {SurveyScaleItem} from "./survey-scale-item";
@@ -9,7 +8,7 @@ import {SurveyScaleItem} from "./survey-scale-item";
   templateUrl: './survey-item-scale.component.html',
   styleUrls: ['./survey-item-scale.component.scss']
 })
-export class SurveyItemScaleComponent extends AbstractOptions implements OnInit, OnDestroy {
+export class SurveyItemScaleComponent extends AbstractOptions implements OnInit{
   items: SurveyScaleItem[] = [
     {label: '5', value: 'scale5'},
     {label: '10', value: 'scale10'},
@@ -20,18 +19,20 @@ export class SurveyItemScaleComponent extends AbstractOptions implements OnInit,
     super();
   }
 
-  private clearOptions(){
+  ngOnInit() {
+    const {length} = this.itemForm.controls.options;
+    if (length === 2) return;
+    if (length === 1 || length > 2) this.clearOptions();
+    this.createOptions();
+  }
+
+  private clearOptions() {
     this.itemForm.controls.options.clear();
   }
 
-  ngOnInit() {
-    this.clearOptions();
+  private createOptions() {
     for (let i = 0; i < 2; i++) {
       this.itemForm.controls.options.push(this.formBuilder.control(''));
     }
-  }
-
-  ngOnDestroy() {
-    this.clearOptions();
   }
 }

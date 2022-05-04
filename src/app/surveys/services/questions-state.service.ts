@@ -17,6 +17,7 @@ export class QuestionsStateService {
 
   addQuestion(formGroup: SurveyItemFormGroup) {
     this.questions.push(formGroup);
+    console.log(this.questions.value);
   }
 
   getQuestionsArray(): FormArray {

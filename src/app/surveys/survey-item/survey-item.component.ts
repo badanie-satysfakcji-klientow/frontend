@@ -15,7 +15,7 @@ import {QuestionsStateService} from "../services/questions-state.service";
   templateUrl: './survey-item.component.html',
   styleUrls: ['./survey-item.component.scss']
 })
-export class SurveyItemComponent implements OnChanges {
+export class SurveyItemComponent implements OnChanges, OnInit {
   @Input() itemType!: SurveyItemType;
   @Input() index?: number;
   @Input() style?: string;
