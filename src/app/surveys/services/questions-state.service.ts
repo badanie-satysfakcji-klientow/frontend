@@ -17,7 +17,10 @@ export class QuestionsStateService {
 
   addQuestion(formGroup: SurveyItemFormGroup) {
     this.questions.push(formGroup);
-    console.log(this.questions.value);
+  }
+
+  removeQuestion(index: number) {
+    this.questions.removeAt(index);
   }
 
   getQuestionsArray(): FormArray {

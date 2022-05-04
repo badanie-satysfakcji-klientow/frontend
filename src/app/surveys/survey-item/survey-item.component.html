@@ -32,7 +32,14 @@
     <app-survey-item-scale *ngIf="label==='skala'" [itemForm]="itemForm"></app-survey-item-scale>
   </div>
   <div class="buttons-container">
-    <button mat-flat-button color="primary" class="bottom-button" (click)="onAddClick()">Dodaj</button>
-    <button mat-flat-button color="accent" class="bottom-button" (click)="onCancelClick()">Anuluj</button>
+    <ng-container *ngIf="index===undefined">
+      <button mat-flat-button color="primary" class="bottom-button" (click)="onAddClick()">Dodaj</button>
+      <button mat-flat-button color="accent" class="bottom-button" (click)="onCancelClick()">Anuluj</button>
+    </ng-container>
+    <ng-container *ngIf="index!==undefined">
+      <button mat-flat-button color="primary" class="bottom-button" (click)="questionsState.removeQuestion(index)">
+        Usuń
+      </button>
+    </ng-container>
   </div>
 </div>

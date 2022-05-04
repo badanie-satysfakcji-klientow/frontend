@@ -25,7 +25,7 @@ export class SurveyItemComponent implements OnChanges, OnInit {
 
   constructor(private formBuilder: FormBuilder,
               public itemTypeResolve: ItemTypeResolveService,
-              private questionsState: QuestionsStateService
+              public questionsState: QuestionsStateService
   ) {
     this.label = '';
     this.itemForm = this.formBuilder.group({
