@@ -2,8 +2,14 @@ import {Component} from '@angular/core';
 import {OnInit} from "@angular/core";
 import {OnDestroy} from "@angular/core";
 import {AbstractContent} from "../classes/abstract-content.component";
-import {SurveyOpenItem} from "./survey-open-item";
 import {ValidatorFn} from "@angular/forms";
+import {DropdownItem} from "../../shared/interfaces/dropdown-item";
+import {SurveyItemTypeOpen} from "../types/survey-item-type";
+
+interface SurveyOpenItem extends DropdownItem {
+  label: 'krótka odpowiedź tekstowa' | 'długa odpowiedź tekstowa' | 'wartość liczbowa';
+  value: SurveyItemTypeOpen;
+}
 
 @Component({
   selector: 'app-survey-item-open',
@@ -28,8 +34,7 @@ export class SurveyItemOpenComponent extends AbstractContent implements OnInit, 
     this.validatorFunction = options.validator;
     options.clearValidators();
     options.updateValueAndValidity();
-    if (!options.length) return;
-    options.clear();
+    if (options.length) options.clear();
   }
 
   ngOnDestroy() {

@@ -1,8 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {OnDestroy} from "@angular/core";
-import {FormBuilder, ValidatorFn, Validators} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {AbstractOptions} from "../classes/abstract-options.component";
-import {SurveyScaleItem} from "./survey-scale-item";
+import {DropdownItem} from "../../shared/interfaces/dropdown-item";
+import {SurveyItemTypeScale} from "../types/survey-item-type";
+
+interface SurveyScaleItem extends DropdownItem {
+  label: '5' | '10' | '11 (NPS)';
+  value: SurveyItemTypeScale;
+}
 
 @Component({
   selector: 'app-survey-item-scale',
