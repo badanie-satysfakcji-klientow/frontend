@@ -9,8 +9,8 @@
   app-navbar {
     .search-bar {
       div.mat-form-field-flex {
-        background-color: mat.get-color-from-palette($accent-color, 50);
-        border: 2px solid mat.get-color-from-palette($primary-color);
+        background-color: mat.get-color-from-palette($accent-color);
+        border-color: mat.get-color-from-palette($primary-color);
       }
     }
   }
@@ -22,6 +22,18 @@
           color: mat.get-color-from-palette($primary-color);
         }
       }
+    }
+  }
+
+  app-dropdown {
+    .mat-form-field-wrapper {
+      .mat-form-field-flex {
+        background-color: mat.get-color-from-palette($accent-color);
+        border-color: mat.get-color-from-palette($primary-color);
+      }
+    }
+    .mat-select-arrow{
+      color: mat.get-color-from-palette($primary-color);
     }
   }
 }

@@ -1,0 +1,21 @@
+#main-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 88px;
+}
+
+#left-container,
+#right-container {
+  display: inherit;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: inherit;
+  gap: 51px;
+  max-width: 50%;
+  width: 100%;
+}
+
+#option-max{
+  margin-bottom: 98px;
+}

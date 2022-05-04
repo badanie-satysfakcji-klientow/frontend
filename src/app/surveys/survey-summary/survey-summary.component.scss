@@ -1,10 +1,11 @@
-.main-container{
+.main-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   margin-bottom: 65px;
 }
+
 .column-container {
   display: inherit;
   align-items: inherit;
@@ -45,7 +46,7 @@
   margin-bottom: 12px;
 }
 
-.button-container{
+.button-container {
   display: inherit;
   flex-direction: row;
   justify-content: flex-end;
@@ -53,7 +54,7 @@
   width: 100%;
 }
 
-.preview-button{
+.preview-button {
   font-style: normal;
   font-size: 20px;
   line-height: 24px;
@@ -62,6 +63,6 @@
   border-radius: 10px;
 }
 
-.preview-icon{
+.preview-icon {
   color: #000;
 }

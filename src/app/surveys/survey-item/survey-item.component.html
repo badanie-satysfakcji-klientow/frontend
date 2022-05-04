@@ -1,0 +1,52 @@
+<div class="main-container-survey-item" [style]="style">
+  <div class="top-container">
+    <span id="question-view-value">{{label}}</span>
+    <div class="buttons-container">
+      <button mat-icon-button matTooltip="Dodaj sekcję" matTooltipPosition="above">
+        <mat-icon>add_circle_outline</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Podgląd pytania" matTooltipPosition="above">
+        <mat-icon>remove_red_eye</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="content-container" [formGroup]="itemForm">
+    <input type="text" id="question-content" placeholder="Wprowadź treść pytania" formControlName="content">
+    <app-survey-item-list
+      *ngIf="label==='lista rozwijana'"
+      [itemForm]="itemForm"
+      (optionAddition)="onOptionAddition()"
+      (optionDeletion)="onOptionDeletion($event)"
+    >
+    </app-survey-item-list>
+    <span *ngIf="label==='siatka pól wyboru'">{{itemType}}</span>
+    <app-survey-item-open *ngIf="label==='pytanie otwarte'" [itemForm]="itemForm"></app-survey-item-open>
+    <app-survey-item-closed
+      *ngIf="label==='pytanie zamknięte'"
+      [itemForm]="itemForm"
+      (switchMultiple)="switchClosed($event)"
+      (optionAddition)="onOptionAddition()"
+      (optionDeletion)="onOptionDeletion($event)"
+    >
+    </app-survey-item-closed>
+    <app-survey-item-scale *ngIf="label==='skala'" [itemForm]="itemForm"></app-survey-item-scale>
+  </div>
+  <div class="buttons-container">
+    <ng-container *ngIf="index===undefined">
+      <button
+        mat-flat-button color="primary"
+        class="bottom-button"
+        (click)="onAddClick()"
+        [disabled]="itemForm.invalid"
+      >
+        Dodaj
+      </button>
+      <button mat-flat-button color="accent" class="bottom-button" (click)="onCancelClick()">Anuluj</button>
+    </ng-container>
+    <ng-container *ngIf="index!==undefined">
+      <button mat-flat-button color="primary" class="bottom-button" (click)="questionsState.removeQuestion(index)">
+        Usuń
+      </button>
+    </ng-container>
+  </div>
+</div>

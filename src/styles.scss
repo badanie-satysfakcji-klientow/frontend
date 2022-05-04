@@ -3,11 +3,13 @@
 @use 'styles.theme' as thm;
 @use 'src/app/shared/navbar/navbar.component.theme' as navbar;
 @use "src/app/surveys/survey-configure/survey-configure.component.theme" as survey-configure;
+@use "src/app/shared/dropdown/dropdown.component.theme" as dpdwn;
+@use "src/app/surveys/survey-item/survey-item.component.theme" as survey-item;
 
 @include mat.core();
 
 $custom-primary: mat.define-palette(pal.$custom-blue, 600);
-$custom-accent: mat.define-palette(pal.$custom-gray, 200);
+$custom-accent: mat.define-palette(pal.$custom-gray, 100);
 $custom-warn: mat.define-palette(mat.$red-palette);
 
 $custom-typography: mat.define-typography-config(
@@ -27,6 +29,8 @@ $custom-theme: mat.define-light-theme((
 @include navbar.theme($custom-theme);
 @include thm.theme($custom-theme);
 @include survey-configure.theme($custom-theme);
+@include dpdwn.theme($custom-theme);
+@include survey-item.theme($custom-theme);
 
 html,
 body {
@@ -46,6 +50,8 @@ app-navbar {
 
     div.mat-form-field-flex {
       border-radius: 10px;
+      border-width: 2px;
+      border-style: solid;
     }
 
     .mat-form-field-wrapper {
@@ -71,9 +77,26 @@ app-survey-create {
     .mat-horizontal-stepper-header {
       padding-left: 0;
       padding-right: 0;
-      .mat-step-label{
+
+      .mat-step-label {
         line-height: 16.94px;
       }
     }
+  }
+}
+
+app-dropdown {
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+
+    .mat-form-field-flex {
+      border-radius: 10px;
+      border-width: 2px;
+      border-style: solid;
+    }
+  }
+
+  .mat-form-field-underline {
+    display: none;
   }
 }

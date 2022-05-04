@@ -1,0 +1,16 @@
+<div [formGroup]="itemForm" class="main-container">
+  <ng-container formArrayName="options">
+    <div *ngFor="let option of options.controls; let i = index">
+      <mat-radio-button disabled *ngIf="itemForm.value.type==='closedSingle'"></mat-radio-button>
+      <mat-checkbox disabled *ngIf="itemForm.value.type==='closedMultiple'"></mat-checkbox>
+      <input type="text" placeholder="Wprowadź treść opcji" [formControl]="optionAt(i)">
+      <button mat-icon-button (click)="deleteOption(i)" matTooltip="Usuń opcję" matTooltipPosition="right">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </ng-container>
+  <button mat-flat-button color="primary" (click)="addOption()">Dodaj opcję</button>
+  <mat-slide-toggle color="primary" [checked]="itemForm.value.type==='closedMultiple'" (change)="onMultipleChange()">
+    Pytanie wielokrotnego wyboru
+  </mat-slide-toggle>
+</div>
