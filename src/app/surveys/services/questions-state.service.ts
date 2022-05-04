@@ -34,4 +34,8 @@ export class QuestionsStateService {
   getQuestionFormGroupAt(index: number): SurveyItemFormGroup {
     return (this.questions.controls as SurveyItemFormGroup[])[index];
   }
+
+  getQuestionsNumber() {
+    return this.questions.controls.length;
+  }
 }

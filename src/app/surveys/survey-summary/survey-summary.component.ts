@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {SurveyConfiguration} from "../interfaces/survey-configuration";
 import {Input} from "@angular/core";
+import {QuestionsStateService} from "../services/questions-state.service";
 
 @Component({
   selector: 'app-survey-summary',
@@ -9,6 +10,9 @@ import {Input} from "@angular/core";
 })
 export class SurveySummaryComponent {
   @Input() surveyConfiguration!: SurveyConfiguration;
+
+  constructor(public questionsState:QuestionsStateService) {
+  }
 
   getStartEndDateFormatted() {
     const {startDate, endDate} = this.surveyConfiguration;
