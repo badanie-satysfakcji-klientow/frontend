@@ -38,4 +38,8 @@ export class QuestionsStateService {
   getQuestionsNumber() {
     return this.questions.controls.length;
   }
+
+  areQuestionsValid(): boolean {
+    return this.questions.length > 0 && this.questions.valid;
+  }
 }

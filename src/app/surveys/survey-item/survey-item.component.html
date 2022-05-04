@@ -33,7 +33,14 @@
   </div>
   <div class="buttons-container">
     <ng-container *ngIf="index===undefined">
-      <button mat-flat-button color="primary" class="bottom-button" (click)="onAddClick()">Dodaj</button>
+      <button
+        mat-flat-button color="primary"
+        class="bottom-button"
+        (click)="onAddClick()"
+        [disabled]="itemForm.invalid"
+      >
+        Dodaj
+      </button>
       <button mat-flat-button color="accent" class="bottom-button" (click)="onCancelClick()">Anuluj</button>
     </ng-container>
     <ng-container *ngIf="index!==undefined">

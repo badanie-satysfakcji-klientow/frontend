@@ -2,6 +2,7 @@ import {Component, SimpleChanges} from '@angular/core';
 import {OnInit} from "@angular/core";
 import {Input} from "@angular/core";
 import {Output} from "@angular/core";
+import {Validators} from "@angular/forms";
 import {EventEmitter} from "@angular/core";
 import {FormArray, FormBuilder, FormControl} from "@angular/forms";
 import {OnChanges} from "@angular/core";
@@ -29,9 +30,9 @@ export class SurveyItemComponent implements OnChanges, OnInit {
   ) {
     this.label = '';
     this.itemForm = this.formBuilder.group({
-      content: new FormControl('', {initialValueIsDefault: true}),
+      content: new FormControl('', {initialValueIsDefault: true, validators: Validators.required}),
       type: new FormControl(''),
-      options: new FormArray([])
+      options: new FormArray([], [Validators.required, Validators.minLength(2)])
     }) as SurveyItemFormGroup;
   }
 
@@ -62,7 +63,7 @@ export class SurveyItemComponent implements OnChanges, OnInit {
   }
 
   onOptionAddition() {
-    this.itemForm.controls.options.push(this.formBuilder.control(''));
+    this.itemForm.controls.options.push(this.formBuilder.control('', Validators.required));
   }
 
   onOptionDeletion(event: number) {

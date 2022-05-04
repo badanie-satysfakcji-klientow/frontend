@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, Validators} from "@angular/forms";
 import {AbstractOptions} from "../classes/abstract-options.component";
 import {SurveyScaleItem} from "./survey-scale-item";
 
@@ -8,7 +8,7 @@ import {SurveyScaleItem} from "./survey-scale-item";
   templateUrl: './survey-item-scale.component.html',
   styleUrls: ['./survey-item-scale.component.scss']
 })
-export class SurveyItemScaleComponent extends AbstractOptions implements OnInit{
+export class SurveyItemScaleComponent extends AbstractOptions implements OnInit {
   items: SurveyScaleItem[] = [
     {label: '5', value: 'scale5'},
     {label: '10', value: 'scale10'},
