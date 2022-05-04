@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 
 import {SurveysRoutingModule} from './surveys-routing.module';
 import {SurveyCreateComponent} from './survey-create/survey-create.component';
-import {SurveyBrowseComponent} from './survey-browse/survey-browse.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
@@ -27,7 +26,6 @@ import { SurveyItemScaleComponent } from './survey-item-scale/survey-item-scale.
 @NgModule({
   declarations: [
     SurveyCreateComponent,
-    SurveyBrowseComponent,
     SurveyConfigureComponent,
     SurveySummaryComponent,
     SurveyQuestionsComponent,

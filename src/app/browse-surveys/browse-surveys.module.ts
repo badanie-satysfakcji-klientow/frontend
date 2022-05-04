@@ -1,0 +1,17 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { BrowseSurveysRoutingModule } from './browse-surveys-routing.module';
+import { BrowseSurveysComponent } from './browse-surveys/browse-surveys.component';
+
+
+@NgModule({
+  declarations: [
+    BrowseSurveysComponent
+  ],
+  imports: [
+    CommonModule,
+    BrowseSurveysRoutingModule
+  ]
+})
+export class BrowseSurveysModule { }
