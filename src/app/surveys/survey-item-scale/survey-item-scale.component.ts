@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import {OnDestroy} from "@angular/core";
+import {FormBuilder, ValidatorFn, Validators} from "@angular/forms";
 import {AbstractOptions} from "../classes/abstract-options.component";
 import {SurveyScaleItem} from "./survey-scale-item";
 
@@ -8,22 +9,37 @@ import {SurveyScaleItem} from "./survey-scale-item";
   templateUrl: './survey-item-scale.component.html',
   styleUrls: ['./survey-item-scale.component.scss']
 })
-export class SurveyItemScaleComponent extends AbstractOptions implements OnInit {
+export class SurveyItemScaleComponent extends AbstractOptions implements OnInit, OnDestroy {
   items: SurveyScaleItem[] = [
     {label: '5', value: 'scale5'},
     {label: '10', value: 'scale10'},
     {label: '11 (NPS)', value: 'scaleNPS'}
-  ]
+  ];
 
   constructor(private formBuilder: FormBuilder) {
     super();
   }
 
   ngOnInit() {
-    const {length} = this.itemForm.controls.options;
-    if (length === 2) return;
-    if (length === 1 || length > 2) this.clearOptions();
-    this.createOptions();
+    const {options} = this.itemForm.controls;
+    if (options.length === 0) {
+      this.createOptions();
+    } else if (options.length === 2) {
+      options.controls.forEach((control) => {
+        control.clearValidators();
+        control.updateValueAndValidity();
+      })
+    } else {
+      this.clearOptions();
+      this.createOptions();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.itemForm.controls.options.controls.forEach((control) => {
+      control.setValidators([Validators.required]);
+      control.updateValueAndValidity();
+    })
   }
 
   private clearOptions() {
