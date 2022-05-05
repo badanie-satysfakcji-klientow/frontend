@@ -2,6 +2,7 @@
 @use "palettes" as pal;
 @use 'styles.theme' as thm;
 @use 'src/app/shared/navbar/navbar.component.theme' as navbar;
+@use 'src/app/shared/input/input.component.theme' as input;
 @use "src/app/surveys/survey-configure/survey-configure.component.theme" as survey-configure;
 
 @include mat.core();

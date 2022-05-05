@@ -24,8 +24,37 @@
       }
     }
   }
-}
 
+  app-input{
+    .mat-form-field {
+      max-width: 900px;
+      width: 100%;
+
+    .mat-form-field-label {
+      color: mat.get-color-from-palette($accent-color); 
+    }
+    .mat-form-field-underline {
+      background-color: mat.get-color-from-palette($primary-color);  
+    }
+    .mat-form-field-ripple {
+      color: mat.get-color-from-palette($accent-color); 
+    }
+    .mat-form-field-required-marker {
+      color: mat.get-color-from-palette($accent-color); 
+    }
+    }
+
+    .mat-form-field.mat-focused {
+      .mat-form-field-label {
+        color: mat.get-color-from-palette($primary-color);
+      }
+      .mat-form-field-ripple {
+        background-color: mat.get-color-from-palette($primary-color); 
+      }
+    }
+  }
+}
+ 
 @mixin theme($theme) {
   $color-config: mat.get-color-config($theme);
   @if $color-config != null {

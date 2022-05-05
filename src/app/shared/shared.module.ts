@@ -2,22 +2,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { InputComponent } from './input/input.component';
 import {MatButtonModule} from "@angular/material/button";
 import {RouterModule} from "@angular/router";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
+import {MatSelectModule} from "@angular/material/select";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
     declarations: [
         NavbarComponent,
-        FooterComponent
+        FooterComponent,
+        InputComponent
     ],
   exports: [
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    InputComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +31,9 @@ import {MatIconModule} from "@angular/material/icon";
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
