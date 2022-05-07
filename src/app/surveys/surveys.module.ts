@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 
 import {SurveysRoutingModule} from './surveys-routing.module';
 import {SurveyCreateComponent} from './survey-create/survey-create.component';
@@ -12,15 +12,15 @@ import {SurveySummaryComponent} from './survey-summary/survey-summary.component'
 import {MatIconModule} from "@angular/material/icon";
 import {SurveyQuestionsComponent} from './survey-questions/survey-questions.component';
 import {SharedModule} from "../shared/shared.module";
-import { SurveyItemComponent } from './survey-item/survey-item.component';
+import {SurveyItemComponent} from './survey-item/survey-item.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import { SurveyItemListComponent } from './survey-item-list/survey-item-list.component';
-import { SurveyItemClosedComponent } from './survey-item-closed/survey-item-closed.component';
+import {SurveyItemListComponent} from './survey-item-list/survey-item-list.component';
+import {SurveyItemClosedComponent} from './survey-item-closed/survey-item-closed.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatRadioModule} from "@angular/material/radio";
-import { SurveyItemOpenComponent } from './survey-item-open/survey-item-open.component';
-import { SurveyItemScaleComponent } from './survey-item-scale/survey-item-scale.component';
+import {SurveyItemOpenComponent} from './survey-item-open/survey-item-open.component';
+import {SurveyItemScaleComponent} from './survey-item-scale/survey-item-scale.component';
 
 
 @NgModule({
@@ -48,6 +48,9 @@ import { SurveyItemScaleComponent } from './survey-item-scale/survey-item-scale.
     MatTooltipModule,
     MatCheckboxModule,
     MatRadioModule
+  ],
+  providers: [
+    DatePipe
   ]
 })
 export class SurveysModule {

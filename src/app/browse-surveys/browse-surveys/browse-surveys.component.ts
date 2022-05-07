@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {DatePipe} from "@angular/common";
 import {SurveyGeneral} from "../interfaces/survey-general";
+import {DATE_FORMAT} from "../../shared/constants/date-format";
 
 type DisplayedColumn = keyof SurveyGeneral;
 
@@ -44,7 +45,7 @@ export class BrowseSurveysComponent {
       case "created_at":
       case "starts_at":
       case "expires_at":
-        return this.datePipe.transform((object as SurveyGeneral)[key], 'dd.MM.y, HH:mm')
+        return this.datePipe.transform((object as SurveyGeneral)[key], DATE_FORMAT)
       case 'anonymous':
         return (object as SurveyGeneral)[key] ? 'tak' : 'nie';
       default:

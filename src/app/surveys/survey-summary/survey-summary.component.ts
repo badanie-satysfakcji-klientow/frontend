@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
-import {SurveyConfiguration} from "../interfaces/survey-configuration";
 import {Input} from "@angular/core";
+import {DatePipe} from "@angular/common";
+import {SurveyConfiguration} from "../interfaces/survey-configuration";
 import {QuestionsStateService} from "../services/questions-state.service";
+import {DATE_FORMAT} from "../../shared/constants/date-format";
 
 @Component({
   selector: 'app-survey-summary',
@@ -11,30 +13,14 @@ import {QuestionsStateService} from "../services/questions-state.service";
 export class SurveySummaryComponent {
   @Input() surveyConfiguration!: SurveyConfiguration;
 
-  constructor(public questionsState:QuestionsStateService) {
+  constructor(public questionsState: QuestionsStateService,
+              private datePipe: DatePipe
+  ) {
   }
 
   getStartEndDateFormatted() {
     const {startDate, endDate} = this.surveyConfiguration;
-    return `${SurveySummaryComponent.getDateFormatted(startDate)} - ${SurveySummaryComponent.getDateFormatted(endDate)}`
-  }
-
-  private static getDateFormatted(dateRepresentation: string) {
-    const date = new Date(Date.parse(dateRepresentation));
-    const localDateString = date.toLocaleDateString();
-    const dateString = `${localDateString.length < 10 ? '0' : ''}${localDateString}`;
-
-    return `${dateString}, godz. ${SurveySummaryComponent.getHourMinutesFormatted(date)}`;
-  }
-
-  private static getHourMinutesFormatted(date: Date) {
-    const minutes = date.getMinutes();
-    const hours = date.getHours();
-    return `${SurveySummaryComponent.getTimeFormatted(hours)}:${SurveySummaryComponent.getTimeFormatted(minutes)}`;
-  }
-
-  private static getTimeFormatted(value: number) {
-    return `${value < 10 ? '0' : ''}${value}`;
+    return `${this.datePipe.transform(startDate, DATE_FORMAT)} - ${this.datePipe.transform(endDate, DATE_FORMAT)}`
   }
 
   getAnonymity() {
