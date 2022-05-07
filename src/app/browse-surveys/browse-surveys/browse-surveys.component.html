@@ -5,7 +5,13 @@
       <table mat-table [dataSource]="surveys" class="table">
         <ng-container matColumnDef="position">
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          <tr
+            mat-row
+            *matRowDef="let row;
+            let i = index;columns: displayedColumns"
+            [ngClass]="{'paused':surveys[i].paused}"
+          >
+          </tr>
         </ng-container>
         <ng-container *ngFor="let column of displayedColumns; let i = index" [matColumnDef]="column">
           <th mat-header-cell *matHeaderCellDef>{{headerCells[i]}}</th>
@@ -21,11 +27,14 @@
       </table>
     </div>
     <div class="table-container-right">
-      <div class="buttons-container" *ngFor="let survey of surveys;">
-        <button mat-icon-button (click)="onEditClick(survey.id)" type="button" matTooltip="Edytuj">
+      <div class="buttons-container" *ngFor="let survey of surveys; let i=index">
+        <button mat-icon-button (click)="onEditClick(survey.id)" type="button">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button (click)="onDeleteClick(survey.id)" type="button" matTooltip="Usuń">
+        <button mat-icon-button type="button" (click)="onPauseClick(i)">
+          <mat-icon>{{survey.paused ? 'play_circle' : 'pause_circle'}}</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDeleteClick(survey.id)" type="button">
           <mat-icon>delete</mat-icon>
         </button>
       </div>

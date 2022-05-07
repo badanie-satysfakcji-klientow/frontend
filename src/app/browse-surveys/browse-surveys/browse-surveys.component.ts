@@ -17,7 +17,7 @@ export class BrowseSurveysComponent {
       created_at: new Date().toISOString(),
       starts_at: new Date().toISOString(),
       expires_at: new Date().toISOString(),
-      paused: false,
+      paused: true,
       anonymous: false
     },
     {
@@ -58,5 +58,10 @@ export class BrowseSurveysComponent {
 
   onTitleClick(survey: any) {
     console.log(`preview ${(survey as SurveyGeneral).id}`);
+  }
+
+  onPauseClick(index: number) {
+    this.surveys[index].paused = !this.surveys[index].paused;
+    console.log(`pause/resume ${this.surveys[index].id}`)
   }
 }
