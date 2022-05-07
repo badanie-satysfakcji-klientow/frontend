@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { BrowseSurveysRoutingModule } from './browse-surveys-routing.module';
 import { BrowseSurveysComponent } from './browse-surveys/browse-surveys.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -11,7 +14,10 @@ import { BrowseSurveysComponent } from './browse-surveys/browse-surveys.componen
   ],
   imports: [
     CommonModule,
-    BrowseSurveysRoutingModule
+    BrowseSurveysRoutingModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class BrowseSurveysModule { }
