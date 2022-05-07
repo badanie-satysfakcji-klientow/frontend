@@ -6,6 +6,7 @@ import { BrowseSurveysComponent } from './browse-surveys/browse-surveys.componen
 import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {MatButtonModule} from "@angular/material/button";
     BrowseSurveysRoutingModule,
     MatTableModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTooltipModule
   ]
 })
 export class BrowseSurveysModule { }

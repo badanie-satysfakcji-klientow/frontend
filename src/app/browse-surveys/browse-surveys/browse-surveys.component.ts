@@ -35,16 +35,16 @@ export class BrowseSurveysComponent {
   displayedColumns: DisplayedColumn[] = ['title', 'description', 'created_at', 'anonymous', 'starts_at', 'expires_at'];
   headerCells = ['Tytuł', 'Opis', 'Utworzono', 'Anonimowa', 'Początek', 'Koniec'];
 
-  getKeyByName(object: object, name: DisplayedColumn) {
-    switch (name) {
+  valueOf(object: object, key: DisplayedColumn) {
+    switch (key) {
       case "created_at":
       case "starts_at":
       case "expires_at":
-        return new Date((object as SurveyGeneral)[name]).toLocaleDateString();
+        return new Date((object as SurveyGeneral)[key]).toLocaleDateString();
       case 'anonymous':
-        return (object as SurveyGeneral)[name] ? 'TAK' : 'NIE';
+        return (object as SurveyGeneral)[key] ? 'tak' : 'nie';
       default:
-        return (object as SurveyGeneral)[name]
+        return (object as SurveyGeneral)[key]
     }
   }
 
@@ -54,5 +54,9 @@ export class BrowseSurveysComponent {
 
   onDeleteClick(id: string) {
     console.log(`delete ${id}`)
+  }
+
+  onTitleClick(survey: any) {
+    console.log(`preview ${(survey as SurveyGeneral).id}`);
   }
 }
