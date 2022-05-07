@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {DatePipe} from "@angular/common";
 import {SurveyGeneral} from "../interfaces/survey-general";
 
 type DisplayedColumn = keyof SurveyGeneral;
@@ -35,12 +36,15 @@ export class BrowseSurveysComponent {
   displayedColumns: DisplayedColumn[] = ['title', 'description', 'created_at', 'anonymous', 'starts_at', 'expires_at'];
   headerCells = ['Tytuł', 'Opis', 'Utworzono', 'Anonimowa', 'Początek', 'Koniec'];
 
+  constructor(private datePipe: DatePipe) {
+  }
+
   valueOf(object: object, key: DisplayedColumn) {
     switch (key) {
       case "created_at":
       case "starts_at":
       case "expires_at":
-        return new Date((object as SurveyGeneral)[key]).toLocaleDateString();
+        return this.datePipe.transform((object as SurveyGeneral)[key], 'dd.MM.y, HH:mm')
       case 'anonymous':
         return (object as SurveyGeneral)[key] ? 'tak' : 'nie';
       default:

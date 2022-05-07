@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 
 import { BrowseSurveysRoutingModule } from './browse-surveys-routing.module';
 import { BrowseSurveysComponent } from './browse-surveys/browse-surveys.component';
@@ -20,6 +20,9 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatIconModule,
     MatButtonModule,
     MatTooltipModule
+  ],
+  providers: [
+    DatePipe
   ]
 })
 export class BrowseSurveysModule { }
