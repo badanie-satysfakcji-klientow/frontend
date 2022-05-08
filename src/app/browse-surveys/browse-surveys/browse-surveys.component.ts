@@ -1,7 +1,9 @@
-import {Component} from '@angular/core';
-import {DatePipe} from "@angular/common";
+import {Component, Inject} from '@angular/core';
+import {formatDate} from "@angular/common";
 import {SurveyGeneral} from "../interfaces/survey-general";
 import {DATE_FORMAT} from "../../shared/constants/date-format";
+import {SavedSurveysService} from "../services/saved-surveys.service";
+import {LOCALE_ID} from "@angular/core";
 
 type DisplayedColumn = keyof SurveyGeneral;
 
@@ -11,33 +13,16 @@ type DisplayedColumn = keyof SurveyGeneral;
   styleUrls: ['./browse-surveys.component.scss']
 })
 export class BrowseSurveysComponent {
-  surveys: SurveyGeneral[] = [
-    {
-      id: '0',
-      title: 'Ankieta pracownicza',
-      description: 'Badanie satysfakcji pracowników',
-      created_at: new Date().toISOString(),
-      starts_at: new Date().toISOString(),
-      expires_at: new Date().toISOString(),
-      paused: true,
-      anonymous: false
-    },
-    {
-      id: '1',
-      title: 'Ankieta o kotkach',
-      description: 'Badanie satysfakcji pracowników',
-      created_at: new Date().toISOString(),
-      starts_at: new Date().toISOString(),
-      expires_at: new Date().toISOString(),
-      paused: false,
-      anonymous: true
-    }
-  ]
-
+  surveys: SurveyGeneral[] = [];
+  creatorId = 'a36c108c-3d99-4b4e-9af0-b210934ab79d';
   displayedColumns: DisplayedColumn[] = ['title', 'description', 'created_at', 'anonymous', 'starts_at', 'expires_at'];
   headerCells = ['Tytuł', 'Opis', 'Utworzono', 'Anonimowa', 'Początek', 'Koniec'];
 
-  constructor(private datePipe: DatePipe) {
+  constructor(private savedSurveys: SavedSurveysService,
+              @Inject(LOCALE_ID) private locale: string
+  ) {
+    this.savedSurveys.getSurveysByCreatorId(this.creatorId)
+      .subscribe((response) => this.surveys = response);
   }
 
   valueOf(object: object, key: DisplayedColumn) {
@@ -45,7 +30,7 @@ export class BrowseSurveysComponent {
       case "created_at":
       case "starts_at":
       case "expires_at":
-        return this.datePipe.transform((object as SurveyGeneral)[key], DATE_FORMAT)
+        return formatDate((object as SurveyGeneral)[key], DATE_FORMAT, this.locale, '-0000')
       case 'anonymous':
         return (object as SurveyGeneral)[key] ? 'tak' : 'nie';
       default:
