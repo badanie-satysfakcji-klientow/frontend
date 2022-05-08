@@ -1,11 +1,11 @@
 import {Component, Inject} from '@angular/core';
 import {formatDate} from "@angular/common";
-import {SurveyGeneral} from "../interfaces/survey-general";
+import {Survey} from "../../shared/interfaces/survey";
 import {DATE_FORMAT} from "../../shared/constants/date-format";
 import {SavedSurveysService} from "../services/saved-surveys.service";
 import {LOCALE_ID} from "@angular/core";
 
-type DisplayedColumn = keyof SurveyGeneral;
+type DisplayedColumn = keyof Survey;
 
 @Component({
   selector: 'app-browse-surveys',
@@ -13,7 +13,7 @@ type DisplayedColumn = keyof SurveyGeneral;
   styleUrls: ['./browse-surveys.component.scss']
 })
 export class BrowseSurveysComponent {
-  surveys: SurveyGeneral[] = [];
+  surveys: Survey[] = [];
   creatorId = 'a36c108c-3d99-4b4e-9af0-b210934ab79d';
   displayedColumns: DisplayedColumn[] = ['title', 'description', 'created_at', 'anonymous', 'starts_at', 'expires_at'];
   headerCells = ['Tytuł', 'Opis', 'Utworzono', 'Anonimowa', 'Początek', 'Koniec'];
@@ -30,11 +30,11 @@ export class BrowseSurveysComponent {
       case "created_at":
       case "starts_at":
       case "expires_at":
-        return formatDate((object as SurveyGeneral)[key], DATE_FORMAT, this.locale, '-0000')
+        return formatDate((object as Survey)[key], DATE_FORMAT, this.locale, '-0000')
       case 'anonymous':
-        return (object as SurveyGeneral)[key] ? 'tak' : 'nie';
+        return (object as Survey)[key] ? 'tak' : 'nie';
       default:
-        return (object as SurveyGeneral)[key]
+        return (object as Survey)[key]
     }
   }
 
@@ -47,7 +47,7 @@ export class BrowseSurveysComponent {
   }
 
   onTitleClick(survey: any) {
-    console.log(`preview ${(survey as SurveyGeneral).id}`);
+    console.log(`preview ${(survey as Survey).id}`);
   }
 
   onPauseClick(index: number) {

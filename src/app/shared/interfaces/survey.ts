@@ -1,4 +1,6 @@
-export interface SurveyGeneral {
+import {Item} from "./item";
+
+export interface Survey {
   id: string;
   title: string;
   description: string;
@@ -7,4 +9,7 @@ export interface SurveyGeneral {
   expires_at: string;
   paused: boolean;
   anonymous: boolean;
+  items: Item[]
+  greeting: string;
+  farewell: string;
 }
