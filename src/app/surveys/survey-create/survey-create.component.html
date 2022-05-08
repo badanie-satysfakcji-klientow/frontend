@@ -49,7 +49,16 @@
     <ng-template matStepContent>
       <app-survey-summary [surveyConfiguration]="surveyConfiguration.value"></app-survey-summary>
       <div class="buttons-container">
-        <button mat-flat-button matStepperNext color="primary" class="navigation-button">Gotowe</button>
+        <button
+          mat-flat-button
+          matStepperNext
+          color="primary"
+          class="navigation-button"
+          routerLink=""
+          (click)="onSubmitClick()"
+        >
+          Gotowe
+        </button>
         <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
         <button mat-flat-button routerLink="" color="accent" class="navigation-button">Odrzuć</button>
       </div>

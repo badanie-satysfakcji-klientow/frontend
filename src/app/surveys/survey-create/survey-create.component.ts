@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {SurveyConfigurationFormGroup} from "../interfaces/survey-configuration-form-group";
 import {DatesChronological} from "../validators/dates-chronological";
 import {QuestionsStateService} from "../services/questions-state.service";
+import {CreateSurveyService} from "../services/create-survey.service";
 
 @Component({
   selector: 'app-survey-create',
@@ -15,7 +16,8 @@ export class SurveyCreateComponent {
 
   constructor(private formBuilder: FormBuilder,
               private datesChronological: DatesChronological,
-              public questionsState: QuestionsStateService
+              public questionsState: QuestionsStateService,
+              private createSurveyService: CreateSurveyService
   ) {
     this.surveyConfiguration = this.formBuilder.group({
       surveyName: ['', [Validators.required]],
@@ -26,5 +28,9 @@ export class SurveyCreateComponent {
       startDate: [new Date().toISOString(), [Validators.required]],
       endDate: [new Date().toISOString(), [Validators.required]]
     }, {validators: datesChronological.validate}) as SurveyConfigurationFormGroup;
+  }
+
+  onSubmitClick() {
+    this.createSurveyService.submitSurvey('unfinished functionality');
   }
 }
