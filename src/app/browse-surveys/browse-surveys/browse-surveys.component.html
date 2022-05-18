@@ -5,11 +5,11 @@
       <table mat-table matSort [dataSource]="dataSource" class="table">
         <ng-container matColumnDef="position">
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; let i=index; columns: displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; let i=index; columns: displayedColumns" class="table-row"></tr>
         </ng-container>
         <ng-container matColumnDef="title">
           <th mat-header-cell *matHeaderCellDef mat-sort-header="title">Tytuł</th>
-          <td *matCellDef="let survey" mat-cell (click)="onTitleClick()" [ngClass]="'title-cell'">
+          <td *matCellDef="let survey" mat-cell (click)="onTitleClick(survey)" [ngClass]="'title-cell'">
             {{survey.title}}
           </td>
         </ng-container>
@@ -36,18 +36,19 @@
         <ng-container matColumnDef="buttons">
           <th mat-header-cell *matHeaderCellDef>Opcje</th>
           <td *matCellDef="let survey" mat-cell>
-            <button mat-icon-button (click)="onEditClick(survey.title)" type="button">
+            <button mat-icon-button (click)="onEditClick(survey)" type="button">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button (click)="onPauseClick()" type="button">
+            <button mat-icon-button (click)="onPauseClick(survey)" type="button">
               <mat-icon>{{survey.paused ? 'play_circle' : 'pause_circle'}}</mat-icon>
             </button>
-            <button mat-icon-button (click)="onDeleteClick()" type="button">
+            <button mat-icon-button (click)="onDeleteClick(survey)" type="button">
               <mat-icon>delete</mat-icon>
             </button>
           </td>
         </ng-container>
       </table>
+      <mat-paginator [pageSizeOptions]="pageSizes" showFirstLastButtons id="paginator"></mat-paginator>
     </div>
   </div>
 </div>

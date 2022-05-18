@@ -13,7 +13,6 @@ export class SavedSurveysService {
   }
 
   getSurveysByCreatorId(creatorId: string) {
-
     return this.httpClient.get<Survey[]>(this.rootUrl, {params: {creator_id: creatorId}});
   }
 }

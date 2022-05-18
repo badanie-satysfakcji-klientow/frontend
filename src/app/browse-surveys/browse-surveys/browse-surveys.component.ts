@@ -5,6 +5,7 @@ import {Survey} from "../../shared/interfaces/survey";
 import {SavedSurveysService} from "../services/saved-surveys.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
+import {MatPaginator} from "@angular/material/paginator";
 
 @Component({
   selector: 'app-browse-surveys',
@@ -13,9 +14,11 @@ import {MatSort} from "@angular/material/sort";
 })
 export class BrowseSurveysComponent implements AfterViewInit {
   displayedColumns = ['title', 'description', 'created_at', 'anonymous', 'starts_at', 'expires_at', 'buttons'];
+  pageSizes = [5, 10, 20];
   creatorId = 'a36c108c-3d99-4b4e-9af0-b210934ab79d';
   dataSource = new MatTableDataSource<Survey>([])
   @ViewChild(MatSort) matSort!: MatSort;
+  @ViewChild(MatPaginator) matPaginator!: MatPaginator;
 
   constructor(private savedSurveys: SavedSurveysService) {
     this.savedSurveys.getSurveysByCreatorId(this.creatorId)
@@ -23,22 +26,23 @@ export class BrowseSurveysComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.matSort
+    this.dataSource.sort = this.matSort;
+    this.dataSource.paginator = this.matPaginator;
   }
 
-  onEditClick(title: string) {
-    console.log(`edit ${title}`)
+  onEditClick(survey: any) {
+    console.log(`edit ${(survey as Survey).id}`)
   }
 
-  onDeleteClick() {
-    console.log(`delete`)
+  onDeleteClick(survey: any) {
+    console.log(`delete ${(survey as Survey).id}`)
   }
 
-  onTitleClick() {
-    console.log(`preview`);
+  onTitleClick(survey: any) {
+    console.log(`preview ${(survey as Survey).id}`);
   }
 
-  onPauseClick() {
-    console.log(`pause/resume`)
+  onPauseClick(survey: any) {
+    console.log(`pause/resume ${(survey as Survey).id}`)
   }
 }

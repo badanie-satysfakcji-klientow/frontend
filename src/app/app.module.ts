@@ -6,6 +6,8 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SharedModule} from "./shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
+import {MatPaginatorIntl} from "@angular/material/paginator";
+import {MatPaginatorIntlPolishService} from "./shared/services/mat-paginator-intl-polish.service";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,7 @@ import {HttpClientModule} from "@angular/common/http";
     SharedModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: MatPaginatorIntl, useClass: MatPaginatorIntlPolishService}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
