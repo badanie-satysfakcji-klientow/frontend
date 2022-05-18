@@ -1,7 +1,12 @@
 import {Item} from "./item";
 
+interface Section {
+  title: string;
+  description: string;
+  items: []
+}
+
 export interface Survey {
-  id: string;
   title: string;
   description: string;
   created_at: string;
@@ -9,7 +14,8 @@ export interface Survey {
   expires_at: string;
   paused: boolean;
   anonymous: boolean;
-  items: Item[]
+  creator_id: string;
   greeting: string;
   farewell: string;
+  sections: Section[]
 }

@@ -1,9 +1,10 @@
-import {Component, Inject} from '@angular/core';
-import {formatDate} from "@angular/common";
+import {Component} from '@angular/core';
+import {AfterViewInit} from "@angular/core";
+import {ViewChild} from "@angular/core";
 import {Survey} from "../../shared/interfaces/survey";
-import {DATE_FORMAT} from "../../shared/constants/date-format";
 import {SavedSurveysService} from "../services/saved-surveys.service";
-import {LOCALE_ID} from "@angular/core";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatSort} from "@angular/material/sort";
 
 type DisplayedColumn = keyof Survey;
 
@@ -12,46 +13,34 @@ type DisplayedColumn = keyof Survey;
   templateUrl: './browse-surveys.component.html',
   styleUrls: ['./browse-surveys.component.scss']
 })
-export class BrowseSurveysComponent {
-  surveys: Survey[] = [];
+export class BrowseSurveysComponent implements AfterViewInit {
+  displayedColumns = ['title', 'description', 'created_at', 'anonymous', 'starts_at', 'expires_at', 'buttons'];
   creatorId = 'a36c108c-3d99-4b4e-9af0-b210934ab79d';
-  displayedColumns: DisplayedColumn[] = ['title', 'description', 'created_at', 'anonymous', 'starts_at', 'expires_at'];
-  headerCells = ['Tytuł', 'Opis', 'Utworzono', 'Anonimowa', 'Początek', 'Koniec'];
+  dataSource = new MatTableDataSource<Survey>([])
+  @ViewChild(MatSort) matSort!: MatSort;
 
-  constructor(private savedSurveys: SavedSurveysService,
-              @Inject(LOCALE_ID) private locale: string
-  ) {
+  constructor(private savedSurveys: SavedSurveysService) {
     this.savedSurveys.getSurveysByCreatorId(this.creatorId)
-      .subscribe((response) => this.surveys = response);
+      .subscribe((response) => this.dataSource.data = response);
   }
 
-  valueOf(object: object, key: DisplayedColumn) {
-    switch (key) {
-      case "created_at":
-      case "starts_at":
-      case "expires_at":
-        return formatDate((object as Survey)[key], DATE_FORMAT, this.locale, '-0000')
-      case 'anonymous':
-        return (object as Survey)[key] ? 'tak' : 'nie';
-      default:
-        return (object as Survey)[key]
-    }
+  ngAfterViewInit() {
+    this.dataSource.sort = this.matSort
   }
 
-  onEditClick(id: string) {
-    console.log(`edit ${id}`)
+  onEditClick(title:string) {
+    console.log(`edit ${title}`)
   }
 
-  onDeleteClick(id: string) {
-    console.log(`delete ${id}`)
+  onDeleteClick() {
+    console.log(`delete`)
   }
 
-  onTitleClick(survey: any) {
-    console.log(`preview ${(survey as Survey).id}`);
+  onTitleClick() {
+    console.log(`preview`);
   }
 
-  onPauseClick(index: number) {
-    this.surveys[index].paused = !this.surveys[index].paused;
-    console.log(`pause/resume ${this.surveys[index].id}`)
+  onPauseClick() {
+    console.log(`pause/resume`)
   }
 }

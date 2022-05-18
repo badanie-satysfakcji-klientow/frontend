@@ -6,6 +6,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatSortModule} from "@angular/material/sort";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatTableModule,
     MatIconModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSortModule
   ]
 })
 export class BrowseSurveysModule {
