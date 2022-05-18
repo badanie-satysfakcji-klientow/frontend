@@ -32,7 +32,8 @@ export class SurveyItemComponent implements OnChanges, OnInit {
     this.itemForm = this.formBuilder.group({
       content: new FormControl('', {initialValueIsDefault: true, validators: Validators.required}),
       type: new FormControl(''),
-      options: new FormArray([], [Validators.required, Validators.minLength(2)])
+      options: new FormArray([], [Validators.required, Validators.minLength(2)]),
+      required: new FormControl(true, {initialValueIsDefault: true})
     }) as SurveyItemFormGroup;
   }
 
@@ -62,11 +63,15 @@ export class SurveyItemComponent implements OnChanges, OnInit {
     this.itemForm.patchValue({type: newClosedValue});
   }
 
-  onOptionAddition() {
+  onOptionAdd() {
     this.itemForm.controls.options.push(this.formBuilder.control('', Validators.required));
   }
 
-  onOptionDeletion(event: number) {
+  onOptionDelete(event: number) {
     this.itemForm.controls.options.removeAt(event);
+  }
+
+  onRequiredChange() {
+    this.itemForm.patchValue({required: !this.itemForm.value.required});
   }
 }

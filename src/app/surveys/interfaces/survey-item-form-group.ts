@@ -7,5 +7,6 @@ export interface SurveyItemFormGroup extends FormGroup {
     content: FormControl;
     type: FormControl;
     options: FormArray;
+    required: FormControl;
   }
 }
