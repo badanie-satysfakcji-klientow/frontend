@@ -8,6 +8,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatButtonModule,
     MatTooltipModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    SharedModule
   ]
 })
 export class BrowseSurveysModule {

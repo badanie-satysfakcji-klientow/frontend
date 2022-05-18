@@ -11,18 +11,21 @@ import {MatIconModule} from "@angular/material/icon";
 import { DropdownComponent } from './dropdown/dropdown.component';
 import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
+import { BooleanStringPipe } from './pipes/boolean-string.pipe';
 
 
 @NgModule({
     declarations: [
         NavbarComponent,
         FooterComponent,
-        DropdownComponent
+        DropdownComponent,
+        BooleanStringPipe
     ],
     exports: [
         NavbarComponent,
         FooterComponent,
-        DropdownComponent
+        DropdownComponent,
+        BooleanStringPipe
     ],
   imports: [
     CommonModule,

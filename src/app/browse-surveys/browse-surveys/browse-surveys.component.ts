@@ -6,6 +6,7 @@ import {SavedSurveysService} from "../services/saved-surveys.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
+import {DATE_FORMAT} from "../../shared/constants/date-format";
 
 @Component({
   selector: 'app-browse-surveys',
@@ -16,6 +17,7 @@ export class BrowseSurveysComponent implements AfterViewInit {
   displayedColumns = ['title', 'description', 'created_at', 'anonymous', 'starts_at', 'expires_at', 'buttons'];
   pageSizes = [5, 10, 20];
   creatorId = 'a36c108c-3d99-4b4e-9af0-b210934ab79d';
+  dateFormat = DATE_FORMAT;
   dataSource = new MatTableDataSource<Survey>([])
   @ViewChild(MatSort) matSort!: MatSort;
   @ViewChild(MatPaginator) matPaginator!: MatPaginator;

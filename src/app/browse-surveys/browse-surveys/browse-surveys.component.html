@@ -19,19 +19,19 @@
         </ng-container>
         <ng-container matColumnDef="created_at">
           <th mat-header-cell *matHeaderCellDef mat-sort-header="created_at">Utworzono</th>
-          <td *matCellDef="let survey" mat-cell>{{survey.created_at|date:"dd.MM.y, HH:mm"}}</td>
+          <td *matCellDef="let survey" mat-cell>{{survey.created_at|date:dateFormat}}</td>
         </ng-container>
         <ng-container matColumnDef="anonymous">
           <th mat-header-cell *matHeaderCellDef mat-sort-header="anonymous">Anoniomowa</th>
-          <td *matCellDef="let survey" mat-cell>{{survey.anonymous ? "tak" : "nie"}}</td>
+          <td *matCellDef="let survey" mat-cell>{{survey.anonymous | booleanString:'tak':'nie'}}</td>
         </ng-container>
         <ng-container matColumnDef="starts_at">
           <th mat-header-cell *matHeaderCellDef mat-sort-header="starts_at">Początek</th>
-          <td *matCellDef="let survey" mat-cell>{{survey.starts_at|date:"dd.MM.y, HH:mm"}}</td>
+          <td *matCellDef="let survey" mat-cell>{{survey.starts_at|date:dateFormat}}</td>
         </ng-container>
         <ng-container matColumnDef="expires_at">
           <th mat-header-cell *matHeaderCellDef mat-sort-header="expires_at">Koniec</th>
-          <td *matCellDef="let survey" mat-cell>{{survey.expires_at|date:"dd.MM.y, HH:mm"}}</td>
+          <td *matCellDef="let survey" mat-cell>{{survey.expires_at|date:dateFormat}}</td>
         </ng-container>
         <ng-container matColumnDef="buttons">
           <th mat-header-cell *matHeaderCellDef>Opcje</th>

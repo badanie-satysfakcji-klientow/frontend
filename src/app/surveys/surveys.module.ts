@@ -49,9 +49,7 @@ import {SurveyItemScaleComponent} from './survey-item-scale/survey-item-scale.co
     MatCheckboxModule,
     MatRadioModule
   ],
-  providers: [
-    DatePipe
-  ]
+  providers: []
 })
 export class SurveysModule {
 }

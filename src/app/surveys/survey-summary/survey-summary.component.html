@@ -6,11 +6,15 @@
       <span class="label">Opis ankiety</span>
       <span class="value">{{surveyConfiguration.description}}</span>
       <span class="label">Okres ankietyzacji</span>
-      <span class="value">{{getStartEndDateFormatted()}}</span>
+      <span class="value">
+        {{surveyConfiguration.startDate|date:dateFormat}} - {{surveyConfiguration.endDate|date:dateFormat}}
+      </span>
       <span class="label">Liczba pytań</span>
       <span class="value">{{questionsState.getQuestionsNumber()}}</span>
       <span class="label">Anonimowość ankiety</span>
-      <span class="value">{{getAnonymity()}}</span>
+      <span class="value">
+        ankieta {{surveyConfiguration.anonymous|booleanString:'anonimowa':'jawna'}}
+      </span>
     </div>
     <div class="right-column">
       <span class="label">Powitanie</span>
