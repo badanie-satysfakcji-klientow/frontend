@@ -6,8 +6,6 @@ import {SavedSurveysService} from "../services/saved-surveys.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 
-type DisplayedColumn = keyof Survey;
-
 @Component({
   selector: 'app-browse-surveys',
   templateUrl: './browse-surveys.component.html',
@@ -28,7 +26,7 @@ export class BrowseSurveysComponent implements AfterViewInit {
     this.dataSource.sort = this.matSort
   }
 
-  onEditClick(title:string) {
+  onEditClick(title: string) {
     console.log(`edit ${title}`)
   }
 

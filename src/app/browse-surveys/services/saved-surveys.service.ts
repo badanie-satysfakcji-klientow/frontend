@@ -7,7 +7,7 @@ import {Survey} from "../../shared/interfaces/survey";
   providedIn: 'root'
 })
 export class SavedSurveysService {
-  rootUrl = `${API_URL}/api/v1/surveys`;
+  rootUrl = `${API_URL}/api/surveys`;
 
   constructor(private httpClient: HttpClient) {
   }
