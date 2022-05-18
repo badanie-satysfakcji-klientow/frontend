@@ -8,6 +8,7 @@
         color="primary"
         class="navigation-button"
         [disabled]="surveyConfiguration.invalid"
+        (click)="onAddQuestionsClick()"
       >
         Dodaj pytania
       </button>
@@ -55,7 +56,6 @@
           color="primary"
           class="navigation-button"
           routerLink=""
-          (click)="onSubmitClick()"
         >
           Gotowe
         </button>
