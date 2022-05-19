@@ -30,7 +30,9 @@ export class SurveyItemComponent implements OnChanges, OnInit {
   ) {
     this.label = '';
     this.itemForm = this.formBuilder.group({
-      questions: new FormControl('', {initialValueIsDefault: true, validators: Validators.required}),
+      questions: new FormArray([
+        new FormControl('', {initialValueIsDefault: true, validators: Validators.required})
+      ]),
       type: new FormControl(''),
       options: new FormArray([], [Validators.required, Validators.minLength(2)]),
       required: new FormControl(true, {initialValueIsDefault: true})
