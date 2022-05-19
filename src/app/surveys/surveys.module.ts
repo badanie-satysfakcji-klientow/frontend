@@ -21,6 +21,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatRadioModule} from "@angular/material/radio";
 import {SurveyItemOpenComponent} from './survey-item-open/survey-item-open.component';
 import {SurveyItemScaleComponent} from './survey-item-scale/survey-item-scale.component';
+import { SurveyItemGridComponent } from './survey-item-grid/survey-item-grid.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {SurveyItemScaleComponent} from './survey-item-scale/survey-item-scale.co
     SurveyItemListComponent,
     SurveyItemClosedComponent,
     SurveyItemOpenComponent,
-    SurveyItemScaleComponent
+    SurveyItemScaleComponent,
+    SurveyItemGridComponent
   ],
   imports: [
     CommonModule,

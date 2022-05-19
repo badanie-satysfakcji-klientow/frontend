@@ -7,24 +7,11 @@ import {SurveyItemType} from "../types/survey-item-type";
   providedIn: 'root'
 })
 export class ItemTypeResolveService {
-  getLabel(type: SurveyItemType): SurveyItemLabel {
-    switch (type) {
-      case "closedMultiple":
-      case "closedSingle":
-        return 'pytanie zamknięte';
-      case 'openShort':
-      case "openLong":
-      case 'openNumeric':
-        return 'pytanie otwarte';
-      case 'gridSingle':
-      case "gridMultiple":
-        return 'siatka pól wyboru';
-      case "scale5":
-      case "scale10":
-      case "scaleNPS":
-        return 'skala';
-      default:
-        return 'lista rozwijana'
-    }
+  resolveType(type: SurveyItemType): SurveyItemLabel {
+    if (/closed/.test(type)) return 'pytanie zamknięte';
+    else if (/open/.test(type)) return 'pytanie otwarte';
+    else if (/grid/.test(type)) return 'siatka pól wyboru';
+    else if (/scale/.test(type)) return 'skala';
+    else return 'lista rozwijana';
   }
 }

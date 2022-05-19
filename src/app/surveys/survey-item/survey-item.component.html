@@ -25,6 +25,7 @@
     >
     </app-survey-item-list>
     <span *ngIf="label==='siatka pól wyboru'">{{itemType}}</span>
+    <app-survey-item-grid *ngIf="label==='siatka pól wyboru'"></app-survey-item-grid>
     <app-survey-item-open *ngIf="label==='pytanie otwarte'" [itemForm]="itemForm"></app-survey-item-open>
     <app-survey-item-closed
       *ngIf="label==='pytanie zamknięte'"
