@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
+import {AbstractOptions} from "../classes/abstract-options.component";
+import {SingleMultiple} from "../interfaces/single-multiple";
+import {SurveyItemType} from "../types/survey-item-type";
 
 @Component({
   selector: 'app-survey-item-grid',
   templateUrl: './survey-item-grid.component.html',
   styleUrls: ['./survey-item-grid.component.scss']
 })
-export class SurveyItemGridComponent implements OnInit {
+export class SurveyItemGridComponent extends AbstractOptions implements SingleMultiple{
+  @Output() switchMultiple: EventEmitter<SurveyItemType>;
 
-  constructor() { }
+  constructor() {
+    super();
+    this.switchMultiple = new EventEmitter<SurveyItemType>();
+  }
 
-  ngOnInit(): void {
+
+  onMultipleChange(): void {
+    this.switchMultiple.emit(this.itemForm.value.type);
   }
 
 }

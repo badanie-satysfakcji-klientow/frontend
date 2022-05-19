@@ -16,6 +16,7 @@
       id="question-content"
       placeholder="Wprowadź treść pytania"
       [formControl]="$any(itemForm.controls.questions.at(0))"
+      *ngIf="label!=='siatka pól wyboru'"
     >
     <app-survey-item-list
       *ngIf="label==='lista rozwijana'"
@@ -24,8 +25,13 @@
       (optionDeletion)="onOptionDelete($event)"
     >
     </app-survey-item-list>
-    <span *ngIf="label==='siatka pól wyboru'">{{itemType}}</span>
-    <app-survey-item-grid *ngIf="label==='siatka pól wyboru'"></app-survey-item-grid>
+    <app-survey-item-grid
+      *ngIf="label==='siatka pól wyboru'"
+      [itemForm]="itemForm"
+      (optionAddition)="onOptionAdd()"
+      (optionDeletion)="onOptionDelete($event)"
+    >
+    </app-survey-item-grid>
     <app-survey-item-open *ngIf="label==='pytanie otwarte'" [itemForm]="itemForm"></app-survey-item-open>
     <app-survey-item-closed
       *ngIf="label==='pytanie zamknięte'"
@@ -48,7 +54,8 @@
   <div class="buttons-container">
     <ng-container *ngIf="index===undefined">
       <button
-        mat-flat-button color="primary"
+        mat-flat-button
+        color="primary"
         class="bottom-button"
         (click)="onAddClick()"
         [disabled]="itemForm.invalid"
