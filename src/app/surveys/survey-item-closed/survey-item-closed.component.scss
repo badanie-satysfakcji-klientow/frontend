@@ -1,6 +1,10 @@
-.main-container{
+.main-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+}
+
+.multiple-switch {
+  margin-top: 8px;
 }

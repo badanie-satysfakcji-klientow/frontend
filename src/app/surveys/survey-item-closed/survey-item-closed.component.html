@@ -10,7 +10,12 @@
     </div>
   </ng-container>
   <button mat-flat-button color="primary" (click)="addOption()">Dodaj opcję</button>
-  <mat-slide-toggle color="primary" [checked]="itemForm.value.type==='closedMultiple'" (change)="onMultipleChange()">
+  <mat-slide-toggle
+    color="primary"
+    [checked]="itemForm.value.type==='closedMultiple'"
+    (change)="onMultipleChange()"
+    class="multiple-switch"
+  >
     Pytanie wielokrotnego wyboru
   </mat-slide-toggle>
 </div>

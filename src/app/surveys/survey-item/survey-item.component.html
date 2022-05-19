@@ -37,7 +37,12 @@
     </app-survey-item-closed>
     <app-survey-item-scale *ngIf="label==='skala'" [itemForm]="itemForm"></app-survey-item-scale>
   </div>
-  <mat-slide-toggle color="primary" [checked]="itemForm.value.required" (change)="onRequiredChange()">
+  <mat-slide-toggle
+    color="primary"
+    [checked]="itemForm.value.required"
+    (change)="onRequiredChange()"
+    class="required-switch"
+  >
     Odpowiedź wymagana
   </mat-slide-toggle>
   <div class="buttons-container">
