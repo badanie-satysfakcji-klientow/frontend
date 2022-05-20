@@ -20,7 +20,8 @@
   gap: 23px;
 }
 
-#question-view-value {
+#question-view-value,
+.bottom-button {
   font-family: Inter;
   font-style: normal;
   font-weight: 700;
@@ -35,11 +36,6 @@
 }
 
 .bottom-button {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
   padding: 11.72px 46px;
   border-radius: 10px;
 }
@@ -49,6 +45,6 @@
   margin-bottom: 31.96px;
 }
 
-.required-switch{
+.switch {
   margin-top: 8px;
 }

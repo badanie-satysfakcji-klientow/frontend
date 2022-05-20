@@ -3,6 +3,8 @@
     <div class="column-container">
       <span class="label">wiersze</span>
       <div *ngFor="let question of itemForm.controls.questions.controls" class="input-container">
+        <mat-radio-button disabled *ngIf="itemForm.value.type==='gridSingle'"></mat-radio-button>
+        <mat-checkbox disabled *ngIf="itemForm.value.type==='gridMultiple'"></mat-checkbox>
         <input type="text" [formControl]="$any(question)" placeholder="Wprowadź treść pytania" class="input">
         <button mat-icon-button matTooltip="Usuń pytanie" matTooltipPosition="below">
           <mat-icon>delete</mat-icon>
@@ -21,11 +23,4 @@
       <button mat-flat-button color="primary" (click)="addOption()">Dodaj kolumnę</button>
     </div>
   </div>
-  <mat-slide-toggle
-    color="primary"
-    [checked]="itemForm.value.type==='gridMultiple'"
-    (change)="onMultipleChange()"
-  >
-    Pytanie wielokrotnego wyboru
-  </mat-slide-toggle>
 </div>

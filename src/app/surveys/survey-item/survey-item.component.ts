@@ -7,7 +7,7 @@ import {EventEmitter} from "@angular/core";
 import {FormArray, FormBuilder, FormControl} from "@angular/forms";
 import {OnChanges} from "@angular/core";
 import {SurveyItemFormGroup} from "../interfaces/survey-item-form-group";
-import {SurveyItemType, SurveyItemTypeClosed} from "../types/survey-item-type";
+import {SurveyItemType} from "../types/survey-item-type";
 import {ItemTypeResolveService} from "../services/item-type-resolve.service";
 import {QuestionsStateService} from "../services/questions-state.service";
 import {SurveyItemLabel} from "../types/survey-item-label";
@@ -26,7 +26,7 @@ export class SurveyItemComponent implements OnChanges, OnInit {
   itemForm!: SurveyItemFormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              public itemTypeResolve: ItemTypeResolveService,
+              private itemTypeResolve: ItemTypeResolveService,
               public questionsState: QuestionsStateService
   ) {
     this.itemForm = this.formBuilder.group({
@@ -58,13 +58,6 @@ export class SurveyItemComponent implements OnChanges, OnInit {
   onCancelClick() {
     this.complete.emit(null);
   }
-
-  switchClosed(event: SurveyItemType) {
-    let oldClosedValue = event as SurveyItemTypeClosed;
-    let newClosedValue: SurveyItemTypeClosed = oldClosedValue === 'closedSingle' ? 'closedMultiple' : 'closedSingle';
-    this.itemForm.patchValue({type: newClosedValue});
-  }
-
   onOptionAdd() {
     this.itemForm.controls.options.push(this.formBuilder.control('', Validators.required));
   }
@@ -75,5 +68,21 @@ export class SurveyItemComponent implements OnChanges, OnInit {
 
   onRequiredChange() {
     this.itemForm.patchValue({required: !this.itemForm.value.required});
+  }
+
+  showMultipleSwitch(): boolean {
+    return /Single|Multiple/.test(this.itemForm.value.type);
+  }
+
+  isItemTypeMultiple(): boolean {
+    return /Multiple/.test(this.itemForm.value.type);
+  }
+
+  onMultipleChange() {
+    if (/grid/.test(this.itemForm.value.type)) {
+      this.itemForm.patchValue({type: this.isItemTypeMultiple() ? 'gridSingle' : 'gridMultiple'});
+    } else {
+      this.itemForm.patchValue({type: this.isItemTypeMultiple() ? 'closedSingle' : 'closedMultiple'});
+    }
   }
 }

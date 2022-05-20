@@ -36,38 +36,45 @@
     <app-survey-item-closed
       *ngIf="label==='pytanie zamknięte'"
       [itemForm]="itemForm"
-      (switchMultiple)="switchClosed($event)"
       (optionAddition)="onOptionAdd()"
       (optionDeletion)="onOptionDelete($event)"
     >
     </app-survey-item-closed>
     <app-survey-item-scale *ngIf="label==='skala'" [itemForm]="itemForm"></app-survey-item-scale>
   </div>
-  <mat-slide-toggle
-    color="primary"
-    [checked]="itemForm.value.required"
-    (change)="onRequiredChange()"
-    class="required-switch"
-  >
+  <mat-slide-toggle [checked]="itemForm.value.required" (change)="onRequiredChange()" color="primary" class="switch">
     Odpowiedź wymagana
+  </mat-slide-toggle>
+  <mat-slide-toggle
+    *ngIf="showMultipleSwitch()"
+    [checked]="isItemTypeMultiple()"
+    (change)="onMultipleChange()"
+    color="primary"
+    class="switch"
+  >
+    Pytanie wielokrotnego wyboru
   </mat-slide-toggle>
   <div class="buttons-container">
     <ng-container *ngIf="index===undefined">
       <button
         mat-flat-button
-        color="primary"
         class="bottom-button"
         (click)="onAddClick()"
         [disabled]="itemForm.invalid"
+        color="primary"
       >
         Dodaj
       </button>
       <button mat-flat-button color="accent" class="bottom-button" (click)="onCancelClick()">Anuluj</button>
     </ng-container>
-    <ng-container *ngIf="index!==undefined">
-      <button mat-flat-button color="primary" class="bottom-button" (click)="questionsState.removeQuestion(index)">
-        Usuń
-      </button>
-    </ng-container>
+    <button
+      mat-flat-button
+      *ngIf="index!==undefined"
+      color="primary"
+      class="bottom-button"
+      (click)="questionsState.removeQuestion(index)"
+    >
+      Usuń
+    </button>
   </div>
 </div>
