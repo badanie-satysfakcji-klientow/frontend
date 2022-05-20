@@ -1,10 +1,12 @@
 import {Component} from '@angular/core';
+import {OnDestroy} from "@angular/core";
 import {FormBuilder, Validators} from "@angular/forms";
 import {SurveyConfigurationFormGroup} from "../interfaces/survey-configuration-form-group";
 import {DatesChronological} from "../validators/dates-chronological";
 import {QuestionsStateService} from "../services/questions-state.service";
 import {SurveysService} from "../services/surveys.service";
 import {pluck} from "rxjs";
+import {SurveyIdStateService} from "../services/survey-id-state.service";
 
 @Component({
   selector: 'app-survey-create',
@@ -12,15 +14,15 @@ import {pluck} from "rxjs";
   styleUrls: ['./survey-create.component.scss']
 })
 
-export class SurveyCreateComponent {
+export class SurveyCreateComponent implements OnDestroy {
   surveyConfiguration: SurveyConfigurationFormGroup;
   creatorId = 'a36c108c-3d99-4b4e-9af0-b210934ab79d';
-  surveyId?: string;
 
   constructor(private formBuilder: FormBuilder,
               private datesChronological: DatesChronological,
               public questionsState: QuestionsStateService,
-              private surveysService: SurveysService
+              private surveysService: SurveysService,
+              private surveyIdState: SurveyIdStateService
   ) {
     this.surveyConfiguration = this.formBuilder.group({
       surveyName: ['', [Validators.required]],
@@ -33,9 +35,14 @@ export class SurveyCreateComponent {
     }, {validators: datesChronological.validate}) as SurveyConfigurationFormGroup;
   }
 
+  ngOnDestroy(): void {
+    this.surveyIdState.clearSurveyId();
+    this.questionsState.clearQuestions();
+  }
+
   onAddQuestionsClick() {
     this.surveysService.createSurvey(this.surveyConfiguration.value, this.creatorId)
       .pipe(pluck('survey_id'))
-      .subscribe(value => this.surveyId = value);
+      .subscribe(value => this.surveyIdState.setSurveyId(value));
   }
 }

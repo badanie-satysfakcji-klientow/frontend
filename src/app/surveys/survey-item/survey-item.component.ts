@@ -4,13 +4,15 @@ import {Input} from "@angular/core";
 import {Output} from "@angular/core";
 import {Validators} from "@angular/forms";
 import {EventEmitter} from "@angular/core";
-import {FormArray, FormBuilder, FormControl} from "@angular/forms";
+import {FormBuilder} from "@angular/forms";
 import {OnChanges} from "@angular/core";
 import {SurveyItemFormGroup} from "../interfaces/survey-item-form-group";
 import {SurveyItemType} from "../types/survey-item-type";
 import {ItemTypeResolveService} from "../services/item-type-resolve.service";
 import {QuestionsStateService} from "../services/questions-state.service";
 import {SurveyItemLabel} from "../types/survey-item-label";
+import {SurveysService} from "../services/surveys.service";
+import {SurveyIdStateService} from "../services/survey-id-state.service";
 
 @Component({
   selector: 'app-survey-item',
@@ -27,7 +29,9 @@ export class SurveyItemComponent implements OnChanges, OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private itemTypeResolve: ItemTypeResolveService,
-              public questionsState: QuestionsStateService
+              public questionsState: QuestionsStateService,
+              private surveys: SurveysService,
+              private surveyIdState: SurveyIdStateService
   ) {
     this.itemForm = this.formBuilder.group({
       questions: this.formBuilder.array([
@@ -57,7 +61,20 @@ export class SurveyItemComponent implements OnChanges, OnInit {
 
   onAddClick() {
     this.questionsState.addQuestion(this.itemForm);
+    this.surveys.createItem(this.itemForm.value, this.surveyIdState.getSurveyId())
+      .subscribe({
+        next: ({questions_ids, item_id}) => {
+          this.questionsState.registerIdentifier({questions_ids, item_id});
+        },
+        error: () => {
+          this.questionsState.popQuestion();
+        }
+      });
     this.onCancelClick();
+  }
+
+  onDeleteClick(index: number) {
+    this.questionsState.removeQuestion(index);
   }
 
   onCancelClick() {

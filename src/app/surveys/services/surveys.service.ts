@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {API_URL} from "../../shared/constants/api-url";
 import {SurveyConfiguration} from "../interfaces/survey-configuration";
 import {CreateSurveyResponse} from "../interfaces/create-survey-response";
+import {SurveyItemFormValue} from "../interfaces/survey-item-form-value";
+import {CreateItemResponse} from "../interfaces/create-item-response";
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +27,9 @@ export class SurveysService {
       greeting: surveyConfiguration.greeting,
       farewell: surveyConfiguration.farewell
     });
+  }
+
+  createItem(formValue: SurveyItemFormValue, surveyId: string) {
+    return this.httpClient.post<CreateItemResponse>(`${this.rootURL}/${surveyId}/items`, formValue);
   }
 }
