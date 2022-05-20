@@ -30,12 +30,17 @@ export class SurveyItemComponent implements OnChanges, OnInit {
               public questionsState: QuestionsStateService
   ) {
     this.itemForm = this.formBuilder.group({
-      questions: new FormArray([
-        new FormControl('', {initialValueIsDefault: true, validators: Validators.required})
+      questions: this.formBuilder.array([
+        this.formBuilder.control(
+          '',
+          {initialValueIsDefault: true, validators: Validators.required})
       ]),
-      type: new FormControl(''),
-      options: new FormArray([], [Validators.required, Validators.minLength(2)]),
-      required: new FormControl(true, {initialValueIsDefault: true})
+      type: this.formBuilder.control(''),
+      options: this.formBuilder.array(
+        [],
+        [Validators.required, Validators.minLength(2)]
+      ),
+      required: this.formBuilder.control(true, {initialValueIsDefault: true})
     }) as SurveyItemFormGroup;
   }
 

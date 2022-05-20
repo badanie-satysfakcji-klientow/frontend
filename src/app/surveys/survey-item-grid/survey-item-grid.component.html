@@ -2,15 +2,21 @@
   <div id="container">
     <div class="column-container">
       <span class="label">wiersze</span>
-      <div *ngFor="let question of itemForm.controls.questions.controls" class="input-container">
+      <div *ngFor="let question of itemForm.controls.questions.controls; let i = index" class="input-container">
         <mat-radio-button disabled *ngIf="itemForm.value.type==='gridSingle'"></mat-radio-button>
         <mat-checkbox disabled *ngIf="itemForm.value.type==='gridMultiple'"></mat-checkbox>
         <input type="text" [formControl]="$any(question)" placeholder="Wprowadź treść pytania" class="input">
-        <button mat-icon-button matTooltip="Usuń pytanie" matTooltipPosition="below">
+        <button
+          mat-icon-button
+          [ngStyle]="{'visibility':i===0?'hidden':undefined}"
+          matTooltip="Usuń pytanie"
+          matTooltipPosition="below"
+          (click)="deleteQuestion(i)"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </div>
-      <button mat-flat-button color="primary" class="button">Dodaj wiersz</button>
+      <button mat-flat-button color="primary" class="button" (click)="addQuestion()">Dodaj wiersz</button>
     </div>
     <div class="column-container">
       <span class="label">kolumny</span>
