@@ -58,6 +58,7 @@ export class SurveyItemComponent implements OnChanges, OnInit {
   onCancelClick() {
     this.complete.emit(null);
   }
+
   onOptionAdd() {
     this.itemForm.controls.options.push(this.formBuilder.control('', Validators.required));
   }
