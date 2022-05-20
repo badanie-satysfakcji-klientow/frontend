@@ -1,13 +1,13 @@
 <div [formGroup]="itemForm" class="main-container">
   <ng-container formArrayName="options">
-    <div *ngFor="let option of options.controls; let i = index">
+    <div *ngFor="let option of options.controls; let i = index" class="container">
       <mat-radio-button disabled *ngIf="itemForm.value.type==='closedSingle'"></mat-radio-button>
       <mat-checkbox disabled *ngIf="itemForm.value.type==='closedMultiple'"></mat-checkbox>
-      <input type="text" placeholder="Wprowadź treść opcji" [formControl]="optionAt(i)">
+      <input type="text" placeholder="Wprowadź treść opcji" [formControl]="optionAt(i)" class="input">
       <button mat-icon-button (click)="deleteOption(i)" matTooltip="Usuń opcję" matTooltipPosition="right">
         <mat-icon>delete</mat-icon>
       </button>
     </div>
   </ng-container>
-  <button mat-flat-button color="primary" (click)="addOption()">Dodaj opcję</button>
+  <button mat-flat-button color="primary" (click)="addOption()" class="button">Dodaj opcję</button>
 </div>

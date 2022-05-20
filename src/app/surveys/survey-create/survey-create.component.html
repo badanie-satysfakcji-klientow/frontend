@@ -1,67 +1,69 @@
-<mat-stepper linear labelPosition="bottom">
-  <mat-step [completed]="surveyConfiguration.valid" label="Konfiguracja ankiety">
-    <app-survey-configure [controlGroup]="surveyConfiguration"></app-survey-configure>
-    <div class="buttons-container">
-      <button
-        mat-flat-button
-        matStepperNext
-        color="primary"
-        class="navigation-button"
-        [disabled]="surveyConfiguration.invalid"
-        (click)="onAddQuestionsClick()"
-      >
-        Dodaj pytania
-      </button>
-      <button mat-flat-button routerLink="" color="accent" class="navigation-button">Anuluj</button>
-    </div>
-  </mat-step>
-  <mat-step [completed]="questionsState.areQuestionsValid()" label="Dodawanie pytań">
-    <form [formGroup]="surveyConfiguration">
-      <ng-template matStepContent>
-        <app-survey-questions></app-survey-questions>
-        <div class="buttons-container">
-          <button
-            mat-flat-button
-            matStepperNext
-            color="primary"
-            class="navigation-button"
-            [disabled]="!questionsState.areQuestionsValid()"
-          >
-            Dodaj reguły przejść
-          </button>
-          <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
-          <button mat-flat-button routerLink="" color="accent" class="navigation-button" type="button">Odrzuć</button>
-        </div>
-      </ng-template>
-    </form>
-  </mat-step>
-  <mat-step [completed]="questionsState.areQuestionsValid()" label="Reguły przejść">
-    <form [formGroup]="surveyConfiguration">
-      <ng-template matStepContent>
-        <div class="buttons-container">
-          <button mat-flat-button matStepperNext color="primary" class="navigation-button">Podsumowanie</button>
-          <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
-          <button mat-flat-button routerLink="" color="accent" class="navigation-button">Odrzuć</button>
-        </div>
-      </ng-template>
-    </form>
-  </mat-step>
-  <mat-step label="Podsumowanie" [completed]="questionsState.areQuestionsValid()">
-    <ng-template matStepContent>
-      <app-survey-summary [surveyConfiguration]="surveyConfiguration.value"></app-survey-summary>
+<div style="display: flex; flex-direction: column; min-height: 83vh">
+  <mat-stepper linear labelPosition="bottom">
+    <mat-step [completed]="surveyConfiguration.valid" label="Konfiguracja ankiety">
+      <app-survey-configure [controlGroup]="surveyConfiguration"></app-survey-configure>
       <div class="buttons-container">
         <button
           mat-flat-button
           matStepperNext
           color="primary"
           class="navigation-button"
-          routerLink=""
+          [disabled]="surveyConfiguration.invalid"
+          (click)="onAddQuestionsClick()"
         >
-          Gotowe
+          Dodaj pytania
         </button>
-        <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
-        <button mat-flat-button routerLink="" color="accent" class="navigation-button">Odrzuć</button>
+        <button mat-flat-button routerLink="" color="accent" class="navigation-button">Anuluj</button>
       </div>
-    </ng-template>
-  </mat-step>
-</mat-stepper>
+    </mat-step>
+    <mat-step [completed]="questionsState.areQuestionsValid()" label="Dodawanie pytań">
+      <form [formGroup]="surveyConfiguration">
+        <ng-template matStepContent>
+          <app-survey-questions></app-survey-questions>
+          <div class="buttons-container">
+            <button
+              mat-flat-button
+              matStepperNext
+              color="primary"
+              class="navigation-button"
+              [disabled]="!questionsState.areQuestionsValid()"
+            >
+              Dodaj reguły przejść
+            </button>
+            <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
+            <button mat-flat-button routerLink="" color="accent" class="navigation-button" type="button">Odrzuć</button>
+          </div>
+        </ng-template>
+      </form>
+    </mat-step>
+    <mat-step [completed]="questionsState.areQuestionsValid()" label="Reguły przejść">
+      <form [formGroup]="surveyConfiguration">
+        <ng-template matStepContent>
+          <div class="buttons-container">
+            <button mat-flat-button matStepperNext color="primary" class="navigation-button">Podsumowanie</button>
+            <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
+            <button mat-flat-button routerLink="" color="accent" class="navigation-button">Odrzuć</button>
+          </div>
+        </ng-template>
+      </form>
+    </mat-step>
+    <mat-step label="Podsumowanie" [completed]="questionsState.areQuestionsValid()">
+      <ng-template matStepContent>
+        <app-survey-summary [surveyConfiguration]="surveyConfiguration.value"></app-survey-summary>
+        <div class="buttons-container">
+          <button
+            mat-flat-button
+            matStepperNext
+            color="primary"
+            class="navigation-button"
+            routerLink=""
+          >
+            Gotowe
+          </button>
+          <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
+          <button mat-flat-button routerLink="" color="accent" class="navigation-button">Odrzuć</button>
+        </div>
+      </ng-template>
+    </mat-step>
+  </mat-stepper>
+</div>
