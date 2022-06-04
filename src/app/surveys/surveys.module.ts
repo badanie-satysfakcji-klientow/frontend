@@ -11,6 +11,7 @@ import { SurveyConfigureComponent } from './survey-configure/survey-configure.co
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import { SurveySummaryComponent } from './survey-summary/survey-summary.component';
 import {MatIconModule} from "@angular/material/icon";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {MatIconModule} from "@angular/material/icon";
         ReactiveFormsModule,
         MatButtonModule,
         MatSlideToggleModule,
-        MatIconModule
+        MatIconModule,
+        SharedModule
     ]
 })
 export class SurveysModule { }

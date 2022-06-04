@@ -5,19 +5,19 @@
           type="text"
           placeholder="Nazwa ankiety"
           class="left-input survey-name"
-          [formControl]="controlGroup.controls.surveyName"
+          [control]="controlGroup.controls.surveyName"
           controlType="input"
         ></app-input>
         <app-input
           type="text"
           placeholder="Opis ankiety"
           class="left-input description"
-          [formControl]="controlGroup.controls.description"
+          [control]="controlGroup.controls.description"
           controlType="input"
         ></app-input>
-        <app-input placeholder="Powitanie" class="left-input greeting" [formControl]="controlGroup.controls.greeting" controlType="text">
+        <app-input placeholder="Powitanie" class="left-input greeting" [control]="controlGroup.controls.greeting" controlType="text">
         </app-input>
-        <app-input placeholder="Pożegnanie" class="left-input" [formControl]="controlGroup.controls.farewell" controlType="text"></app-input>
+        <app-input placeholder="Pożegnanie" class="left-input" [control]="controlGroup.controls.farewell" controlType="text"></app-input>
       </div>
       <div class="right-container">
         <mat-slide-toggle color="primary" [formControl]="controlGroup.controls.anonymous" class="switch">
@@ -31,4 +31,3 @@
     </div>
     <ng-content></ng-content>
   </form>
-  
