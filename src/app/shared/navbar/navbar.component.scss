@@ -28,38 +28,17 @@ nav {
 
 #user-name {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
 }
 
-#sign-out-button {
-  padding: 0;
-  margin-left: 17px;
-  line-height: 1em;
-}
-
-.top-container,
-.bottom-container {
+.main-container {
   margin-left: 65px;
   margin-right: 65px;
   display: flex;
   align-items: center;
-}
-
-.top-container {
-  padding-top: 0.5em;
-  padding-bottom: 0.25em;
-  justify-content: flex-end;
-}
-
-.bottom-container {
+  padding-top: 35px;
   padding-bottom: 30.4px;
   justify-content: space-between;
-}
-
-.search-bar {
-  max-width: 211px;
-  width: 100%;
-  height: 100%;
 }
 
 .menu-button,
@@ -83,5 +62,13 @@ nav {
 
 .switch{
   margin-top: 8px;
+}
+
+#user-info-container {
+  max-width: 211px;
+  width: 100%;
+  display: inherit;
+  align-items: inherit;
+  justify-content: space-between;
 }
 

@@ -13,6 +13,7 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
 import { BooleanStringPipe } from './pipes/boolean-string.pipe';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { BooleanStringPipe } from './pipes/boolean-string.pipe';
     MatMenuModule,
     MatIconModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTooltipModule
   ]
 })
 export class SharedModule { }
