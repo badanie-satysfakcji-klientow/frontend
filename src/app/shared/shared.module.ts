@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { InputComponent } from './input/input.component';
 import {MatButtonModule} from "@angular/material/button";
 import {RouterModule} from "@angular/router";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -19,13 +20,15 @@ import { BooleanStringPipe } from './pipes/boolean-string.pipe';
         NavbarComponent,
         FooterComponent,
         DropdownComponent,
-        BooleanStringPipe
+        BooleanStringPipe,
+        InputComponent
     ],
     exports: [
         NavbarComponent,
-        FooterComponent,
-        DropdownComponent,
-        BooleanStringPipe
+    FooterComponent,
+    DropdownComponent,
+    BooleanStringPipe,
+    InputComponent,
     ],
   imports: [
     CommonModule,

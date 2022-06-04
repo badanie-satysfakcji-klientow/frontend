@@ -1,0 +1,4 @@
+<mat-form-field appearance="legacy">
+    <input *ngIf="controlType==='input'" [formControl]="control" [type]="inputType" matInput [placeholder]="placeholder" >
+    <textarea *ngIf="controlType==='text'" [formControl]="control"  [type]="inputType" matInput [placeholder]="placeholder"></textarea>
+</mat-form-field>
