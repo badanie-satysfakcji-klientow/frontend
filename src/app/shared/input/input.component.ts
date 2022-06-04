@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Input} from "@angular/core";
 import {FormControl} from "@angular/forms";
+import {InputType} from "../types/input-type";
 
 @Component({
   selector: 'app-input',
@@ -9,17 +10,11 @@ import {FormControl} from "@angular/forms";
 })
 export class InputComponent {
   @Input() control: FormControl | any;
-  @Input() inputType = '';
-  @Input() controlType = '';
-  @Input() type = '';
+  @Input() displayAsTextarea = false;
+  @Input() type: InputType = 'text';
   @Input() placeholder!: string;
+  @Input() errorMessage?: string;
 
   constructor() {
   }
-
-  showErrors() {
-    const {dirty, touched, errors} = this.control;
-    return dirty && touched && errors;
-  }
-
 }

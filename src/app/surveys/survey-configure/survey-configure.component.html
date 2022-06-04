@@ -2,31 +2,46 @@
     <div class="main-container">
       <div class="left-container">
         <app-input
-          type="text"
           placeholder="Nazwa ankiety"
-          class="left-input survey-name"
+          class="left-input"
           [control]="controlGroup.controls.surveyName"
-          controlType="input"
+          errorMessage="Pole nie może być puste"
         ></app-input>
         <app-input
-          type="text"
           placeholder="Opis ankiety"
-          class="left-input description"
+          class="left-input"
           [control]="controlGroup.controls.description"
-          controlType="input"
+          errorMessage="Pole nie może być puste"
         ></app-input>
-        <app-input placeholder="Powitanie" class="left-input greeting" [control]="controlGroup.controls.greeting" controlType="text">
+        <app-input
+          placeholder="Powitanie"
+          class="left-input"
+          [control]="controlGroup.controls.greeting"
+          [displayAsTextarea]="true"
+          errorMessage="Pole nie może być puste"
+        >
         </app-input>
-        <app-input placeholder="Pożegnanie" class="left-input" [control]="controlGroup.controls.farewell" controlType="text"></app-input>
+        <app-input
+          placeholder="Pożegnanie"
+          class="left-input"
+          [control]="controlGroup.controls.farewell"
+          [displayAsTextarea]="true"
+          errorMessage="Pole nie może być puste"
+        >
+        </app-input>
       </div>
       <div class="right-container">
         <mat-slide-toggle color="primary" [formControl]="controlGroup.controls.anonymous" class="switch">
           Ankieta anonimowa
         </mat-slide-toggle>
-        <span class="label" style="margin-top: 42px">Data rozpoczęcia ankiety</span>
-        <input type="datetime-local" [formControl]="controlGroup.controls.startDate">
-        <span class="label" style="margin-top: 48px">Data zakończenia ankiety</span>
-        <input type="datetime-local" [formControl]="controlGroup.controls.endDate">
+        <div>
+          <span class="label">Data rozpoczęcia ankiety</span>
+          <app-input [control]="controlGroup.controls.startDate" type="datetime-local"></app-input>
+        </div>
+        <div>
+          <span class="label">Data zakończenia ankiety</span>
+          <app-input [control]="controlGroup.controls.endDate" type="datetime-local"></app-input>
+        </div>
       </div>
     </div>
 </form>

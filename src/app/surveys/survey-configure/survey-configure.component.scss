@@ -1,8 +1,9 @@
 .main-container {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: flex-start;
   padding-bottom: 100px;
+  gap: 71px;
 }
 
 .left-container,
@@ -10,6 +11,7 @@
   display: inherit;
   flex-direction: column;
   align-items: start;
+  width: 100%;
 }
 
 .left-input {
@@ -18,22 +20,22 @@
 
 .left-container {
   justify-content: flex-start;
+  gap: 1em;
 }
 
 .right-container {
   justify-content: flex-end;
-  margin-left: 71px;
+  margin-top: 1.125em;
+  gap: 1.25em;
 }
 
 .label {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  line-height: 19px;
-  margin-bottom: 9px;
 }
 
-.switch{
+.switch {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

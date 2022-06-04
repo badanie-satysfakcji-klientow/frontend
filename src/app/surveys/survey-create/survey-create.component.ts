@@ -26,7 +26,7 @@ export class SurveyCreateComponent implements OnDestroy {
   ) {
     this.surveyConfiguration = this.formBuilder.group({
       surveyName: ['', [Validators.required]],
-      description: ['', [Validators.max(255)]],
+      description: ['', [Validators.max(255), Validators.required]],
       greeting: ['', [Validators.required]],
       farewell: ['', [Validators.required]],
       anonymous: [false],
