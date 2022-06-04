@@ -1,24 +1,15 @@
 <form [formGroup]="controlGroup">
     <div class="main-container">
       <div class="left-container">
-        <app-input
-          placeholder="Nazwa ankiety"
-          class="left-input"
-          [control]="controlGroup.controls.surveyName"
-          errorMessage="Pole nie może być puste"
-        ></app-input>
-        <app-input
-          placeholder="Opis ankiety"
-          class="left-input"
-          [control]="controlGroup.controls.description"
-          errorMessage="Pole nie może być puste"
-        ></app-input>
+        <app-input placeholder="Nazwa ankiety" class="left-input" [control]="controlGroup.controls.surveyName">
+        </app-input>
+        <app-input placeholder="Opis ankiety" class="left-input" [control]="controlGroup.controls.description">
+        </app-input>
         <app-input
           placeholder="Powitanie"
           class="left-input"
           [control]="controlGroup.controls.greeting"
           [displayAsTextarea]="true"
-          errorMessage="Pole nie może być puste"
         >
         </app-input>
         <app-input
@@ -26,7 +17,6 @@
           class="left-input"
           [control]="controlGroup.controls.farewell"
           [displayAsTextarea]="true"
-          errorMessage="Pole nie może być puste"
         >
         </app-input>
       </div>
@@ -34,11 +24,11 @@
         <mat-slide-toggle color="primary" [formControl]="controlGroup.controls.anonymous" class="switch">
           Ankieta anonimowa
         </mat-slide-toggle>
-        <div>
+        <div class="date-container">
           <span class="label">Data rozpoczęcia ankiety</span>
           <app-input [control]="controlGroup.controls.startDate" type="datetime-local"></app-input>
         </div>
-        <div>
+        <div class="date-container">
           <span class="label">Data zakończenia ankiety</span>
           <app-input [control]="controlGroup.controls.endDate" type="datetime-local"></app-input>
         </div>

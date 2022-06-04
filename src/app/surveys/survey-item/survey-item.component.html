@@ -11,13 +11,12 @@
     </div>
   </div>
   <div class="content-container" [formGroup]="itemForm">
-    <input
-      type="text"
-      id="question-content"
-      placeholder="Wprowadź treść pytania"
-      [formControl]="$any(itemForm.controls.questions.at(0))"
+    <app-input
       *ngIf="label!=='siatka pól wyboru'"
-    >
+      placeholder="Treść pytania"
+      [control]="itemForm.controls.questions.at(0)"
+      style="margin-bottom: 1em"
+    ></app-input>
     <app-survey-item-list
       *ngIf="label==='lista rozwijana'"
       [itemForm]="itemForm"

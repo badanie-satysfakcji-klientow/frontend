@@ -13,7 +13,7 @@ export class InputComponent {
   @Input() displayAsTextarea = false;
   @Input() type: InputType = 'text';
   @Input() placeholder!: string;
-  @Input() errorMessage?: string;
+  @Input() errorMessage?: string = 'Pole nie może być puste';
 
   constructor() {
   }

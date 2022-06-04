@@ -1,7 +1,7 @@
 <div [formGroup]="itemForm">
   <ng-container formArrayName="options">
     <div *ngFor="let option of options.controls; let i = index">
-      <input type="text" placeholder="Wprowadź treść opcji" [formControl]="optionAt(i)" class="input">
+      <app-input placeholder="Treść opcji" [control]="optionAt(i)" class="option"></app-input>
       <button mat-icon-button (click)="deleteOption(i)" matTooltip="Usuń opcję" matTooltipPosition="right">
         <mat-icon>delete</mat-icon>
       </button>

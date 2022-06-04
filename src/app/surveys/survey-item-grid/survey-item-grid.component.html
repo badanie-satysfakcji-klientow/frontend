@@ -3,7 +3,7 @@
     <div class="column-container">
       <span class="label">wiersze</span>
       <div *ngFor="let question of itemForm.controls.questions.controls; let i = index" class="input-container">
-        <input type="text" [formControl]="$any(question)" placeholder="Wprowadź treść pytania" class="input">
+        <app-input [control]="question" placeholder="Treść pytania" style="width: 85%"></app-input>
         <button
           mat-icon-button
           [ngStyle]="{'visibility':i===0?'hidden':undefined}"
@@ -21,7 +21,7 @@
       <div *ngFor="let option of itemForm.controls.options.controls; let i = index" class="input-container">
         <mat-radio-button disabled *ngIf="itemForm.value.type==='gridSingle'"></mat-radio-button>
         <mat-checkbox disabled *ngIf="itemForm.value.type==='gridMultiple'"></mat-checkbox>
-        <input type="text" placeholder="Wprowadź treść opcji" [formControl]="$any(option)" class="input">
+        <app-input [control]="option" placeholder="Treść opcji" style="width: 85%"></app-input>
         <button mat-icon-button matTooltip="Usuń opcję" matTooltipPosition="below" (click)="deleteOption(i)">
           <mat-icon>delete</mat-icon>
         </button>
