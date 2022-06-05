@@ -7,6 +7,9 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
 import {DATE_FORMAT} from "../../shared/constants/date-format";
+import {MatDialog} from "@angular/material/dialog";
+import {DeleteSurveyComponent} from "../delete-survey/delete-survey.component";
+import {DeleteData} from "../interfaces/delete-data";
 
 @Component({
   selector: 'app-browse-surveys',
@@ -22,7 +25,9 @@ export class BrowseSurveysComponent implements AfterViewInit {
   @ViewChild(MatSort) matSort!: MatSort;
   @ViewChild(MatPaginator) matPaginator!: MatPaginator;
 
-  constructor(private savedSurveys: SavedSurveysService) {
+  constructor(private savedSurveys: SavedSurveysService,
+              private matDialog: MatDialog
+  ) {
     this.savedSurveys.getSurveysByCreatorId(this.creatorId)
       .subscribe((response) => this.dataSource.data = response);
   }
@@ -36,15 +41,27 @@ export class BrowseSurveysComponent implements AfterViewInit {
     console.log(`edit ${(survey as Survey).id}`)
   }
 
-  onDeleteClick(survey: any) {
-    console.log(`delete ${(survey as Survey).id}`)
-  }
-
   onTitleClick(survey: any) {
     console.log(`preview ${(survey as Survey).id}`);
   }
 
   onPauseClick(survey: any) {
     console.log(`pause/resume ${(survey as Survey).id}`)
+  }
+
+  onDeleteClick(surveyData: DeleteData) {
+    this.matDialog.open(DeleteSurveyComponent, {
+      disableClose: true,
+      autoFocus: true,
+      maxWidth: 1012,
+      maxHeight: 377,
+      height: '100%',
+      width: '100%',
+      data: {
+        id: surveyData.id,
+        title: surveyData.title,
+        dataSource: this.dataSource
+      }
+    });
   }
 }

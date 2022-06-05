@@ -1,0 +1,8 @@
+<mat-dialog-content class="main-container">
+  <span class="message">Czy napewno chcesz usunąć ankietę {{title}}?</span>
+  <div class="divider"></div>
+</mat-dialog-content>
+<mat-dialog-actions class="action-container">
+  <button mat-flat-button color="warn" class="button" (click)="onDeleteClick()">Usuń</button>
+  <button mat-flat-button color="accent" class="button" (click)="onCancelClick()">Anuluj</button>
+</mat-dialog-actions>

@@ -9,11 +9,14 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {SharedModule} from "../shared/shared.module";
+import { DeleteSurveyComponent } from './delete-survey/delete-survey.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
   declarations: [
-    BrowseSurveysComponent
+    BrowseSurveysComponent,
+    DeleteSurveyComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +27,11 @@ import {SharedModule} from "../shared/shared.module";
     MatTooltipModule,
     MatSortModule,
     MatPaginatorModule,
-    SharedModule
+    SharedModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    DeleteSurveyComponent
   ]
 })
 export class BrowseSurveysModule {
