@@ -93,3 +93,9 @@ app-survey-item-closed {
     }
   }
 }
+
+.cdk-overlay-container{
+  .mat-dialog-container {
+    border-radius: 10px;
+  }
+}
