@@ -7,7 +7,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
 import {DATE_FORMAT} from "../../shared/constants/date-format";
-import {MatDialog} from "@angular/material/dialog";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {DeleteSurveyComponent} from "../delete-survey/delete-survey.component";
 import {DeleteData} from "../interfaces/delete-data";
 
@@ -21,7 +21,8 @@ export class BrowseSurveysComponent implements AfterViewInit {
   pageSizes = [5, 10, 20];
   creatorId = 'a36c108c-3d99-4b4e-9af0-b210934ab79d';
   dateFormat = DATE_FORMAT;
-  dataSource = new MatTableDataSource<Survey>([])
+  dataSource = new MatTableDataSource<Survey>([]);
+  dialogConfig: MatDialogConfig;
   @ViewChild(MatSort) matSort!: MatSort;
   @ViewChild(MatPaginator) matPaginator!: MatPaginator;
 
@@ -30,6 +31,13 @@ export class BrowseSurveysComponent implements AfterViewInit {
   ) {
     this.savedSurveys.getSurveysByCreatorId(this.creatorId)
       .subscribe((response) => this.dataSource.data = response);
+    this.dialogConfig = {
+      autoFocus: true,
+      maxWidth: 1012,
+      maxHeight: 377,
+      height: '100%',
+      width: '100%'
+    }
   }
 
   ngAfterViewInit() {
@@ -50,18 +58,11 @@ export class BrowseSurveysComponent implements AfterViewInit {
   }
 
   onDeleteClick(surveyData: DeleteData) {
-    this.matDialog.open(DeleteSurveyComponent, {
-      disableClose: true,
-      autoFocus: true,
-      maxWidth: 1012,
-      maxHeight: 377,
-      height: '100%',
-      width: '100%',
-      data: {
-        id: surveyData.id,
-        title: surveyData.title,
-        dataSource: this.dataSource
-      }
-    });
+    this.dialogConfig.data = {
+      id: surveyData.id,
+      title: surveyData.title,
+      dataSource: this.dataSource
+    }
+    this.matDialog.open(DeleteSurveyComponent, this.dialogConfig)
   }
 }
