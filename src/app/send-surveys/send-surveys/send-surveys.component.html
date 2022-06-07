@@ -2,7 +2,14 @@
   <span class="header">Wysyłanie zaproszenia do ankiety</span>
   <div class="select-container">
     <span class="label-top">Wyślij ankietę</span>
-    <app-dropdown style="max-width: 600px; width: 100%"></app-dropdown>
+    <app-dropdown
+      style="max-width: 600px; width: 100%"
+      [items]="items"
+      [resetOption]="true"
+      placeholder="Wybierz ankietę"
+      [control]="$any(sendForm.controls['surveyId'])"
+    >
+    </app-dropdown>
     <span class="label-top">do:</span>
   </div>
 </div>
