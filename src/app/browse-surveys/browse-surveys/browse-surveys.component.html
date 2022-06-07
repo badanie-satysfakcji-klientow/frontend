@@ -19,7 +19,7 @@
         </ng-container>
         <ng-container matColumnDef="created_at">
           <th mat-header-cell *matHeaderCellDef mat-sort-header="created_at">Utworzono</th>
-          <td *matCellDef="let survey" mat-cell>{{survey.created_at|date:dateFormat}}</td>
+          <td *matCellDef="let survey" mat-cell>{{survey.created_at|date:dateFormat:'-0000'}}</td>
         </ng-container>
         <ng-container matColumnDef="anonymous">
           <th mat-header-cell *matHeaderCellDef mat-sort-header="anonymous">Anoniomowa</th>
@@ -27,17 +27,20 @@
         </ng-container>
         <ng-container matColumnDef="starts_at">
           <th mat-header-cell *matHeaderCellDef mat-sort-header="starts_at">Początek</th>
-          <td *matCellDef="let survey" mat-cell>{{survey.starts_at|date:dateFormat}}</td>
+          <td *matCellDef="let survey" mat-cell>{{survey.starts_at|date:dateFormat:'-0000'}}</td>
         </ng-container>
         <ng-container matColumnDef="expires_at">
           <th mat-header-cell *matHeaderCellDef mat-sort-header="expires_at">Koniec</th>
-          <td *matCellDef="let survey" mat-cell>{{survey.expires_at|date:dateFormat}}</td>
+          <td *matCellDef="let survey" mat-cell>{{survey.expires_at|date:dateFormat:'-0000'}}</td>
         </ng-container>
         <ng-container matColumnDef="buttons">
           <th mat-header-cell *matHeaderCellDef>Opcje</th>
           <td *matCellDef="let survey" mat-cell>
             <button mat-icon-button (click)="onEditClick(survey)" type="button">
               <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="onEditTimeFramesClick(survey)" type="button">
+              <mat-icon>date_range</mat-icon>
             </button>
             <button mat-icon-button (click)="onPauseClick(survey)" type="button">
               <mat-icon>{{survey.paused ? 'play_circle' : 'pause_circle'}}</mat-icon>

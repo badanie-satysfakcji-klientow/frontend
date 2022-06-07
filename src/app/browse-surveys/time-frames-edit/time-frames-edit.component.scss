@@ -1,0 +1,50 @@
+.action-container {
+  gap: 23px;
+  justify-content: flex-end;
+}
+
+.header {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000;
+}
+
+.button {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  padding: 10.76px 51.31px;
+  border-radius: 10px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 70px;
+}
+
+.input-container {
+  display: inherit;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: inherit;
+  width: 100%;
+}
+
+.input-container,
+.header{
+  margin-bottom: 85px;
+}
+
+.label{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}

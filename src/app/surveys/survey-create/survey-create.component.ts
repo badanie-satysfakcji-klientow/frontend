@@ -30,8 +30,8 @@ export class SurveyCreateComponent implements OnDestroy {
       greeting: ['', [Validators.required]],
       farewell: ['', [Validators.required]],
       anonymous: [false],
-      startDate: [new Date().toISOString(), [Validators.required]],
-      endDate: [new Date().toISOString(), [Validators.required]]
+      startDate: [new Date().toISOString().substring(0, 16), [Validators.required]],
+      endDate: [new Date().toISOString().substring(0, 16), [Validators.required]]
     }, {validators: datesChronological.validate}) as SurveyConfigurationFormGroup;
   }
 

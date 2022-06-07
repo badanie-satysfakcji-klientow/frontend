@@ -10,6 +10,8 @@ import {DATE_FORMAT} from "../../shared/constants/date-format";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {DeleteSurveyComponent} from "../delete-survey/delete-survey.component";
 import {DeleteData} from "../interfaces/delete-data";
+import {TimeFramesData} from "../interfaces/time-frames-data";
+import {TimeFramesEditComponent} from "../time-frames-edit/time-frames-edit.component";
 
 @Component({
   selector: 'app-browse-surveys',
@@ -34,8 +36,8 @@ export class BrowseSurveysComponent implements AfterViewInit {
     this.dialogConfig = {
       autoFocus: true,
       maxWidth: 1012,
-      maxHeight: 377,
-      height: '100%',
+      // maxHeight: 377,
+      // height: '100%',
       width: '100%'
     }
   }
@@ -57,12 +59,27 @@ export class BrowseSurveysComponent implements AfterViewInit {
     console.log(`pause/resume ${(survey as Survey).id}`)
   }
 
+  clearConfigData() {
+    this.dialogConfig.data = {};
+  }
+
   onDeleteClick(surveyData: DeleteData) {
     this.dialogConfig.data = {
       id: surveyData.id,
       title: surveyData.title,
       dataSource: this.dataSource
     }
-    this.matDialog.open(DeleteSurveyComponent, this.dialogConfig)
+    this.matDialog.open(DeleteSurveyComponent, this.dialogConfig);
+    this.clearConfigData();
+  }
+
+  onEditTimeFramesClick(surveyData: TimeFramesData) {
+    this.dialogConfig.data = {
+      id: surveyData.id,
+      starts_at: surveyData.starts_at,
+      expires_at: surveyData.expires_at
+    }
+    this.matDialog.open(TimeFramesEditComponent, this.dialogConfig);
+    this.clearConfigData();
   }
 }

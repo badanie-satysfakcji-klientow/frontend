@@ -94,8 +94,14 @@ app-survey-item-closed {
   }
 }
 
-.cdk-overlay-container{
+.cdk-overlay-container {
   .mat-dialog-container {
     border-radius: 10px;
+  }
+}
+
+app-input {
+  .mat-form-field{
+    width: 100%;
   }
 }

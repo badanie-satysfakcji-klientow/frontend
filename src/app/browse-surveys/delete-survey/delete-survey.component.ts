@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {MatDialogRef} from "@angular/material/dialog";
 import {SavedSurveysService} from "../services/saved-surveys.service";
@@ -11,7 +11,7 @@ import {Survey} from "../../shared/interfaces/survey";
   templateUrl: './delete-survey.component.html',
   styleUrls: ['./delete-survey.component.scss']
 })
-export class DeleteSurveyComponent implements OnInit {
+export class DeleteSurveyComponent {
   title: string;
   id: string;
   dataSource: MatTableDataSource<Survey>;
@@ -22,9 +22,6 @@ export class DeleteSurveyComponent implements OnInit {
     this.title = dialogData.title;
     this.id = dialogData.id;
     this.dataSource = dialogData.dataSource;
-  }
-
-  ngOnInit(): void {
   }
 
   onDeleteClick() {

@@ -11,12 +11,14 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {SharedModule} from "../shared/shared.module";
 import { DeleteSurveyComponent } from './delete-survey/delete-survey.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { TimeFramesEditComponent } from './time-frames-edit/time-frames-edit.component';
 
 
 @NgModule({
   declarations: [
     BrowseSurveysComponent,
-    DeleteSurveyComponent
+    DeleteSurveyComponent,
+    TimeFramesEditComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatDialogModule
   ],
   entryComponents: [
-    DeleteSurveyComponent
+    DeleteSurveyComponent,
+    TimeFramesEditComponent
   ]
 })
 export class BrowseSurveysModule {
