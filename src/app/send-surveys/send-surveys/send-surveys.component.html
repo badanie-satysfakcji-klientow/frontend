@@ -1,23 +1,31 @@
 <div class="main-container">
   <span class="header">Wysyłanie zaproszenia do ankiety</span>
   <div class="select-container">
-    <span class="label-top">Wyślij ankietę</span>
     <app-dropdown
-      style="max-width: 600px; width: 100%"
+      style="max-width: 825px; width: 100%"
       [items]="items"
       [resetOption]="true"
       placeholder="Wybierz ankietę"
       [control]="$any(sendForm.controls['surveyId'])"
     >
     </app-dropdown>
-    <span class="label-top">do:</span>
+  </div>
+  <div class="container">
+    <app-input
+      *ngFor="let recipient of sendForm.controls.recipients.controls"
+      [control]="recipient"
+      placeholder="Adres email odbiorcy"
+      style="max-width: 100%; width: 100%"
+      errorMessage="Nieprawidłowy format adresu email"
+    >
+    </app-input>
   </div>
   <div class="input-container">
     <app-input
       [control]="sendForm.controls.recipient"
       placeholder="Wprowadź adres email odbiorcy"
       style="max-width: 65%; width: 100%"
-      errorMessage="Nieprawidłowy format adresu"
+      errorMessage="Nieprawidłowy format adresu email"
     >
     </app-input>
     <button
