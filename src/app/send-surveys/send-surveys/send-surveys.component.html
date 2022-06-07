@@ -12,4 +12,21 @@
     </app-dropdown>
     <span class="label-top">do:</span>
   </div>
+  <div class="input-container">
+    <app-input
+      [control]="sendForm.controls['recipient']"
+      placeholder="Wprowadź adres email odbiorcy"
+      style="max-width: 65%; width: 100%"
+      errorMessage="Nieprawidłowy format adresu"
+    >
+    </app-input>
+    <button
+      mat-flat-button color="primary"
+      [disabled]="sendForm.controls['recipient'].invalid"
+      class="button"
+      (click)="onAddClick()"
+    >
+      Dodaj odbiorcę
+    </button>
+  </div>
 </div>

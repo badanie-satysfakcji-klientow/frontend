@@ -4,16 +4,18 @@ import { CommonModule } from '@angular/common';
 import { SendSurveysRoutingModule } from './send-surveys-routing.module';
 import { SendSurveysComponent } from './send-surveys/send-surveys.component';
 import {SharedModule} from "../shared/shared.module";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
   declarations: [
     SendSurveysComponent
   ],
-    imports: [
-        CommonModule,
-        SendSurveysRoutingModule,
-        SharedModule
-    ]
+  imports: [
+    CommonModule,
+    SendSurveysRoutingModule,
+    SharedModule,
+    MatButtonModule
+  ]
 })
 export class SendSurveysModule { }

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {SurveysService} from "../services/surveys.service";
 import {DropdownItem} from "../../shared/interfaces/dropdown-item";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {Validators} from "@angular/forms";
 
 @Component({
@@ -23,9 +23,18 @@ export class SendSurveysComponent {
       this.items = surveys.map((survey) => ({label: survey.title, value: survey.id}));
     });
     this.sendForm = formBuilder.group({
-      surveyId: formBuilder.control('',{validators: [Validators.required]}),
-      recipients: formBuilder.array([], {validators: [Validators.required]})
+      surveyId: formBuilder.control('', {validators: [Validators.required]}),
+      recipients: formBuilder.array([], {validators: [Validators.required]}),
+      recipient: formBuilder.control('', {validators: [Validators.required, Validators.email]})
     })
+  }
+
+  onAddClick() {
+    (this.sendForm.controls['recipients'] as FormArray)
+      .push(this.formBuilder.control(
+        this.sendForm.value['recipient'],
+        {validators: [Validators.required, Validators.email]})
+      );
   }
 
 }
