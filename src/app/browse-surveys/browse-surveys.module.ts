@@ -12,6 +12,7 @@ import {SharedModule} from "../shared/shared.module";
 import { DeleteSurveyComponent } from './delete-survey/delete-survey.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { TimeFramesEditComponent } from './time-frames-edit/time-frames-edit.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -20,18 +21,19 @@ import { TimeFramesEditComponent } from './time-frames-edit/time-frames-edit.com
     DeleteSurveyComponent,
     TimeFramesEditComponent
   ],
-  imports: [
-    CommonModule,
-    BrowseSurveysRoutingModule,
-    MatTableModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTooltipModule,
-    MatSortModule,
-    MatPaginatorModule,
-    SharedModule,
-    MatDialogModule
-  ],
+    imports: [
+        CommonModule,
+        BrowseSurveysRoutingModule,
+        MatTableModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTooltipModule,
+        MatSortModule,
+        MatPaginatorModule,
+        SharedModule,
+        MatDialogModule,
+        ReactiveFormsModule
+    ],
   entryComponents: [
     DeleteSurveyComponent,
     TimeFramesEditComponent
