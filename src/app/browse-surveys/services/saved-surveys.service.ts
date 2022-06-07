@@ -21,9 +21,6 @@ export class SavedSurveysService {
   }
 
   pauseSurvey(survey: Survey){
-    const url = `http://localhost:8000/ap/surveys/<id _ankiety>`;
-    return this.httpClient.patch(
-      url , {paused: ! survey.paused }
-    )
+    return this.httpClient.patch(`${this.rootUrl}/${survey.id}`, {params: { paused: ! survey.paused}});
   }
 }

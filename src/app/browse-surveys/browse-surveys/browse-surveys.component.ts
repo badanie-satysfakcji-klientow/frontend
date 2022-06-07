@@ -46,7 +46,7 @@ export class BrowseSurveysComponent implements AfterViewInit {
   }
 
   onPauseClick(survey: any) {
-    this.savedSurveys.pauseSurvey(survey).subscribe(() => {
+    this.savedSurveys.pauseSurvey(survey).subscribe((response) => {
       this.dataSource.data = this.dataSource.data.filter((survey) => survey.paused != survey.paused);
     });
   }
