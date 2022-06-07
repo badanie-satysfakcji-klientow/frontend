@@ -16,7 +16,14 @@ export class SavedSurveysService {
     return this.httpClient.get<Survey[]>(this.rootUrl, {params: {creator_id: creatorId}});
   }
 
-  deleteSurvey(surveyId: string){
-    return this.httpClient.delete(`${this.rootUrl}/${surveyId}`)
+  deleteSurvey(surveyId: string) {
+    return this.httpClient.delete(`${this.rootUrl}/${surveyId}`);
+  }
+
+  updateTimeFrames(surveyId: string, startsAt: string, expiresAt: string) {
+    return this.httpClient.patch(`${this.rootUrl}/${surveyId}`, {
+      starts_at: startsAt,
+      expires_at: expiresAt
+    });
   }
 }
