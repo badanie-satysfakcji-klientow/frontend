@@ -1,4 +1,4 @@
-<div class="main-container">
+<div class="main-container" [formGroup]="sendForm">
   <span class="header">Wysyłanie zaproszenia do ankiety</span>
   <div class="select-container">
     <app-dropdown
@@ -6,19 +6,23 @@
       [items]="items"
       [resetOption]="true"
       placeholder="Wybierz ankietę"
-      [control]="$any(sendForm.controls['surveyId'])"
+      [control]="sendForm.controls.surveyId"
     >
     </app-dropdown>
   </div>
-  <div class="container">
-    <app-input
-      *ngFor="let recipient of sendForm.controls.recipients.controls"
-      [control]="recipient"
-      placeholder="Adres email odbiorcy"
-      style="max-width: 100%; width: 100%"
-      errorMessage="Nieprawidłowy format adresu email"
-    >
-    </app-input>
+  <div class="container" formArrayName="recipients">
+    <div *ngFor="let recipient of sendForm.controls.recipients.controls; index as i" class="recipient-container">
+      <app-input
+        [control]="recipient"
+        placeholder="Adres email odbiorcy"
+        style="max-width: 100%; width: 100%"
+        errorMessage="Nieprawidłowy format adresu email"
+      >
+      </app-input>
+      <button mat-icon-button matTooltip="Usuń odbiorcę" matTooltipPosition="right" (click)="onDeleteRecipient(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
   </div>
   <div class="input-container">
     <app-input

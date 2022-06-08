@@ -35,9 +35,12 @@ export class SendSurveysComponent {
 
   onAddClick() {
     const validators = [Validators.required, Validators.email]
-    this.sendForm.controls.recipients
-      .push(this.formBuilder.control(this.sendForm.value.recipient, {validators: validators}));
+    const value = this.sendForm.value.recipient;
+    this.sendForm.controls.recipients.push(this.formBuilder.control(value, {validators: validators}));
     this.sendForm.controls.recipient.reset();
   }
 
+  onDeleteRecipient(index: number) {
+    this.sendForm.controls.recipients.removeAt(index);
+  }
 }

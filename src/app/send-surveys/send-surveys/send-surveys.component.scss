@@ -52,3 +52,11 @@
   padding: 10.76px 51.31px;
   border-radius: 10px;
 }
+
+.recipient-container {
+  display: inherit;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: inherit;
+  width: 100%;
+}
