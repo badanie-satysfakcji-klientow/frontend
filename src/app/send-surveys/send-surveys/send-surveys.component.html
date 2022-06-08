@@ -1,0 +1,56 @@
+<div class="main-container" [formGroup]="sendForm">
+  <span class="header">Wysyłanie zaproszenia do ankiety</span>
+  <div class="select-container">
+    <app-dropdown
+      style="max-width: 825px; width: 100%"
+      [items]="items"
+      [resetOption]="true"
+      placeholder="Wybierz ankietę"
+      [control]="sendForm.controls.surveyId"
+    >
+    </app-dropdown>
+  </div>
+  <div class="container" formArrayName="recipients">
+    <div *ngFor="let recipient of sendForm.controls.recipients.controls; index as i" class="recipient-container">
+      <app-input
+        [control]="recipient"
+        placeholder="Adres email odbiorcy"
+        style="max-width: 100%; width: 100%"
+        errorMessage="Nieprawidłowy format adresu email"
+      >
+      </app-input>
+      <button mat-icon-button matTooltip="Usuń odbiorcę" matTooltipPosition="right" (click)="onDeleteRecipient(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="input-container">
+    <app-input
+      [control]="sendForm.controls.recipient"
+      placeholder="Wprowadź adres email odbiorcy"
+      style="max-width: 65%; width: 100%"
+      errorMessage="Nieprawidłowy format adresu email"
+    >
+    </app-input>
+    <button
+      mat-flat-button color="primary"
+      [disabled]="sendForm.controls.recipient.invalid"
+      class="button"
+      (click)="onAddClick()"
+    >
+      Dodaj odbiorcę
+    </button>
+  </div>
+  <div class="button-container">
+    <button
+      mat-flat-button
+      color="primary"
+      class="button"
+      (click)="onSendClick()"
+      [disabled]="sendForm.controls.recipients.invalid || sendForm.controls.surveyId.invalid"
+    >
+      Wyślij zaproszenia
+    </button>
+    <button mat-flat-button color="accent" class="button" (click)="onBackClick()">Powrót</button>
+  </div>
+</div>

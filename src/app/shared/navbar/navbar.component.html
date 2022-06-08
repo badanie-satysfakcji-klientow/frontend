@@ -33,7 +33,15 @@
         >
           Przeglądaj
         </button>
-        <button mat-menu-item type="button" class="menu-item">Wyślij</button>
+        <button
+          mat-menu-item
+          routerLink="surveys/send"
+          type="button"
+          class="menu-item"
+          routerLinkActive="menu-item-active"
+        >
+          Wyślij
+        </button>
         <button mat-menu-item type="button" class="menu-item">Wyniki</button>
       </mat-menu>
     </div>

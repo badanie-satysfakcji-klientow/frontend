@@ -15,6 +15,10 @@ const routes: Routes = [
       {
         path: 'browse',
         loadChildren: () => import('./browse-surveys/browse-surveys.module').then(m => m.BrowseSurveysModule)
+      },
+      {
+        path: 'send',
+        loadChildren: () => import('./send-surveys/send-surveys.module').then(m => m.SendSurveysModule)
       }
     ]
   },
