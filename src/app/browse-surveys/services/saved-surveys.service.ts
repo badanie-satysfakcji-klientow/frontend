@@ -26,4 +26,8 @@ export class SavedSurveysService {
       expires_at: expiresAt
     });
   }
+
+  pauseSurvey(survey: Survey){
+    return this.httpClient.patch(`${this.rootUrl}/${survey.id}`, {paused: ! survey.paused});
+  }
 }

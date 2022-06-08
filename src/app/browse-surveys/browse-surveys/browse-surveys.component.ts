@@ -53,7 +53,8 @@ export class BrowseSurveysComponent implements AfterViewInit {
   }
 
   onPauseClick(survey: any) {
-    console.log(`pause/resume ${(survey as Survey).id}`)
+    this.savedSurveys.pauseSurvey(survey)
+    .subscribe(() => this.dataSource.data.find((s) => s === survey, survey.paused = !survey.paused));
   }
 
   clearConfigData() {
