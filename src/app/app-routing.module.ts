@@ -1,31 +1,28 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from "./home/home.component";
-import {HelpComponent} from "./help/help.component";
-import {FAQComponent} from "./faq/faq.component";
-import {ContactComponent} from "./contact/contact.component";
 
 const routes: Routes = [
-  {
-    path: 'help',
-    component: HelpComponent
-  },
-  {
-    path: 'faq',
-    component: FAQComponent
-  },
-  {
-    path: 'contact',
-    component: ContactComponent
-  },
+  {path: 'help', loadChildren: () => import('./help/help.module').then(m => m.HelpModule)},
+  {path: 'faq', loadChildren: () => import('./faq/faq.module').then(m => m.FaqModule)},
+  {path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)},
   {
     path: 'surveys',
-    loadChildren: () => import('./surveys/surveys.module').then(m => m.SurveysModule)
+    children: [
+      {
+        path: 'create',
+        loadChildren: () => import('./surveys/surveys.module').then(m => m.SurveysModule)
+      },
+      {
+        path: 'browse',
+        loadChildren: () => import('./browse-surveys/browse-surveys.module').then(m => m.BrowseSurveysModule)
+      },
+      {
+        path: 'send',
+        loadChildren: () => import('./send-surveys/send-surveys.module').then(m => m.SendSurveysModule)
+      }
+    ]
   },
-  {
-    path: '',
-    component: HomeComponent
-  }
+  {path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule)}
 ];
 
 @NgModule({

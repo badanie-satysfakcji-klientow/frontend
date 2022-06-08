@@ -1,0 +1,15 @@
+<div id="main-container">
+  <div id="left-container">
+    <app-dropdown
+      [items]="items"
+      [control]="itemForm.controls.type"
+      placeholder="Liczba stopni"
+      style="width: 100%"
+    >
+    </app-dropdown>
+  </div>
+  <div id="right-container">
+    <app-input placeholder="Wartość skrajna minimalna" [control]="optionAt(0)" style="width: 100%"></app-input>
+    <app-input placeholder="Wartość skrajna maksymalna" [control]="optionAt(1)" style="width: 100%"></app-input>
+  </div>
+</div>

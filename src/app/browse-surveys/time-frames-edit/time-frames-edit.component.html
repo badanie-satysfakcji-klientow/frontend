@@ -1,0 +1,17 @@
+<span mat-dialog-title class="header">Edycja ram czasowych</span>
+<mat-dialog-content class="main-container" [formGroup]="timeFrameForm">
+  <div class="input-container">
+    <span class="label">Data rozpoczęcia ankiety</span>
+    <app-input type="datetime-local" [control]="timeFrameForm.controls['startDate']"></app-input>
+  </div>
+  <div class="input-container">
+    <span class="label">Data zakończenia ankiety</span>
+    <app-input type="datetime-local" [control]="timeFrameForm.controls['endDate']"></app-input>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="action-container">
+  <button mat-flat-button color="primary" class="button" (click)="onEditClick()" [disabled]="timeFrameForm.invalid">
+    OK
+  </button>
+  <button mat-flat-button color="accent" class="button" (click)="onCloseClick()">Anuluj</button>
+</mat-dialog-actions>

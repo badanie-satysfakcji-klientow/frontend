@@ -1,1 +1,74 @@
+:host {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+nav {
+  background-color: #FFF;
+}
+
+#app-name,
+#user-name {
+  font-style: normal;
+  font-family: Inter;
+}
+
+#app-name {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 61px;
+  cursor: pointer;
+}
+
+#app-name:hover {
+  opacity: 60%;
+}
+
+#user-name {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.main-container {
+  margin-left: 65px;
+  margin-right: 65px;
+  display: flex;
+  align-items: center;
+  padding-top: 35px;
+  padding-bottom: 30.4px;
+  justify-content: space-between;
+}
+
+.menu-button,
+.menu-item {
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.menu-button {
+  font-size: 20px;
+}
+
+.menu-item {
+  font-size: 16px;
+}
+
+.menu-item-active,
+.menu-button-active {
+  font-weight: 800;
+}
+
+.switch{
+  margin-top: 8px;
+}
+
+#user-info-container {
+  max-width: 211px;
+  width: 100%;
+  display: inherit;
+  align-items: inherit;
+  justify-content: space-between;
+}
 

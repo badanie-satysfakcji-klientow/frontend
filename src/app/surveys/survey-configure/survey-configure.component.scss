@@ -1,0 +1,47 @@
+.main-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-bottom: 100px;
+  gap: 111.45px;
+}
+
+.left-container,
+.right-container {
+  display: inherit;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+}
+
+.left-input {
+  width: 870px;
+}
+
+.left-container {
+  justify-content: flex-start;
+  gap: 1em;
+}
+
+.right-container {
+  justify-content: flex-end;
+  margin-top: 1.125em;
+  gap: 1.25em;
+}
+
+.label {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.switch {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.date-container {
+  width: 100%;
+}

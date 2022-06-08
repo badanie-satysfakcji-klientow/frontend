@@ -1,0 +1,15 @@
+.buttons-container{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+.navigation-button{
+  font-style: normal;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  padding: 11px 42px;
+  border-radius: 10px;
+}

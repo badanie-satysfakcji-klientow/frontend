@@ -1,0 +1,57 @@
+<div class="main-container">
+  <span class="header">Zapisane ankiety</span>
+  <div class="table-container">
+    <div class="table-container-left">
+      <table mat-table matSort [dataSource]="dataSource" class="table">
+        <ng-container matColumnDef="position">
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; let i=index; columns: displayedColumns" class="table-row"></tr>
+        </ng-container>
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header="title">Tytuł</th>
+          <td *matCellDef="let survey" mat-cell (click)="onTitleClick(survey)" [ngClass]="'title-cell'">
+            {{survey.title}}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header="description">Opis</th>
+          <td *matCellDef="let survey" mat-cell>{{survey.description}}</td>
+        </ng-container>
+        <ng-container matColumnDef="created_at">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header="created_at">Utworzono</th>
+          <td *matCellDef="let survey" mat-cell>{{survey.created_at|date:dateFormat:'-0000'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="anonymous">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header="anonymous">Anoniomowa</th>
+          <td *matCellDef="let survey" mat-cell>{{survey.anonymous | booleanString:'tak':'nie'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="starts_at">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header="starts_at">Początek</th>
+          <td *matCellDef="let survey" mat-cell>{{survey.starts_at|date:dateFormat:'-0000'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="expires_at">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header="expires_at">Koniec</th>
+          <td *matCellDef="let survey" mat-cell>{{survey.expires_at|date:dateFormat:'-0000'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="buttons">
+          <th mat-header-cell *matHeaderCellDef>Opcje</th>
+          <td *matCellDef="let survey" mat-cell>
+            <button mat-icon-button (click)="onEditClick(survey)" type="button">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="onEditTimeFramesClick(survey)" type="button">
+              <mat-icon>date_range</mat-icon>
+            </button>
+            <button mat-icon-button (click)="onPauseClick(survey)" type="button">
+              <mat-icon>{{survey.paused ? 'play_circle' : 'pause_circle'}}</mat-icon>
+            </button>
+            <button mat-icon-button (click)="onDeleteClick(survey)" type="button">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+      </table>
+      <mat-paginator [pageSizeOptions]="pageSizes" showFirstLastButtons id="paginator"></mat-paginator>
+    </div>
+  </div>
+</div>

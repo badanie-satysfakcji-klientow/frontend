@@ -1,0 +1,79 @@
+<div class="main-container-survey-item" [style]="style">
+  <div class="top-container">
+    <span id="question-view-value">{{label}}</span>
+    <div class="buttons-container">
+      <button mat-icon-button matTooltip="Dodaj sekcję" matTooltipPosition="above">
+        <mat-icon>add_circle_outline</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Podgląd pytania" matTooltipPosition="above">
+        <mat-icon>remove_red_eye</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="content-container" [formGroup]="itemForm">
+    <app-input
+      *ngIf="label!=='siatka pól wyboru'"
+      placeholder="Treść pytania"
+      [control]="itemForm.controls.questions.at(0)"
+      style="margin-bottom: 1em"
+    ></app-input>
+    <app-survey-item-list
+      *ngIf="label==='lista rozwijana'"
+      [itemForm]="itemForm"
+      (optionAddition)="onOptionAdd()"
+      (optionDeletion)="onOptionDelete($event)"
+    >
+    </app-survey-item-list>
+    <app-survey-item-grid
+      *ngIf="label==='siatka pól wyboru'"
+      [itemForm]="itemForm"
+      (optionAddition)="onOptionAdd()"
+      (optionDeletion)="onOptionDelete($event)"
+    >
+    </app-survey-item-grid>
+    <app-survey-item-open *ngIf="label==='pytanie otwarte'" [itemForm]="itemForm"></app-survey-item-open>
+    <app-survey-item-closed
+      *ngIf="label==='pytanie zamknięte'"
+      [itemForm]="itemForm"
+      (optionAddition)="onOptionAdd()"
+      (optionDeletion)="onOptionDelete($event)"
+    >
+    </app-survey-item-closed>
+    <app-survey-item-scale *ngIf="label==='skala'" [itemForm]="itemForm"></app-survey-item-scale>
+  </div>
+  <mat-slide-toggle [checked]="itemForm.value.required" (change)="onRequiredChange()" color="primary" class="switch">
+    Odpowiedź wymagana
+  </mat-slide-toggle>
+  <mat-slide-toggle
+    *ngIf="showMultipleSwitch()"
+    [checked]="isItemTypeMultiple()"
+    (change)="onMultipleChange()"
+    color="primary"
+    class="switch"
+  >
+    Pytanie wielokrotnego wyboru
+  </mat-slide-toggle>
+  <div class="buttons-container">
+    <ng-container *ngIf="index===undefined">
+      <button
+        mat-flat-button
+        class="bottom-button"
+        (click)="onAddClick()"
+        [disabled]="itemForm.invalid"
+        color="primary"
+      >
+        Dodaj
+      </button>
+      <button mat-flat-button color="accent" class="bottom-button" (click)="onCancelClick()">Anuluj</button>
+    </ng-container>
+    <button
+      mat-flat-button
+      *ngIf="index!==undefined"
+      color="primary"
+      class="bottom-button"
+      (click)="onDeleteClick(index)"
+    >
+      Usuń
+    </button>
+  </div>
+</div>

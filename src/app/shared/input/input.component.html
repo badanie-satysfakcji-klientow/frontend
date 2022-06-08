@@ -1,0 +1,19 @@
+<mat-form-field appearance="legacy">
+  <input
+    *ngIf="!displayAsTextarea"
+    [formControl]="control"
+    [type]="type"
+    matInput
+    [placeholder]="placeholder"
+    [autocomplete]="false"
+  >
+  <textarea
+    *ngIf="displayAsTextarea"
+    [formControl]="control"
+    [type]="type"
+    matInput
+    [placeholder]="placeholder"
+  >
+  </textarea>
+  <mat-error *ngIf="control.errors">{{errorMessage}}</mat-error>
+</mat-form-field>

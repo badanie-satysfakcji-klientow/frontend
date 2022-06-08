@@ -1,0 +1,32 @@
+<div id="main-container">
+  <div id="container">
+    <div class="column-container">
+      <span class="label">wiersze</span>
+      <div *ngFor="let question of itemForm.controls.questions.controls; let i = index" class="input-container">
+        <app-input [control]="question" placeholder="Treść pytania" style="width: 85%"></app-input>
+        <button
+          mat-icon-button
+          [ngStyle]="{'visibility':i===0?'hidden':undefined}"
+          matTooltip="Usuń pytanie"
+          matTooltipPosition="below"
+          (click)="deleteQuestion(i)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <button mat-flat-button color="primary" class="button" (click)="addQuestion()">Dodaj wiersz</button>
+    </div>
+    <div class="column-container">
+      <span class="label">kolumny</span>
+      <div *ngFor="let option of itemForm.controls.options.controls; let i = index" class="input-container">
+        <mat-radio-button disabled *ngIf="itemForm.value.type==='gridSingle'"></mat-radio-button>
+        <mat-checkbox disabled *ngIf="itemForm.value.type==='gridMultiple'"></mat-checkbox>
+        <app-input [control]="option" placeholder="Treść opcji" style="width: 85%"></app-input>
+        <button mat-icon-button matTooltip="Usuń opcję" matTooltipPosition="below" (click)="deleteOption(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <button mat-flat-button color="primary" (click)="addOption()" class="button">Dodaj kolumnę</button>
+    </div>
+  </div>
+</div>

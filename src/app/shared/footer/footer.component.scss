@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: lightgray;
+  color: black;
+  background: linear-gradient(#ded9d9, #5b91d2);
+
+}
+
+.row {
+  width: 85%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.col {
+  flex-basis: 5%;
+  padding: 30px;
+}
+
+.logo {
+  width: 110px;
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
