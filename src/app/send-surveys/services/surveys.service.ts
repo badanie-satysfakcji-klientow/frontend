@@ -15,4 +15,8 @@ export class SurveysService {
   getSurveys(creatorId: string) {
     return this.httpClient.get<Survey[]>(this.rootUrl, {params: {creator_id: creatorId}});
   }
+
+  sendRecipients(recipients: string[], surveyId: string) {
+    return this.httpClient.post(`${this.rootUrl}/${surveyId}/send`, {recipient_list: recipients})
+  }
 }

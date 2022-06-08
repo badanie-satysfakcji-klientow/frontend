@@ -4,6 +4,7 @@ import {DropdownItem} from "../../shared/interfaces/dropdown-item";
 import {FormBuilder} from "@angular/forms";
 import {Validators} from "@angular/forms";
 import {SendFormGroup} from "../interfaces/send-form-group";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-send-surveys',
@@ -16,7 +17,8 @@ export class SendSurveysComponent {
   sendForm: SendFormGroup
 
   constructor(private surveys: SurveysService,
-              private formBuilder: FormBuilder
+              private formBuilder: FormBuilder,
+              private router: Router
   ) {
     this.creatorId = 'a36c108c-3d99-4b4e-9af0-b210934ab79d';
     this.items = [];
@@ -42,5 +44,17 @@ export class SendSurveysComponent {
 
   onDeleteRecipient(index: number) {
     this.sendForm.controls.recipients.removeAt(index);
+  }
+
+  onSendClick() {
+    this.surveys.sendRecipients(this.sendForm.controls.recipients.value, this.sendForm.value.surveyId)
+      .subscribe((response) => {
+        console.log(response);
+        this.onBackClick();
+      });
+  }
+
+  onBackClick() {
+    this.router.navigate([''])
   }
 }
