@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Input} from "@angular/core";
 import {SurveyConfiguration} from "../interfaces/survey-configuration";
-import {QuestionsStateService} from "../services/questions-state.service";
+import {ItemsStateService} from "../services/items-state.service";
 import {DATE_FORMAT} from "../../shared/constants/date-format";
 
 @Component({
@@ -13,7 +13,7 @@ export class SurveySummaryComponent {
   @Input() surveyConfiguration!: SurveyConfiguration;
   dateFormat = DATE_FORMAT;
 
-  constructor(public questionsState: QuestionsStateService
+  constructor(public questionsState: ItemsStateService
   ) {
   }
 }

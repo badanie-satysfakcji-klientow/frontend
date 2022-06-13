@@ -3,7 +3,7 @@ import {OnDestroy} from "@angular/core";
 import {FormBuilder, Validators} from "@angular/forms";
 import {SurveyConfigurationFormGroup} from "../interfaces/survey-configuration-form-group";
 import {DatesChronological} from "../validators/dates-chronological";
-import {QuestionsStateService} from "../services/questions-state.service";
+import {ItemsStateService} from "../services/items-state.service";
 import {SurveysService} from "../services/surveys.service";
 import {pluck} from "rxjs";
 import {SurveyIdStateService} from "../services/survey-id-state.service";
@@ -20,7 +20,7 @@ export class SurveyCreateComponent implements OnDestroy {
 
   constructor(private formBuilder: FormBuilder,
               private datesChronological: DatesChronological,
-              public questionsState: QuestionsStateService,
+              public questionsState: ItemsStateService,
               private surveysService: SurveysService,
               private surveyIdState: SurveyIdStateService
   ) {
@@ -37,10 +37,13 @@ export class SurveyCreateComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.surveyIdState.clearSurveyId();
-    this.questionsState.clearQuestions();
+    this.questionsState.clearItems();
   }
 
   onAddQuestionsClick() {
+    if (this.surveyIdState.getSurveyId()){
+      return;
+    }
     this.surveysService.createSurvey(this.surveyConfiguration.value, this.creatorId)
       .pipe(pluck('survey_id'))
       .subscribe(value => this.surveyIdState.setSurveyId(value));

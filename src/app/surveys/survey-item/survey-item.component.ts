@@ -9,7 +9,7 @@ import {OnChanges} from "@angular/core";
 import {SurveyItemFormGroup} from "../interfaces/survey-item-form-group";
 import {SurveyItemType} from "../types/survey-item-type";
 import {ItemTypeResolveService} from "../services/item-type-resolve.service";
-import {QuestionsStateService} from "../services/questions-state.service";
+import {ItemsStateService} from "../services/items-state.service";
 import {SurveyItemLabel} from "../types/survey-item-label";
 import {SurveysService} from "../services/surveys.service";
 import {SurveyIdStateService} from "../services/survey-id-state.service";
@@ -29,7 +29,7 @@ export class SurveyItemComponent implements OnChanges, OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private itemTypeResolve: ItemTypeResolveService,
-              public questionsState: QuestionsStateService,
+              public itemsStateService: ItemsStateService,
               private surveys: SurveysService,
               private surveyIdState: SurveyIdStateService
   ) {
@@ -55,26 +55,26 @@ export class SurveyItemComponent implements OnChanges, OnInit {
 
   ngOnInit() {
     if (this.index !== undefined) {
-      this.itemForm = this.questionsState.getQuestionFormGroupAt(this.index);
+      this.itemForm = this.itemsStateService.getItemAt(this.index);
     }
   }
 
   onAddClick() {
-    this.questionsState.addQuestion(this.itemForm);
+    this.itemsStateService.addItem(this.itemForm);
     this.surveys.createItem(this.itemForm.value, this.surveyIdState.getSurveyId())
       .subscribe({
         next: ({questions_ids, item_id}) => {
-          this.questionsState.registerIdentifier({questions_ids, item_id});
+          this.itemsStateService.registerIdentifier({questions_ids, item_id});
         },
         error: () => {
-          this.questionsState.popQuestion();
+          this.itemsStateService.popItem();
         }
       });
     this.onCancelClick();
   }
 
   onDeleteClick(index: number) {
-    this.questionsState.removeQuestion(index);
+    this.itemsStateService.removeItem(index);
   }
 
   onCancelClick() {
