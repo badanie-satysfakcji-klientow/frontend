@@ -9,7 +9,7 @@ import {SurveyItemIdentifier} from "../interfaces/survey-item-identifier";
 })
 export class ItemsStateService {
   private readonly items: FormArray;
-  private identifiers: SurveyItemIdentifier[];
+  private identifiers: SurveyItemIdentifier[]; //todo: Identifiers should be kept in items, not separately
 
   constructor(private formBuilder: FormBuilder
   ) {
@@ -24,10 +24,6 @@ export class ItemsStateService {
   removeItem(index: number) {
     this.items.removeAt(index);
     this.identifiers.splice(index, 1);
-  }
-
-  popItem() {
-    this.items.removeAt(this.items.length - 1);
   }
 
   getItems(): FormArray {
@@ -46,6 +42,7 @@ export class ItemsStateService {
     this.items.clear();
   }
 
+  //todo: Eliminate this method
   registerIdentifier(identifier: SurveyItemIdentifier) {
     this.identifiers.push(identifier);
   }

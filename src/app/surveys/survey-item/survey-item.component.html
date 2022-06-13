@@ -62,7 +62,7 @@
         [disabled]="itemForm.invalid"
         color="primary"
       >
-        Dodaj
+        {{loading ? 'Dodawanie...' : 'Dodaj'}}
       </button>
       <button mat-flat-button color="accent" class="bottom-button" (click)="onCancelClick()">Anuluj</button>
     </ng-container>

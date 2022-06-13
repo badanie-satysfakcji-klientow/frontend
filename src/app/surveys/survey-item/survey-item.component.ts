@@ -25,6 +25,7 @@ export class SurveyItemComponent implements OnChanges, OnInit {
   @Input() style?: string;
   @Output() complete = new EventEmitter<null>();
   label?: SurveyItemLabel;
+  loading: boolean;
   itemForm!: SurveyItemFormGroup;
 
   constructor(private formBuilder: FormBuilder,
@@ -33,6 +34,7 @@ export class SurveyItemComponent implements OnChanges, OnInit {
               private surveys: SurveysService,
               private surveyIdState: SurveyIdStateService
   ) {
+    this.loading = false;
     this.itemForm = this.formBuilder.group({
       questions: this.formBuilder.array([
         this.formBuilder.control(
@@ -60,17 +62,14 @@ export class SurveyItemComponent implements OnChanges, OnInit {
   }
 
   onAddClick() {
-    this.itemsStateService.addItem(this.itemForm);
+    this.loading = true;
     this.surveys.createItem(this.itemForm.value, this.surveyIdState.getSurveyId())
-      .subscribe({
-        next: ({questions_ids, item_id}) => {
-          this.itemsStateService.registerIdentifier({questions_ids, item_id});
-        },
-        error: () => {
-          this.itemsStateService.popItem();
-        }
+      .subscribe(({questions_ids, item_id}) => {
+        this.itemsStateService.addItem(this.itemForm);
+        this.itemsStateService.registerIdentifier({questions_ids, item_id});
+        this.loading = false;
+        this.onCancelClick();
       });
-    this.onCancelClick();
   }
 
   onDeleteClick(index: number) {
