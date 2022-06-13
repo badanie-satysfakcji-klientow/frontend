@@ -20,7 +20,7 @@ export class SurveyCreateComponent implements OnDestroy {
 
   constructor(private formBuilder: FormBuilder,
               private datesChronological: DatesChronological,
-              public questionsState: ItemsStateService,
+              public itemsStateService: ItemsStateService,
               private surveysService: SurveysService,
               private surveyIdState: SurveyIdStateService
   ) {
@@ -37,7 +37,7 @@ export class SurveyCreateComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.surveyIdState.clearSurveyId();
-    this.questionsState.clearItems();
+    this.itemsStateService.clearItems();
   }
 
   onAddQuestionsClick() {

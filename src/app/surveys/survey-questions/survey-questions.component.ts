@@ -21,7 +21,7 @@ export class SurveyQuestionsComponent {
   ]
 
   constructor(private formBuilder: FormBuilder,
-              public questionsState: ItemsStateService
+              public itemsStateService: ItemsStateService
   ) {
     this.newItemType = this.formBuilder.control(null, {initialValueIsDefault: true})
   }

@@ -13,7 +13,7 @@ export class SurveySummaryComponent {
   @Input() surveyConfiguration!: SurveyConfiguration;
   dateFormat = DATE_FORMAT;
 
-  constructor(public questionsState: ItemsStateService
+  constructor(public itemsState: ItemsStateService
   ) {
   }
 }

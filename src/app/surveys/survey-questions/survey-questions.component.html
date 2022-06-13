@@ -1,6 +1,6 @@
 <app-survey-item
-  *ngFor="let v of this.questionsState.getItems().controls; let i = index"
-  [itemType]="this.questionsState.getItemTypeAt(i)"
+  *ngFor="let v of this.itemsStateService.getItems().controls; let i = index"
+  [itemType]="this.itemsStateService.getItemAt(i).value.type"
   [index]="i"
   style="margin-bottom: 1.25em"
 >
