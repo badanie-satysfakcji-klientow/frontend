@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule, DatePipe} from '@angular/common';
+import {CommonModule} from '@angular/common';
 
 import {SurveysRoutingModule} from './surveys-routing.module';
 import {SurveyCreateComponent} from './survey-create/survey-create.component';
@@ -22,6 +22,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import {SurveyItemOpenComponent} from './survey-item-open/survey-item-open.component';
 import {SurveyItemScaleComponent} from './survey-item-scale/survey-item-scale.component';
 import { SurveyItemGridComponent } from './survey-item-grid/survey-item-grid.component';
+import { SectionComponent } from './section/section.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { SurveyItemGridComponent } from './survey-item-grid/survey-item-grid.com
     SurveyItemClosedComponent,
     SurveyItemOpenComponent,
     SurveyItemScaleComponent,
-    SurveyItemGridComponent
+    SurveyItemGridComponent,
+    SectionComponent
   ],
   imports: [
     CommonModule,

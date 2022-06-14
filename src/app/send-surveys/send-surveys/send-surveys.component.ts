@@ -48,10 +48,7 @@ export class SendSurveysComponent {
 
   onSendClick() {
     this.surveys.sendRecipients(this.sendForm.controls.recipients.value, this.sendForm.value.surveyId)
-      .subscribe((response) => {
-        console.log(response);
-        this.onBackClick();
-      });
+      .subscribe(() => this.onBackClick());
   }
 
   onBackClick() {
