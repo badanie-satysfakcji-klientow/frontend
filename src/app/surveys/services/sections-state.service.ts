@@ -17,13 +17,13 @@ export class SectionsStateService {
     this.sections.push(this.builder.group({
       name: this.builder.control('', {validators: Validators.required}),
       description: this.builder.control('', {validators: Validators.required}),
-      first_item: this.builder.control(firstItemId, {validators: Validators.required}),
+      start_item: this.builder.control(firstItemId, {validators: Validators.required}),
       last_item: this.builder.control('', {validators: Validators.required})
     }));
   }
 
-  getSection(firstItemId: string) {
-    return this.sections.controls.find((section) => (section as SectionFormGroup).value.start_item === firstItemId);
+  getSection(startItemId: string) {
+    return this.sections.controls.find((section) => (section as SectionFormGroup).value.start_item === startItemId);
   }
 
 }

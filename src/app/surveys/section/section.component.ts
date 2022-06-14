@@ -7,7 +7,7 @@ import {SectionFormGroup} from "../interfaces/section-form-group";
   styleUrls: ['./section.component.scss']
 })
 export class SectionComponent {
-  @Input() form!: SectionFormGroup;
+  @Input() form?: SectionFormGroup;
 
   constructor() {
   }

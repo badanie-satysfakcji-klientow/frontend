@@ -2,15 +2,17 @@
   <div class="top-container">
     <span id="question-view-value">{{label}}</span>
     <div class="buttons-container">
-      <button
-        mat-icon-button
-        *ngIf="index!==undefined"
-        matTooltip="Dodaj sekcję"
-        matTooltipPosition="above"
-        (click)="onSectionAdd(index)"
-      >
-        <mat-icon>add_circle_outline</mat-icon>
-      </button>
+      <ng-container *ngIf="index!==undefined">
+        <button
+          mat-icon-button
+          *ngIf="!sectionsState.getSection(itemsState.getItemId(index))"
+          matTooltip="Dodaj sekcję"
+          matTooltipPosition="above"
+          (click)="onSectionAdd(index)"
+        >
+          <mat-icon>add_circle_outline</mat-icon>
+        </button>
+      </ng-container>
       <button mat-icon-button matTooltip="Podgląd pytania" matTooltipPosition="above">
         <mat-icon>remove_red_eye</mat-icon>
       </button>

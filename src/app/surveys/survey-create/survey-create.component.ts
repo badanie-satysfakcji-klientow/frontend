@@ -16,7 +16,7 @@ import {SurveyIdStateService} from "../services/survey-id-state.service";
 
 export class SurveyCreateComponent implements OnDestroy {
   surveyConfiguration: SurveyConfigurationFormGroup;
-  creatorId = 'a36c108c-3d99-4b4e-9af0-b210934ab79d';
+  creatorId = 'a96152a1-2b1f-4ab9-8b1b-acd0b4d9c3f1';
 
   constructor(private formBuilder: FormBuilder,
               private datesChronological: DatesChronological,

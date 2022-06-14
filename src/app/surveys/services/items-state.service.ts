@@ -30,7 +30,7 @@ export class ItemsStateService {
     return this.items;
   }
 
-  getItemAt(index: number): SurveyItemFormGroup {
+  getItem(index: number): SurveyItemFormGroup {
     return (this.items.controls as SurveyItemFormGroup[])[index];
   }
 

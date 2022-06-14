@@ -13,6 +13,7 @@ import {ItemsStateService} from "../services/items-state.service";
 import {SurveyItemLabel} from "../types/survey-item-label";
 import {SurveysService} from "../services/surveys.service";
 import {SurveyIdStateService} from "../services/survey-id-state.service";
+import {SectionsStateService} from "../services/sections-state.service";
 
 @Component({
   selector: 'app-survey-item',
@@ -30,9 +31,10 @@ export class SurveyItemComponent implements OnChanges, OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private itemTypeResolve: ItemTypeResolveService,
-              public itemsStateService: ItemsStateService,
+              public itemsState: ItemsStateService,
               private surveys: SurveysService,
-              private surveyIdState: SurveyIdStateService
+              private surveyIdState: SurveyIdStateService,
+              public sectionsState: SectionsStateService
   ) {
     this.loading = false;
     this.itemForm = this.formBuilder.group({
@@ -57,7 +59,7 @@ export class SurveyItemComponent implements OnChanges, OnInit {
 
   ngOnInit() {
     if (this.index !== undefined) {
-      this.itemForm = this.itemsStateService.getItemAt(this.index);
+      this.itemForm = this.itemsState.getItem(this.index);
     }
   }
 
@@ -65,15 +67,15 @@ export class SurveyItemComponent implements OnChanges, OnInit {
     this.loading = true;
     this.surveys.createItem(this.itemForm.value, this.surveyIdState.getSurveyId())
       .subscribe(({questions_ids, item_id}) => {
-        this.itemsStateService.addItem(this.itemForm);
-        this.itemsStateService.registerIdentifier({questions_ids, item_id});
+        this.itemsState.addItem(this.itemForm);
+        this.itemsState.registerIdentifier({questions_ids, item_id});
         this.loading = false;
         this.onCancelClick();
       });
   }
 
   onDeleteClick(index: number) {
-    this.itemsStateService.removeItem(index);
+    this.itemsState.removeItem(index);
   }
 
   onCancelClick() {
@@ -108,7 +110,7 @@ export class SurveyItemComponent implements OnChanges, OnInit {
     }
   }
 
-  onSectionAdd(index:number) {
-    console.log(this.itemsStateService.getItemId(index));
+  onSectionAdd(index: number) {
+    this.sectionsState.addSection(this.itemsState.getItemId(index));
   }
 }
