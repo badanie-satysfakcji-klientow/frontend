@@ -1,5 +1,4 @@
-import { Component} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import {Component, Input} from '@angular/core';
 import {SectionFormGroup} from "../interfaces/section-form-group";
 
 @Component({
@@ -7,16 +6,9 @@ import {SectionFormGroup} from "../interfaces/section-form-group";
   templateUrl: './section.component.html',
   styleUrls: ['./section.component.scss']
 })
-export class SectionComponent{
-  form: SectionFormGroup;
+export class SectionComponent {
+  @Input() form!: SectionFormGroup;
 
-  constructor(private builder:FormBuilder) {
-    this.form = this.builder.group({
-      name: this.builder.control('', {validators: Validators.required}),
-      description: this.builder.control('', {validators: Validators.required})
-    }) as SectionFormGroup;
+  constructor() {
   }
-
-
-
 }

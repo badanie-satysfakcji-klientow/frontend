@@ -45,4 +45,8 @@ export class ItemsStateService {
   registerIdentifier(identifier: SurveyItemIdentifier) {
     this.identifiers.push(identifier);
   }
+
+  getItemId(index: number) {
+    return this.identifiers[index].item_id;
+  }
 }

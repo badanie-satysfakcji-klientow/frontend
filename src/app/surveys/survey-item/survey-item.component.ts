@@ -107,4 +107,8 @@ export class SurveyItemComponent implements OnChanges, OnInit {
       this.itemForm.patchValue({type: this.isItemTypeMultiple() ? 'closedSingle' : 'closedMultiple'});
     }
   }
+
+  onSectionAdd(index:number) {
+    console.log(this.itemsStateService.getItemId(index));
+  }
 }
