@@ -20,7 +20,6 @@ import {TimeFramesEditComponent} from "../time-frames-edit/time-frames-edit.comp
 export class BrowseSurveysComponent implements AfterViewInit {
   displayedColumns = ['title', 'description', 'created_at', 'anonymous', 'starts_at', 'expires_at', 'buttons'];
   pageSizes = [5, 10, 20];
-  creatorId = 'a36c108c-3d99-4b4e-9af0-b210934ab79d';
   dateFormat = DATE_FORMAT;
   dataSource = new MatTableDataSource<Survey>([]);
   dialogConfig: MatDialogConfig;
@@ -30,7 +29,7 @@ export class BrowseSurveysComponent implements AfterViewInit {
   constructor(private savedSurveys: SavedSurveysService,
               private matDialog: MatDialog
   ) {
-    this.savedSurveys.getSurveysByCreatorId(this.creatorId)
+    this.savedSurveys.getSurveys()
       .subscribe((response) => this.dataSource.data = response);
     this.dialogConfig = {
       autoFocus: true,
