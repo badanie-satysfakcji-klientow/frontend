@@ -5,7 +5,7 @@
       <ng-container *ngIf="index!==undefined">
         <button
           mat-icon-button
-          *ngIf="!sectionsState.getSection(itemsState.getItemId(index))"
+          *ngIf="!sectionsState.isSectionLeader(itemsState.getItemId(index))"
           matTooltip="Dodaj sekcję"
           matTooltipPosition="above"
           (click)="onSectionAdd(index)"

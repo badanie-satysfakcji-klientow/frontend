@@ -1,5 +1,7 @@
-<ng-container *ngFor="let item of this.itemsState.getItems().controls; let i = index">
-  <app-section [form]="$any(this.sectionsState.getSection(this.itemsState.getItemId(i)))"></app-section>
+<ng-container *ngFor="let item of itemsState.getItems().controls; let i = index">
+  <ng-container *ngIf="sectionsState.isSectionLeader(itemsState.getItemId(i))">
+    <app-section [form]="sectionsState.getSection(itemsState.getItemId(i))"></app-section>
+  </ng-container>
   <app-survey-item [itemType]="this.itemsState.getItem(i).value.type" [index]="i" style="margin-bottom: 1.25em">
   </app-survey-item>
 </ng-container>

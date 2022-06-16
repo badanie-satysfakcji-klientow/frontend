@@ -6,7 +6,5 @@ export interface SectionFormGroup extends FormGroup {
   controls: {
     name: FormControl;
     description: FormControl;
-    start_item: FormControl;
-    end_item: FormControl;
   }
 }
