@@ -7,6 +7,7 @@ import {ItemsStateService} from "../services/items-state.service";
 import {SurveysService} from "../services/surveys.service";
 import {pluck} from "rxjs";
 import {SurveyIdStateService} from "../services/survey-id-state.service";
+import {SectionsStateService} from "../services/sections-state.service";
 
 @Component({
   selector: 'app-survey-create',
@@ -22,7 +23,8 @@ export class SurveyCreateComponent implements OnDestroy {
               private datesChronological: DatesChronological,
               public itemsStateService: ItemsStateService,
               private surveysService: SurveysService,
-              private surveyIdState: SurveyIdStateService
+              private surveyIdState: SurveyIdStateService,
+              private sectionsState: SectionsStateService
   ) {
     this.surveyConfiguration = this.formBuilder.group({
       surveyName: ['', [Validators.required]],
@@ -38,6 +40,7 @@ export class SurveyCreateComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.surveyIdState.clearSurveyId();
     this.itemsStateService.clearItems();
+    this.sectionsState.clearSections();
   }
 
   onAddQuestionsClick() {

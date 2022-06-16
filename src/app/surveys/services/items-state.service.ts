@@ -17,8 +17,9 @@ export class ItemsStateService {
     this.identifiers = [];
   }
 
-  addItem(formGroup: SurveyItemFormGroup) {
+  addItem(formGroup: SurveyItemFormGroup, identifier: SurveyItemIdentifier) {
     this.items.push(formGroup);
+    this.identifiers.push(identifier);
   }
 
   removeItem(index: number) {
@@ -40,10 +41,6 @@ export class ItemsStateService {
 
   clearItems() {
     this.items.clear();
-  }
-
-  registerIdentifier(identifier: SurveyItemIdentifier) {
-    this.identifiers.push(identifier);
   }
 
   getItemId(index: number) {

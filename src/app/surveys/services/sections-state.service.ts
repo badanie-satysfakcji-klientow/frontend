@@ -23,6 +23,15 @@ export class SectionsStateService {
     return Array.from(this.sections.keys())[this.sections.size - 1];
   }
 
+  private initializeState(itemId: string) {
+    this.sections.set(this.createSection(), [itemId]);
+  }
+
+  private updateState(itemId: string) {
+    const section = this.getLastSection();
+    this.sections.set(section, this.sections.get(section)?.concat(itemId) || [itemId]);
+  }
+
   addSection(itemId: string) {
     const match = Array.from(this.sections.entries()).find(([section, items]) => items.includes(itemId) && section);
     if (match) {
@@ -41,16 +50,11 @@ export class SectionsStateService {
     return Array.from(this.sections.values()).find((value) => value[0] === itemId);
   }
 
-  getLength() {
-    return this.sections.size;
+  registerItem(itemId: string) {
+    this.sections.size ? this.updateState(itemId) : this.initializeState(itemId);
   }
 
-  initialize(itemId: string) {
-    this.sections.set(this.createSection(), [itemId]);
-  }
-
-  update(itemId: string) {
-    const section = this.getLastSection();
-    this.sections.set(section, this.sections.get(section)?.concat(itemId) || [itemId]);
+  clearSections() {
+    this.sections.clear();
   }
 }
