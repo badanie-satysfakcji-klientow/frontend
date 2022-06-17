@@ -68,6 +68,11 @@ export class SectionsStateService {
     this.sections.size ? this.updateState(itemId) : this.initializeState(itemId);
   }
 
+  deregisterItem(itemId: string) {
+    const items = Array.from(this.sections.values()).find((items) => items.includes(itemId));
+    items?.splice(items.indexOf(itemId), 1);
+  }
+
   clearSections() {
     this.sections.clear();
     this.pristine = true;

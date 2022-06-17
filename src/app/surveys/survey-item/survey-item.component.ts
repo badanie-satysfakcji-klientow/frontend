@@ -76,8 +76,10 @@ export class SurveyItemComponent implements OnChanges, OnInit {
 
   onDeleteClick(index: number) {
     this.loading = true;
-    this.surveys.deleteItem(this.itemsState.getItemId(index))
+    const itemId = this.itemsState.getItemId(index);
+    this.surveys.deleteItem(itemId)
       .subscribe(() => {
+        this.sectionsState.deregisterItem(itemId);
         this.itemsState.removeItem(index);
         this.loading = false;
       });
