@@ -7,9 +7,11 @@ import {SectionFormGroup} from "../interfaces/section-form-group";
 })
 export class SectionsStateService {
   private readonly sections: Map<SectionFormGroup, string[]>;
+  private pristine: boolean;
 
   constructor(private builder: FormBuilder) {
     this.sections = new Map();
+    this.pristine = true;
   }
 
   private createSection(): SectionFormGroup {
@@ -30,6 +32,18 @@ export class SectionsStateService {
   private updateState(itemId: string) {
     const section = this.getLastSection();
     this.sections.set(section, this.sections.get(section)?.concat(itemId) || [itemId]);
+  }
+
+  getSections() {
+    return Array.from(this.sections.entries());
+  }
+
+  checkPristine(): boolean {
+    return this.pristine;
+  }
+
+  setDirty() {
+    this.pristine = false;
   }
 
   addSection(itemId: string) {
@@ -56,5 +70,6 @@ export class SectionsStateService {
 
   clearSections() {
     this.sections.clear();
+    this.pristine = true;
   }
 }

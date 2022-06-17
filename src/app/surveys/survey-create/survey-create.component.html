@@ -27,6 +27,7 @@
               color="primary"
               class="navigation-button"
               [disabled]="!itemsStateService.areItemsValid()"
+              (click)="onAddRulesClick()"
             >
               Dodaj reguły przejść
             </button>

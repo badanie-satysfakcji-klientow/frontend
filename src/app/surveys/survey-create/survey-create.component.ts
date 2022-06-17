@@ -44,11 +44,22 @@ export class SurveyCreateComponent implements OnDestroy {
   }
 
   onAddQuestionsClick() {
-    if (this.surveyIdState.getSurveyId()){
+    if (this.surveyIdState.getSurveyId()) {
       return;
     }
     this.surveysService.createSurvey(this.surveyConfiguration.value, this.creatorId)
       .pipe(pluck('survey_id'))
       .subscribe(value => this.surveyIdState.setSurveyId(value));
+  }
+
+  onAddRulesClick() {
+    if (!this.sectionsState.checkPristine()) {
+      return;
+    }
+    const surveyId = this.surveyIdState.getSurveyId();
+    this.sectionsState.getSections().forEach(([{value}, items]) => {
+      this.surveysService.createSection(surveyId, value, items).subscribe(Function.prototype());
+    });
+    this.sectionsState.setDirty();
   }
 }
