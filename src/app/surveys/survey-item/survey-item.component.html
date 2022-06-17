@@ -1,22 +1,17 @@
 <div class="main-container-survey-item" [style]="style">
   <div class="top-container">
     <span id="question-view-value">{{label}}</span>
-    <div class="buttons-container">
-      <ng-container *ngIf="index!==undefined">
-        <button
-          mat-icon-button
-          *ngIf="!sectionsState.isSectionLeader(itemsState.getItemId(index))"
-          matTooltip="Dodaj sekcję"
-          matTooltipPosition="above"
-          (click)="onSectionAdd(index)"
-        >
-          <mat-icon>add_circle_outline</mat-icon>
-        </button>
-      </ng-container>
-      <button mat-icon-button matTooltip="Podgląd pytania" matTooltipPosition="above">
-        <mat-icon>remove_red_eye</mat-icon>
+    <ng-container *ngIf="index!==undefined">
+      <button
+        mat-icon-button
+        *ngIf="!sectionsState.isSectionLeader(itemsState.getItemId(index))"
+        matTooltip="Nowa sekcja"
+        matTooltipPosition="left"
+        (click)="onSectionAdd(index)"
+      >
+        <mat-icon>add_circle_outline</mat-icon>
       </button>
-    </div>
+    </ng-container>
   </div>
   <div class="content-container" [formGroup]="itemForm">
     <app-input
@@ -77,7 +72,7 @@
     <button
       mat-flat-button
       *ngIf="index!==undefined"
-      color="primary"
+      color="warn"
       class="bottom-button"
       (click)="onDeleteClick(index)"
     >
