@@ -43,10 +43,6 @@ export class BrowseSurveysComponent implements AfterViewInit {
     this.dataSource.paginator = this.matPaginator;
   }
 
-  onEditClick(survey: any) {
-    console.log(`edit ${(survey as Survey).id}`)
-  }
-
   onTitleClick(survey: any) {
     console.log(`preview ${(survey as Survey).id}`);
   }
