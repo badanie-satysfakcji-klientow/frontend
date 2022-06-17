@@ -81,7 +81,7 @@
       class="bottom-button"
       (click)="onDeleteClick(index)"
     >
-      Usuń
+      {{loading ? 'Usuwanie...' : 'Usuń'}}
     </button>
   </div>
 </div>

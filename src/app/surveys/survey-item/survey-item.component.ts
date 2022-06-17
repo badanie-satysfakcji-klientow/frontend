@@ -75,7 +75,12 @@ export class SurveyItemComponent implements OnChanges, OnInit {
   }
 
   onDeleteClick(index: number) {
-    this.itemsState.removeItem(index);
+    this.loading = true;
+    this.surveys.deleteItem(this.itemsState.getItemId(index))
+      .subscribe(() => {
+        this.itemsState.removeItem(index);
+        this.loading = false;
+      });
   }
 
   onCancelClick() {

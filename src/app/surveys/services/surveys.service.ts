@@ -32,4 +32,8 @@ export class SurveysService {
   createItem(formValue: SurveyItemFormValue, surveyId: string) {
     return this.httpClient.post<CreateItemResponse>(`${this.rootURL}/${surveyId}/items`, formValue);
   }
+
+  deleteItem(itemId: string){
+    return this.httpClient.delete(`${API_URL}/api/items/${itemId}`);
+  }
 }
