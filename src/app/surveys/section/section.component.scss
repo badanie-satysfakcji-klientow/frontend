@@ -1,0 +1,20 @@
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+#main-container {
+  justify-content: space-between;
+  gap: 1.25em;
+}
+
+#right-container {
+  justify-content: center;
+}
+
+#left-container {
+  width: 90%;
+}

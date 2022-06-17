@@ -36,9 +36,6 @@
         <ng-container matColumnDef="buttons">
           <th mat-header-cell *matHeaderCellDef>Opcje</th>
           <td *matCellDef="let survey" mat-cell>
-            <button mat-icon-button (click)="onEditClick(survey)" type="button">
-              <mat-icon>edit</mat-icon>
-            </button>
             <button mat-icon-button (click)="onEditTimeFramesClick(survey)" type="button">
               <mat-icon>date_range</mat-icon>
             </button>

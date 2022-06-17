@@ -3,10 +3,11 @@ import {OnDestroy} from "@angular/core";
 import {FormBuilder, Validators} from "@angular/forms";
 import {SurveyConfigurationFormGroup} from "../interfaces/survey-configuration-form-group";
 import {DatesChronological} from "../validators/dates-chronological";
-import {QuestionsStateService} from "../services/questions-state.service";
+import {ItemsStateService} from "../services/items-state.service";
 import {SurveysService} from "../services/surveys.service";
 import {pluck} from "rxjs";
 import {SurveyIdStateService} from "../services/survey-id-state.service";
+import {SectionsStateService} from "../services/sections-state.service";
 
 @Component({
   selector: 'app-survey-create',
@@ -16,13 +17,14 @@ import {SurveyIdStateService} from "../services/survey-id-state.service";
 
 export class SurveyCreateComponent implements OnDestroy {
   surveyConfiguration: SurveyConfigurationFormGroup;
-  creatorId = 'a36c108c-3d99-4b4e-9af0-b210934ab79d';
+  creatorId = 'a96152a1-2b1f-4ab9-8b1b-acd0b4d9c3f1';
 
   constructor(private formBuilder: FormBuilder,
               private datesChronological: DatesChronological,
-              public questionsState: QuestionsStateService,
+              public itemsStateService: ItemsStateService,
               private surveysService: SurveysService,
-              private surveyIdState: SurveyIdStateService
+              private surveyIdState: SurveyIdStateService,
+              private sectionsState: SectionsStateService
   ) {
     this.surveyConfiguration = this.formBuilder.group({
       surveyName: ['', [Validators.required]],
@@ -37,12 +39,27 @@ export class SurveyCreateComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.surveyIdState.clearSurveyId();
-    this.questionsState.clearQuestions();
+    this.itemsStateService.clearItems();
+    this.sectionsState.clearSections();
   }
 
   onAddQuestionsClick() {
+    if (this.surveyIdState.getSurveyId()) {
+      return;
+    }
     this.surveysService.createSurvey(this.surveyConfiguration.value, this.creatorId)
       .pipe(pluck('survey_id'))
       .subscribe(value => this.surveyIdState.setSurveyId(value));
+  }
+
+  onAddRulesClick() {
+    if (!this.sectionsState.checkPristine()) {
+      return;
+    }
+    const surveyId = this.surveyIdState.getSurveyId();
+    this.sectionsState.getSections().forEach(([{value}, items]) => {
+      this.surveysService.createSection(surveyId, value, items).subscribe(Function.prototype());
+    });
+    this.sectionsState.setDirty();
   }
 }

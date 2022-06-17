@@ -12,8 +12,8 @@ export class SavedSurveysService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getSurveysByCreatorId(creatorId: string) {
-    return this.httpClient.get<Survey[]>(this.rootUrl, {params: {creator_id: creatorId}});
+  getSurveys() {
+    return this.httpClient.get<Survey[]>(this.rootUrl);
   }
 
   deleteSurvey(surveyId: string) {

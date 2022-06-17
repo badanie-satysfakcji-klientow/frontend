@@ -1,10 +1,12 @@
-<app-survey-item
-  *ngFor="let v of this.questionsState.getQuestionsArray().controls; let i = index"
-  [itemType]="this.questionsState.getQuestionTypeAt(i)"
-  [index]="i"
-  style="margin-bottom: 1.25em"
->
-</app-survey-item>
+<ng-container *ngFor="let item of itemsState.getItems().controls; let i = index;">
+  <app-section
+    [itemId]="itemsState.getItemId(i)"
+    [form]="sectionsState.getSection(itemsState.getItemId(i))"
+  >
+  </app-section>
+  <app-survey-item [itemType]="this.itemsState.getItem(i).value.type" [index]="i" style="margin-bottom: 1.25em">
+  </app-survey-item>
+</ng-container>
 <app-dropdown
   placeholder="Nowe pytanie"
   style="width: 100%; margin-bottom: 1.25em"
