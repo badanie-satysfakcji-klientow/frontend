@@ -44,6 +44,6 @@ export class ItemsStateService {
   }
 
   getItemId(index: number) {
-    return this.identifiers[index].item_id;
+    return index < 0 ? '' : this.identifiers[index].item_id;
   }
 }

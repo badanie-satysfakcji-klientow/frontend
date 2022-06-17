@@ -17,7 +17,13 @@
     </app-input>
   </div>
   <div id="right-container" class="flex column">
-    <button mat-icon-button *ngIf="displayRemoveButton" matTooltip="Usuń sekcję" matTooltipPosition="left">
+    <button
+      mat-icon-button
+      *ngIf="displayRemoveButton"
+      matTooltip="Usuń sekcję"
+      matTooltipPosition="left"
+      (click)="onDeleteClick()"
+    >
       <mat-icon color="warn">remove_circle_outline</mat-icon>
     </button>
   </div>

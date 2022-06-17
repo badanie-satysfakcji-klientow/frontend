@@ -34,6 +34,10 @@ export class SectionsStateService {
     this.sections.set(section, this.sections.get(section)?.concat(itemId) || [itemId]);
   }
 
+  private getContainingEntry(itemId: string) {
+    return Array.from(this.sections.entries()).find(([section, items]) => items.includes(itemId) && section);
+  }
+
   getSections() {
     return Array.from(this.sections.entries());
   }
@@ -47,12 +51,25 @@ export class SectionsStateService {
   }
 
   addSection(itemId: string) {
-    const match = Array.from(this.sections.entries()).find(([section, items]) => items.includes(itemId) && section);
+    const match = this.getContainingEntry(itemId);
     if (match) {
       const [parentSection, parentItems] = match;
       const itemIndex = parentItems.indexOf(itemId);
       this.sections.set(this.createSection(), parentItems.slice(itemIndex));
       this.sections.set(parentSection, parentItems.slice(0, itemIndex));
+    }
+  }
+
+  removeSection(itemId: string, precedingItemId: string) {
+    const match = this.getContainingEntry(itemId);
+    if (match) {
+      const [source, sourceItems] = match;
+      const targetMatch = this.getContainingEntry(precedingItemId);
+      if (targetMatch) {
+        const [target, targetItems] = targetMatch;
+        this.sections.set(target, targetItems.concat(sourceItems));
+      }
+      this.sections.delete(source);
     }
   }
 
@@ -71,6 +88,9 @@ export class SectionsStateService {
   deregisterItem(itemId: string) {
     const items = Array.from(this.sections.values()).find((items) => items.includes(itemId));
     items?.splice(items.indexOf(itemId), 1);
+    if (!items?.length) {
+      this.removeSection(itemId, '');
+    }
   }
 
   clearSections() {
