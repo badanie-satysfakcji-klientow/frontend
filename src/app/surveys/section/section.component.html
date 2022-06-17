@@ -1,5 +1,24 @@
-<ng-container *ngIf="form">
-  <app-input placeholder="Nazwa sekcji" type="text" [control]="form.controls.name"></app-input>
-  <app-input placeholder="Opis sekcji" type="text" [control]="form.controls.description" [displayAsTextarea]="true">
-  </app-input>
-</ng-container>
+<div *ngIf="sectionsState.isSectionLeader(itemId)" id="main-container" class="flex">
+  <div *ngIf="form" class="flex column" id="left-container">
+    <app-input
+      placeholder="Nazwa sekcji"
+      type="text"
+      [control]="form.controls.name"
+      style="width: 100%"
+    >
+    </app-input>
+    <app-input
+      placeholder="Opis sekcji"
+      type="text"
+      [control]="form.controls.description"
+      [displayAsTextarea]="true"
+      style="width: 100%"
+    >
+    </app-input>
+  </div>
+  <div id="right-container" class="flex column">
+    <button mat-icon-button *ngIf="displayRemoveButton" matTooltip="Usuń sekcję" matTooltipPosition="left">
+      <mat-icon color="warn">remove_circle_outline</mat-icon>
+    </button>
+  </div>
+</div>
