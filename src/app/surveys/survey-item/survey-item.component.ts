@@ -66,9 +66,9 @@ export class SurveyItemComponent implements OnChanges, OnInit {
   onAddClick() {
     this.loading = true;
     this.surveys.createItem(this.itemForm.value, this.surveyIdState.getSurveyId())
-      .subscribe(({questions_ids, item_id}) => {
-        this.itemsState.addItem(this.itemForm, {questions_ids, item_id});
-        this.sectionsState.registerItem(item_id);
+      .subscribe(({id}) => {
+        this.itemsState.addItem(this.itemForm, {id});
+        this.sectionsState.registerItem(id);
         this.loading = false;
         this.onCancelClick();
       });
