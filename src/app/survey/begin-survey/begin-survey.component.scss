@@ -1,0 +1,45 @@
+:host {
+  font-family: Inter, serif;
+  font-style: normal;
+}
+
+#button {
+  padding: 13.91px 62.61px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  align-self: flex-end;
+}
+
+#divider {
+  height: 4px;
+  align-self: stretch;
+  margin-top: 61px;
+  margin-bottom: 152px;
+}
+
+.radius-10{
+  border-radius: 10px;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 231px 122px 0;
+}
+
+#title {
+  margin-bottom: 32px;
+  font-size: 48px;
+  line-height: 58px;
+}
+
+#greeting{
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.weight-300{
+  font-weight: 300;
+}
