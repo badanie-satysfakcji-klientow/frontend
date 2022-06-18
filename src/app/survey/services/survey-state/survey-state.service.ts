@@ -11,7 +11,6 @@ export class SurveyStateService {
   }
 
   set(survey: FullSurvey) {
-    console.log('setting survey')
     this.survey = survey;
   }
 
