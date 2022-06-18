@@ -8,9 +8,10 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
   constructor(private router: Router) {
+
   }
 
-  displayNavigation(): boolean {
-    return !/survey/.test(this.router.url);
+  displayNavigation() {
+    return !/\/survey\//.test(this.router.url);
   }
 }
