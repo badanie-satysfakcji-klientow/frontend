@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {FullSurvey} from "../interfaces/full-survey";
 
 @Component({
   selector: 'app-begin-survey',
@@ -8,11 +7,16 @@ import {FullSurvey} from "../interfaces/full-survey";
   styleUrls: ['./begin-survey.component.scss']
 })
 export class BeginSurveyComponent {
-  survey: FullSurvey;
+  title: string;
+  greeting: string;
 
   constructor(private route: ActivatedRoute) {
-    this.survey = route.snapshot.data['survey'];
-    this.route.data.subscribe(({survey}) => this.survey = survey);
+    this.title = route.snapshot.data['survey'].title;
+    this.greeting = route.snapshot.data['survey'].greeting;
+    this.route.data.subscribe(({survey}) => {
+      this.title = survey.title;
+      this.greeting = survey.greeting;
+    });
   }
 
 }
