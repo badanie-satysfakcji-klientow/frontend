@@ -27,7 +27,8 @@ export class SurveyStateService {
   }
 
   nextSection(url?: string) {
-    return url ? this.sectionIds[this.sectionIds.indexOf(SurveyStateService.extractSectionId(url)) + 1] : this.sectionIds[0];
+    const {sectionIds} = this;
+    return url ? sectionIds[sectionIds.indexOf(SurveyStateService.extractSectionId(url)) + 1] : sectionIds[0];
   }
 
   previousSection(url: string) {
@@ -50,8 +51,22 @@ export class SurveyStateService {
     return this.survey?.id;
   }
 
-  getItems() {
-    return this.survey?.items;
+  getItems(url: string) {
+    const sectionId = SurveyStateService.extractSectionId(url);
+    if (sectionId === 'questions') {
+      return this.survey?.items;
+    }
+    const section = this.survey?.sections.find((section) => section.id === sectionId);
+    if (section) {
+      const startItem = this.survey?.items.find((item) => item.id === section.start_item);
+      const endItem = this.survey?.items.find((item) => item.id === section.end_item);
+      if (startItem && endItem) {
+        // @ts-ignore
+        console.log(this.survey?.items.indexOf(startItem), this.survey?.items.indexOf(endItem) + 1)
+        return this.survey?.items.slice(this.survey?.items.indexOf(startItem), this.survey?.items.indexOf(endItem) + 1);
+      }
+    }
+    return [];
   }
 
   getSections() {
