@@ -1,3 +1,13 @@
-<p>{{items|json}}</p>
+<ng-container *ngFor="let item of items">
+  <p>{{item.type}}</p>
+  <p>{{item.required|booleanString:'Odpowiedź wymagana':'Odpowiedź dobrowolna'}}</p>
+  <ng-container *ngFor="let question of item.questions">
+    <p>{{question.value}}</p>
+  </ng-container>
+  <ng-container *ngFor="let option of item.options">
+    <p>{{option}}</p>
+  </ng-container>
+  <hr>
+</ng-container>
 <button (click)="onPreviousClick()">Powrót</button>
 <button (click)="onNextClick()">Dalej</button>

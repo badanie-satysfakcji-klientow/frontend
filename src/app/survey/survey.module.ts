@@ -6,6 +6,7 @@ import { BeginSurveyComponent } from './begin-survey/begin-survey.component';
 import {MatButtonModule} from "@angular/material/button";
 import { FinishSurveyComponent } from './finish-survey/finish-survey.component';
 import { SurveySectionComponent } from './survey-section/survey-section.component';
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SurveySectionComponent } from './survey-section/survey-section.componen
     imports: [
         CommonModule,
         SurveyRoutingModule,
-        MatButtonModule
+        MatButtonModule,
+        SharedModule
     ]
 })
 export class SurveyModule { }
