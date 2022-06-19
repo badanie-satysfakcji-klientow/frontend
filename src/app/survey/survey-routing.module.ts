@@ -7,6 +7,7 @@ import {SurveySectionComponent} from "./survey-section/survey-section.component"
 
 const routes: Routes = [
   {path: ':surveyId/finish', component: FinishSurveyComponent},
+  {path: ':surveyId/questions', component: SurveySectionComponent},
   {path: ':surveyId/:sectionId', component: SurveySectionComponent},
   {path: ':surveyId', component: BeginSurveyComponent, resolve: {survey: SurveyResolverService}},
 ];

@@ -18,7 +18,8 @@ export class BeginSurveyComponent {
   }
 
   onBeginClick(){
-    //todo: navigate to url /survey/:surveyId/:sectionId
-    this.router.navigateByUrl(`/survey/${this.surveyState.getSurveyId()}/finish`).then(Function.prototype());
+    const surveyId = this.surveyState.getSurveyId();
+    const firstSection = this.surveyState.nextSection();
+    this.router.navigateByUrl(`/survey/${surveyId}/${firstSection}`).then(Function.prototype());
   }
 }

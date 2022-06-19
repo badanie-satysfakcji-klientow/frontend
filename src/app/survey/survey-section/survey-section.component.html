@@ -1,1 +1,4 @@
-<p>survey-section works!</p>
+<p>{{surveyState.getItems()|json}}</p>
+<p>{{surveyState.getSections()|json}}</p>
+<button (click)="onPreviousClick()">Powrót</button>
+<button (click)="onNextClick()">Dalej</button>
