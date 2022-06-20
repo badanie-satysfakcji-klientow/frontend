@@ -5,6 +5,7 @@ import {FormBuilder} from "@angular/forms";
 import {Validators} from "@angular/forms";
 import {SendFormGroup} from "../interfaces/send-form-group";
 import {Router} from "@angular/router";
+import {SavedSurveysService} from "../../browse-surveys/services/saved-surveys.service";
 
 @Component({
   selector: 'app-send-surveys',
@@ -17,12 +18,13 @@ export class SendSurveysComponent {
   sendForm: SendFormGroup
 
   constructor(private surveys: SurveysService,
+              private savedSurveys: SavedSurveysService,
               private formBuilder: FormBuilder,
               private router: Router
   ) {
-    this.creatorId = 'a36c108c-3d99-4b4e-9af0-b210934ab79d';
+    this.creatorId = 'a96152a1-2b1f-4ab9-8b1b-acd0b4d9c3f1';
     this.items = [];
-    this.surveys.getSurveys(this.creatorId).subscribe((surveys) => {
+    this.savedSurveys.getSurveys(this.creatorId).subscribe((surveys) => {
       this.items = surveys.map((survey) => ({label: survey.title, value: survey.id}));
     });
     this.sendForm = formBuilder.group({
