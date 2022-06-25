@@ -53,16 +53,11 @@
         <button mat-menu-item type="button" class="menu-item">Kontakty 3</button>
       </mat-menu>
     </div>
-    <div>
-      <button mat-button [matMenuTriggerFor]="settings" class="menu-button" type="button">Ustawienia</button>
-      <mat-menu #settings="matMenu">
-        <button mat-menu-item type="button" class="menu-item">Ustawienia 1</button>
-        <button mat-menu-item type="button" class="menu-item">Ustawienia 2</button>
-        <button mat-menu-item type="button" class="menu-item">Ustawienia 3</button>
-      </mat-menu>
-    </div>
     <div id="user-info-container">
       <span id="user-name">Jan Kowalski</span>
+      <button mat-icon-button matTooltip="Ustawienia" matTooltipPosition="below" color="accent">
+        <mat-icon>settings</mat-icon>
+      </button>
       <button mat-icon-button matTooltip="Wyloguj" matTooltipPosition="below" color="primary">
         <mat-icon>logout</mat-icon>
       </button>
