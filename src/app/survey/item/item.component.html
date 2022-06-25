@@ -1,5 +1,5 @@
 <div class="item-main-container" *ngIf="item">
-  <app-input [control]="control" [readonly]="true"></app-input>
+  <app-input *ngIf="displayQuestionContent" [control]="control" [readonly]="true"></app-input>
   <app-content-open *ngIf="typeMatches.get('open')" [item]="item"></app-content-open>
   <app-content-closed *ngIf="typeMatches.get('closed')"></app-content-closed>
   <app-content-grid *ngIf="typeMatches.get('grid')"></app-content-grid>
