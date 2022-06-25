@@ -1,8 +1,8 @@
-<div class="main-container">
+<div class="item-main-container">
   <app-input [control]="control" [readonly]="true"></app-input>
-
+  <app-content-open *ngIf="typeMatches.get('open')"></app-content-open>
+  <app-content-closed *ngIf="typeMatches.get('closed')"></app-content-closed>
+  <app-content-grid *ngIf="typeMatches.get('grid')"></app-content-grid>
+  <app-content-scale *ngIf="typeMatches.get('scale')"></app-content-scale>
+  <app-content-list *ngIf="typeMatches.get('list')"></app-content-list>
 </div>
-
-<ng-template>
-
-</ng-template>

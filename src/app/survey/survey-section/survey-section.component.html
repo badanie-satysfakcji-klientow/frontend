@@ -1,12 +1,4 @@
 <ng-container *ngFor="let item of items">
-<!--  <p>{{item.type}}</p>-->
-<!--  <p>{{item.required|booleanString:'Odpowiedź wymagana':'Odpowiedź dobrowolna'}}</p>-->
-<!--  <ng-container *ngFor="let question of item.questions">-->
-<!--    <p>{{question.value}}</p>-->
-<!--  </ng-container>-->
-<!--  <ng-container *ngFor="let option of item.options">-->
-<!--    <p>{{option.content}}</p>-->
-<!--  </ng-container>-->
   <app-item [item]="item"></app-item>
 </ng-container>
 <app-navigation-bar *ngIf="items" (navigate)="onNavigate($event)" id="ss-nav-bar"></app-navigation-bar>
