@@ -26,6 +26,7 @@ export class ContentOpenComponent implements OnChanges {
       this.inputType = /Numeric/.test(this.item.type) ? 'number' : 'text';
       if (this.item.required) {
         this.control.setValidators(Validators.required);
+        this.control.updateValueAndValidity();
       }
     }
   }
