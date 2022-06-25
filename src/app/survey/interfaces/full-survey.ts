@@ -4,5 +4,5 @@ import {Section} from "./section";
 
 export interface FullSurvey extends Survey {
   items: Item[];
-  sections: Section[];
+  sections?: Section[];
 }

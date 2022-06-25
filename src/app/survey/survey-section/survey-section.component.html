@@ -9,5 +9,5 @@
   </ng-container>
   <hr>
 </ng-container>
-<button (click)="onPreviousClick()">Powrót</button>
-<button (click)="onNextClick()">Dalej</button>
+<app-navigation-bar *ngIf="items" (navigate)="onNavigate($event)"></app-navigation-bar>
+<span *ngIf="!items">Wczytywanie ...</span>

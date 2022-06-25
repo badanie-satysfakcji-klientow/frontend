@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {SurveyStateService} from "../services/survey-state/survey-state.service";
 import {Router} from "@angular/router";
 import {Item} from "../interfaces/item";
+import {MODULE_URL} from "../constants/module-url";
 
 @Component({
   selector: 'app-survey-section',
@@ -15,25 +16,13 @@ export class SurveySectionComponent {
               private router: Router) {
     if (!this.surveyState.checkSurvey()) {
       const [, , surveyId] = this.router.url.split('/');
-      this.router.navigateByUrl(`/survey/${surveyId}`);
+      this.router.navigateByUrl(`${MODULE_URL}/${surveyId}`).then(Function.prototype());
     } else {
       this.items = this.surveyState.getItems(this.router.url);
     }
   }
 
-  onNextClick() {
-    const nextSection = this.surveyState.nextSection(this.router.url);
-    this.router.navigateByUrl(`/survey/${this.surveyState.getSurveyId()}/${nextSection}`)
-      .then(() => this.items = this.surveyState.getItems(this.router.url));
-  }
-
-  onPreviousClick() {
-    const previousSection = this.surveyState.previousSection(this.router.url);
-    const targetUrl = `/survey/${this.surveyState.getSurveyId()}`.concat(previousSection ? `/${previousSection}` : '');
-    this.router.navigateByUrl(targetUrl).then(() => {
-      if (previousSection) {
-        this.items = this.surveyState.getItems(this.router.url);
-      }
-    });
+  onNavigate(event?:Item[]){
+    this.items = event;
   }
 }

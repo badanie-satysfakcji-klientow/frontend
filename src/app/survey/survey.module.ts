@@ -7,12 +7,14 @@ import {MatButtonModule} from "@angular/material/button";
 import { FinishSurveyComponent } from './finish-survey/finish-survey.component';
 import { SurveySectionComponent } from './survey-section/survey-section.component';
 import {SharedModule} from "../shared/shared.module";
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 
 @NgModule({
   declarations: [
     BeginSurveyComponent,
     FinishSurveyComponent,
-    SurveySectionComponent
+    SurveySectionComponent,
+    NavigationBarComponent
   ],
     imports: [
         CommonModule,

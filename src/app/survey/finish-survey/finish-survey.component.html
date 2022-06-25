@@ -1,5 +1,8 @@
 <div id="main-container">
-  <span class="weight-400" id="farewell">{{surveyState.getFarewell()}}</span>
-  <div id="divider" class="radius-10"></div>
-  <span class="weight-400">Twoje odpowiedzi zostały zapisne. Możesz zamknąć okno przeglądarki.</span>
+  <ng-container *ngIf="farewell">
+    <span class="weight-400" id="farewell">{{farewell}}</span>
+    <div id="divider" class="radius-10"></div>
+    <span class="weight-400">Twoje odpowiedzi zostały zapisne. Możesz zamknąć okno przeglądarki.</span>
+  </ng-container>
+  <span *ngIf="!farewell">Wczytywanie ...</span>
 </div>
