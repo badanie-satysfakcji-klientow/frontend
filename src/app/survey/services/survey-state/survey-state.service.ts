@@ -26,6 +26,10 @@ export class SurveyStateService {
     this.sectionIds.push('finish');
   }
 
+  checkSurvey(): boolean {
+    return this.survey !== undefined;
+  }
+
   nextSection(url?: string) {
     const {sectionIds} = this;
     return url ? sectionIds[sectionIds.indexOf(SurveyStateService.extractSectionId(url)) + 1] : sectionIds[0];
@@ -67,9 +71,5 @@ export class SurveyStateService {
       }
     }
     return [];
-  }
-
-  getSections() {
-    return this.survey?.sections;
   }
 }

@@ -13,7 +13,12 @@ export class SurveySectionComponent {
 
   constructor(public surveyState: SurveyStateService,
               private router: Router) {
-    this.items = this.surveyState.getItems(this.router.url);
+    if (!this.surveyState.checkSurvey()) {
+      const [, , surveyId] = this.router.url.split('/');
+      this.router.navigateByUrl(`/survey/${surveyId}`);
+    } else {
+      this.items = this.surveyState.getItems(this.router.url);
+    }
   }
 
   onNextClick() {
@@ -25,8 +30,8 @@ export class SurveySectionComponent {
   onPreviousClick() {
     const previousSection = this.surveyState.previousSection(this.router.url);
     const targetUrl = `/survey/${this.surveyState.getSurveyId()}`.concat(previousSection ? `/${previousSection}` : '');
-    this.router.navigateByUrl(targetUrl).then(()=> {
-      if (previousSection){
+    this.router.navigateByUrl(targetUrl).then(() => {
+      if (previousSection) {
         this.items = this.surveyState.getItems(this.router.url);
       }
     });
