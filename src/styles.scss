@@ -8,6 +8,7 @@
 @use 'src/app/browse-surveys/browse-surveys/browse-surveys.component.theme' as browse-surveys;
 @use 'src/app/survey/begin-survey/begin-survey.component.theme' as begin-survey;
 @use 'src/app/survey/finish-survey/finish-survey.component.theme' as finish-survey;
+@use 'src/app/survey/item/item.component.theme' as item;
 
 @include mat.core();
 
@@ -37,6 +38,7 @@ $custom-theme: mat.define-light-theme((
 @include browse-surveys.theme($custom-theme);
 @include begin-survey.theme($custom-theme);
 @include finish-survey.theme($custom-theme);
+@include item.theme($custom-theme);
 
 html,
 body {
