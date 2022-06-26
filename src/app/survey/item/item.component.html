@@ -4,5 +4,5 @@
   <app-content-closed *ngIf="typeMatches.get('closed')"></app-content-closed>
   <app-content-grid *ngIf="typeMatches.get('grid')"></app-content-grid>
   <app-content-scale *ngIf="typeMatches.get('scale')"></app-content-scale>
-  <app-content-list *ngIf="typeMatches.get('list')"></app-content-list>
+  <app-content-list *ngIf="typeMatches.get('list')" [item]="item"></app-content-list>
 </div>
