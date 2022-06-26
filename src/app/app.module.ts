@@ -8,6 +8,7 @@ import {SharedModule} from "./shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
 import {MatPaginatorIntl} from "@angular/material/paginator";
 import {MatPaginatorIntlPolishService} from "./shared/services/mat-paginator-intl-polish.service";
+import {MAT_RADIO_DEFAULT_OPTIONS} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,10 @@ import {MatPaginatorIntlPolishService} from "./shared/services/mat-paginator-int
     SharedModule,
     HttpClientModule
   ],
-  providers: [{provide: MatPaginatorIntl, useClass: MatPaginatorIntlPolishService}],
+  providers: [
+    {provide: MatPaginatorIntl, useClass: MatPaginatorIntlPolishService},
+    {provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'primary'}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

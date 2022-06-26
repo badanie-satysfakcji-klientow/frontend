@@ -1,1 +1,13 @@
-<p>content-scale works!</p>
+<div class="cs-main-container">
+  <span class="cs-label">{{minLabel}}</span>
+  <mat-radio-group [formControl]="control">
+    <mat-radio-button
+      *appTimes="radiosNumber; let i = index"
+      [value]="indexFromZero?i:i+1"
+      [matTooltip]="indexFromZero?i:i+1"
+      matTooltipPosition="below"
+    >
+    </mat-radio-button>
+  </mat-radio-group>
+  <span class="cs-label">{{maxLabel}}</span>
+</div>

@@ -14,6 +14,9 @@ import { ContentClosedComponent } from './content-closed/content-closed.componen
 import { ContentScaleComponent } from './content-scale/content-scale.component';
 import { ContentGridComponent } from './content-grid/content-grid.component';
 import { ContentListComponent } from './content-list/content-list.component';
+import {MatRadioModule} from "@angular/material/radio";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -28,11 +31,14 @@ import { ContentListComponent } from './content-list/content-list.component';
     ContentGridComponent,
     ContentListComponent
   ],
-    imports: [
-        CommonModule,
-        SurveyRoutingModule,
-        MatButtonModule,
-        SharedModule
-    ]
+  imports: [
+    CommonModule,
+    SurveyRoutingModule,
+    MatButtonModule,
+    SharedModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    MatTooltipModule
+  ]
 })
 export class SurveyModule { }

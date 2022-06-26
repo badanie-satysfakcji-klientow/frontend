@@ -14,6 +14,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
 import { BooleanStringPipe } from './pipes/boolean-string.pipe';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { TimesDirective } from './directives/times/times.directive';
 
 
 @NgModule({
@@ -22,15 +23,17 @@ import {MatTooltipModule} from "@angular/material/tooltip";
         FooterComponent,
         DropdownComponent,
         BooleanStringPipe,
-        InputComponent
+        InputComponent,
+        TimesDirective
     ],
-    exports: [
-        NavbarComponent,
+  exports: [
+    NavbarComponent,
     FooterComponent,
     DropdownComponent,
     BooleanStringPipe,
     InputComponent,
-    ],
+    TimesDirective,
+  ],
   imports: [
     CommonModule,
     MatButtonModule,

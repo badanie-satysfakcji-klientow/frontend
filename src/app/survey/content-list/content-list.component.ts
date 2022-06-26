@@ -22,8 +22,7 @@ export class ContentListComponent extends ContentComponent implements OnChanges 
       if (this.item.required) {
         this.control.setValidators(Validators.required);
       }
-      this.items = this.item.options.map(({content, id}) => ({label: content, value: id}))
-      console.log(this.items)
+      this.items = this.item.options.map(({content, id}) => ({label: content, value: id}));
     }
   }
 
