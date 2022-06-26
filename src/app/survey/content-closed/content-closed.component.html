@@ -1,1 +1,14 @@
-<p>content-closed works!</p>
+<ng-container *ngIf="item">
+  <ng-container *ngIf="!multipleChoice && control">
+    <mat-radio-group class="cc-flex cc-column cc-align-start cc-gap-20" [formControl]="control">
+      <mat-radio-button *ngFor="let option of item.options" [value]="option.id">{{option.content}}</mat-radio-button>
+    </mat-radio-group>
+  </ng-container>
+  <ng-container *ngIf="multipleChoice && array">
+    <section class="cc-flex cc-column cc-align-start cc-gap-20">
+      <mat-checkbox *ngFor="let control of getCheckboxControls(); let i = index" color="primary" [formControl]="control">
+        {{item.options[i].content}}
+      </mat-checkbox>
+    </section>
+  </ng-container>
+</ng-container>

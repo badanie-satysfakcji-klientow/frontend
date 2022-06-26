@@ -17,6 +17,7 @@ import { ContentListComponent } from './content-list/content-list.component';
 import {MatRadioModule} from "@angular/material/radio";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     SharedModule,
     MatRadioModule,
     ReactiveFormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCheckboxModule
   ]
 })
 export class SurveyModule { }
