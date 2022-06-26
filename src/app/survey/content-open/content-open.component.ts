@@ -1,20 +1,20 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, OnChanges, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {InputType} from "../../shared/types/input-type";
-import {Item} from "../interfaces/item";
+import {ContentComponent} from "../classes/content.component";
 
 @Component({
   selector: 'app-content-open',
   templateUrl: './content-open.component.html',
   styleUrls: ['./content-open.component.scss']
 })
-export class ContentOpenComponent implements OnChanges {
-  @Input() item?: Item;
+export class ContentOpenComponent extends ContentComponent implements OnChanges {
   displayAsTextarea: boolean;
   control: FormControl;
   inputType: InputType;
 
   constructor(private builder: FormBuilder) {
+    super();
     this.displayAsTextarea = false;
     this.inputType = 'text';
     this.control = this.builder.control('');
