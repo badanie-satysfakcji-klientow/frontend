@@ -2,7 +2,7 @@
   <app-input *ngIf="displayQuestionContent" [control]="control" [readonly]="true"></app-input>
   <app-content-open *ngIf="typeMatches.get('open')" [item]="item"></app-content-open>
   <app-content-closed *ngIf="typeMatches.get('closed')" [item]="item"></app-content-closed>
-  <app-content-grid *ngIf="typeMatches.get('grid')"></app-content-grid>
+  <app-content-grid *ngIf="typeMatches.get('grid')" [item]="item"></app-content-grid>
   <app-content-scale *ngIf="typeMatches.get('scale')" [item]="item"></app-content-scale>
   <app-content-list *ngIf="typeMatches.get('list')" [item]="item"></app-content-list>
 </div>

@@ -15,7 +15,7 @@ import { ContentScaleComponent } from './content-scale/content-scale.component';
 import { ContentGridComponent } from './content-grid/content-grid.component';
 import { ContentListComponent } from './content-list/content-list.component';
 import {MatRadioModule} from "@angular/material/radio";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 
@@ -32,15 +32,16 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     ContentGridComponent,
     ContentListComponent
   ],
-  imports: [
-    CommonModule,
-    SurveyRoutingModule,
-    MatButtonModule,
-    SharedModule,
-    MatRadioModule,
-    ReactiveFormsModule,
-    MatTooltipModule,
-    MatCheckboxModule
-  ]
+    imports: [
+        CommonModule,
+        SurveyRoutingModule,
+        MatButtonModule,
+        SharedModule,
+        MatRadioModule,
+        ReactiveFormsModule,
+        MatTooltipModule,
+        MatCheckboxModule,
+        FormsModule
+    ]
 })
 export class SurveyModule { }

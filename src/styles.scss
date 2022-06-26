@@ -9,6 +9,7 @@
 @use 'src/app/survey/begin-survey/begin-survey.component.theme' as begin-survey;
 @use 'src/app/survey/finish-survey/finish-survey.component.theme' as finish-survey;
 @use 'src/app/survey/item/item.component.theme' as item;
+@use 'src/app/survey/content-grid/content-grid.component.theme' as c-grid;
 
 @include mat.core();
 
@@ -39,6 +40,7 @@ $custom-theme: mat.define-light-theme((
 @include begin-survey.theme($custom-theme);
 @include finish-survey.theme($custom-theme);
 @include item.theme($custom-theme);
+@include c-grid.theme($custom-theme);
 
 html,
 body {
@@ -107,7 +109,27 @@ app-survey-item-closed {
 }
 
 app-input {
-  .mat-form-field{
+  .mat-form-field {
     width: 100%;
   }
+}
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.radius-10 {
+  border-radius: 10px !important;
 }
