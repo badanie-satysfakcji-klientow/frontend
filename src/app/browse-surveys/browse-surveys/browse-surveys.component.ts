@@ -50,7 +50,7 @@ export class BrowseSurveysComponent implements AfterViewInit {
 
   onPauseClick(survey: any) {
     this.savedSurveys.pauseSurvey(survey)
-    .subscribe(() => this.dataSource.data.find((s) => s === survey, survey.paused = !survey.paused));
+      .subscribe(() => this.dataSource.data.find((s) => s === survey, survey.paused = !survey.paused));
   }
 
   clearConfigData() {
@@ -71,5 +71,14 @@ export class BrowseSurveysComponent implements AfterViewInit {
     this.dialogConfig.data = survey;
     this.matDialog.open(TimeFramesEditComponent, this.dialogConfig);
     this.clearConfigData();
+  }
+
+  onGetResultsClick(survey: Survey) {
+    this.savedSurveys.getResultsXLSX(survey.id)
+      .subscribe((response)=>{
+        const blob = new Blob([response], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+      })
   }
 }

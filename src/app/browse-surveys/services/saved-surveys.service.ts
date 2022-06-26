@@ -32,4 +32,8 @@ export class SavedSurveysService {
   pauseSurvey(survey: Survey) {
     return this.httpClient.patch(`${this.rootUrl}/${survey.id}`, {paused: !survey.paused});
   }
+
+  getResultsXLSX(surveyId: string) {
+    return this.httpClient.get(`${this.rootUrl}/${surveyId}/results/raw`, {responseType: "blob"});
+  }
 }
