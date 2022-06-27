@@ -1,8 +1,18 @@
 <div id="main-container">
-  <span class="primary weight-300" id="title">{{surveyState.getTitle()}}</span>
-  <span class="primary weight-300" id="greeting">{{surveyState.getGreeting()}}</span>
+  <ng-container *ngIf="!paused">
+    <span class="primary weight-300 title">{{surveyState.getTitle()}}</span>
+    <span class="primary weight-300 greeting">{{surveyState.getGreeting()}}</span>
+  </ng-container>
+  <ng-container *ngIf="paused">
+    <span class="primary weight-300 title">Ankieta tymczasowo wstrzymana.</span>
+    <span class="accent weight-700 greeting">Spróbuj ponownie później.</span>
+  </ng-container>
   <div id="divider" class="radius-10"></div>
-  <button mat-flat-button color="primary" id="button" class="radius-10" type="button" (click)="onBeginClick()">
-    Rozpocznij
-  </button>
+  <ng-container *ngIf="!paused">
+    <button mat-flat-button color="primary" id="button" class="radius-10" type="button" (click)="onBeginClick()">
+      Rozpocznij
+    </button>
+  </ng-container>
+
+
 </div>
