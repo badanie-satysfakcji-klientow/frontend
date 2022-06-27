@@ -71,4 +71,15 @@ export class SurveyStateService {
     }
     return [];
   }
+
+  getSection(url: string) {
+    const sectionId = SurveyStateService.getSectionId(url);
+    if (!this.survey?.sections) {
+      return undefined;
+    }
+    if (sectionId === QUESTIONS) {
+      return this.survey.sections[0];
+    }
+    return this.survey.sections.find(({id}) => id === sectionId);
+  }
 }

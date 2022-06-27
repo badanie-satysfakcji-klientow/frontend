@@ -1,6 +1,6 @@
-import {SectionFormValue} from "../../surveys/interfaces/section-form-value";
-
-export interface Section extends SectionFormValue{
+export interface Section {
+  title: string;
+  description: string;
   start_item: string;
   end_item: string;
   id: string;

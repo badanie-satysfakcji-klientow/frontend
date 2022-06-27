@@ -18,6 +18,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { SectionLabelComponent } from './section-label/section-label.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     ContentClosedComponent,
     ContentScaleComponent,
     ContentGridComponent,
-    ContentListComponent
+    ContentListComponent,
+    SectionLabelComponent,
   ],
     imports: [
         CommonModule,

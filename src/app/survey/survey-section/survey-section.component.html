@@ -1,5 +1,10 @@
-<ng-container *ngFor="let item of items">
-  <app-item [item]="item"></app-item>
+<ng-container *ngIf="items">
+  <app-section-label [section]="section"></app-section-label>
+  <app-item *ngFor="let item of items" [item]="item"></app-item>
+  <app-navigation-bar
+    (navigateItems)="onNavigateItems($event)"
+    (navigateSection)="onNavigateSection($event)"
+    id="ss-nav-bar"
+  ></app-navigation-bar>
 </ng-container>
-<app-navigation-bar *ngIf="items" (navigate)="onNavigate($event)" id="ss-nav-bar"></app-navigation-bar>
 <span *ngIf="!items">Wczytywanie ...</span>

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {SurveyStateService} from "../services/survey-state/survey-state.service";
+import {FullSurvey} from "../interfaces/full-survey";
 
 @Component({
   selector: 'app-begin-survey',
@@ -14,9 +15,10 @@ export class BeginSurveyComponent {
               public surveyState: SurveyStateService,
               private router: Router
   ) {
-    this.surveyState.set(route.snapshot.data['survey']);
+    const snapshot: FullSurvey = route.snapshot.data['survey'] as FullSurvey
+    this.surveyState.set(snapshot);
     this.route.data.subscribe(({survey}) => this.surveyState.set(survey));
-    this.paused = this.route.snapshot.data['survey'].paused;
+    this.paused = snapshot.paused;
   }
 
   onBeginClick() {

@@ -3,6 +3,7 @@ import {SurveyStateService} from "../services/survey-state/survey-state.service"
 import {Router} from "@angular/router";
 import {MODULE_URL} from "../constants/module-url";
 import {Item} from "../interfaces/item";
+import {Section} from "../interfaces/section";
 
 @Component({
   selector: 'app-navigation-bar',
@@ -10,22 +11,26 @@ import {Item} from "../interfaces/item";
   styleUrls: ['./navigation-bar.component.scss']
 })
 export class NavigationBarComponent {
-  @Output() navigate: EventEmitter<Item[]|undefined>;
+  @Output() navigateItems: EventEmitter<Item[] | undefined>;
+  @Output() navigateSection: EventEmitter<Section | undefined>;
 
   constructor(private surveyState: SurveyStateService,
               private router: Router
   ) {
-    this.navigate = new EventEmitter<Item[]|undefined>();
+    this.navigateItems = new EventEmitter();
+    this.navigateSection = new EventEmitter()
   }
 
-  private emitItems() {
-    this.navigate.emit(this.surveyState.getItems(this.router.url));
+  private emitContent() {
+    const {url} = this.router;
+    this.navigateItems.emit(this.surveyState.getItems(url));
+    this.navigateSection.emit(this.surveyState.getSection(url))
   }
 
   onNextClick() {
     const nextSection = this.surveyState.nextSection(this.router.url);
     const surveyId = this.surveyState.getSurveyId();
-    this.router.navigateByUrl(`${MODULE_URL}/${surveyId}/${nextSection}`).then(() => this.emitItems());
+    this.router.navigateByUrl(`${MODULE_URL}/${surveyId}/${nextSection}`).then(() => this.emitContent());
   }
 
   onPreviousClick() {
@@ -34,7 +39,7 @@ export class NavigationBarComponent {
     const targetUrl = `${MODULE_URL}/${surveyId}`.concat(previousSection ? `/${previousSection}` : '');
     this.router.navigateByUrl(targetUrl).then(() => {
       if (previousSection) {
-        this.emitItems();
+        this.emitContent();
       }
     });
   }

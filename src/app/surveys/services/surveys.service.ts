@@ -42,7 +42,7 @@ export class SurveysService {
     return this.httpClient.post(`${this.rootURL}/${surveyId}/sections`, {
       start_item: items[0],
       end_item: items[items.length - 1],
-      name: formValue.name,
+      title: formValue.name,
       description: formValue.description
     })
   }
