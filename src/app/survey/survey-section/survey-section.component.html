@@ -1,10 +1,13 @@
 <ng-container *ngIf="items">
   <app-section-label [section]="section"></app-section-label>
   <app-item *ngFor="let item of items" [item]="item"></app-item>
-  <app-navigation-bar
-    (navigateItems)="onNavigateItems($event)"
-    (navigateSection)="onNavigateSection($event)"
-    id="ss-nav-bar"
-  ></app-navigation-bar>
+  <section id="ss-main-container">
+    <button mat-flat-button color="accent" class="ss-button" (click)="onPreviousClick()" *ngIf="!onFirstSection">
+      Powrót
+    </button>
+    <button mat-flat-button color="primary" class="ss-button" (click)="onNextClick()">
+      {{onLastSection ? 'Prześlij' : 'Dalej'}}
+    </button>
+  </section>
 </ng-container>
-<span *ngIf="!items">Wczytywanie ...</span>
+<mat-spinner *ngIf="!items" color="accent" diameter="250"></mat-spinner>

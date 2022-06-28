@@ -7,7 +7,7 @@ import {FINISH, QUESTIONS} from "../../constants/section-urls";
 })
 export class SurveyStateService {
   private survey?: FullSurvey;
-  private readonly sectionIds: string[];
+  private sectionIds: string[];
 
   constructor() {
     this.sectionIds = [];
@@ -25,6 +25,11 @@ export class SurveyStateService {
       this.sectionIds.push(QUESTIONS);
     }
     this.sectionIds.push(FINISH);
+  }
+
+  clear(){
+    this.survey = undefined;
+    this.sectionIds = [];
   }
 
   checkSurvey(): boolean {
@@ -81,5 +86,21 @@ export class SurveyStateService {
       return this.survey.sections[0];
     }
     return this.survey.sections.find(({id}) => id === sectionId);
+  }
+
+  onLastSection(url: string) {
+    if (!this.survey) {
+      return false;
+    }
+    const sectionId = SurveyStateService.getSectionId(url);
+    return sectionId === QUESTIONS ? true : this.sectionIds[this.sectionIds.length - 2] === sectionId;
+  }
+
+  onFirstSection(url: string) {
+    if (!this.survey) {
+      return false;
+    }
+    const sectionId = SurveyStateService.getSectionId(url);
+    return sectionId === QUESTIONS ? true : this.sectionIds[0] === sectionId;
   }
 }

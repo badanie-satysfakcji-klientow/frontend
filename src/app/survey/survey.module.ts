@@ -7,7 +7,6 @@ import {MatButtonModule} from "@angular/material/button";
 import { FinishSurveyComponent } from './finish-survey/finish-survey.component';
 import { SurveySectionComponent } from './survey-section/survey-section.component';
 import {SharedModule} from "../shared/shared.module";
-import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { ItemComponent } from './item/item.component';
 import { ContentOpenComponent } from './content-open/content-open.component';
 import { ContentClosedComponent } from './content-closed/content-closed.component';
@@ -19,13 +18,13 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { SectionLabelComponent } from './section-label/section-label.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
     BeginSurveyComponent,
     FinishSurveyComponent,
     SurveySectionComponent,
-    NavigationBarComponent,
     ItemComponent,
     ContentOpenComponent,
     ContentClosedComponent,
@@ -34,16 +33,17 @@ import { SectionLabelComponent } from './section-label/section-label.component';
     ContentListComponent,
     SectionLabelComponent,
   ],
-    imports: [
-        CommonModule,
-        SurveyRoutingModule,
-        MatButtonModule,
-        SharedModule,
-        MatRadioModule,
-        ReactiveFormsModule,
-        MatTooltipModule,
-        MatCheckboxModule,
-        FormsModule
-    ]
+  imports: [
+    CommonModule,
+    SurveyRoutingModule,
+    MatButtonModule,
+    SharedModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    MatTooltipModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatProgressSpinnerModule
+  ]
 })
 export class SurveyModule { }
