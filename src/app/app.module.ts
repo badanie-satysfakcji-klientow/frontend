@@ -8,6 +8,11 @@ import {SharedModule} from "./shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
 import {MatPaginatorIntl} from "@angular/material/paginator";
 import {MatPaginatorIntlPolishService} from "./shared/services/mat-paginator-intl-polish.service";
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +23,11 @@ import {MatPaginatorIntlPolishService} from "./shared/services/mat-paginator-int
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatButtonModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [{provide: MatPaginatorIntl, useClass: MatPaginatorIntlPolishService}],
   bootstrap: [AppComponent]

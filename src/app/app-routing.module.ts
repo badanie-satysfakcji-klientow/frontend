@@ -5,6 +5,7 @@ const routes: Routes = [
   {path: 'help', loadChildren: () => import('./help/help.module').then(m => m.HelpModule)},
   {path: 'faq', loadChildren: () => import('./faq/faq.module').then(m => m.FaqModule)},
   {path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)},
+  {path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)},
   {
     path: 'surveys',
     children: [
