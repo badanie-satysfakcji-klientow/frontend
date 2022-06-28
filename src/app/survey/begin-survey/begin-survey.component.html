@@ -1,5 +1,5 @@
 <div id="main-container">
-  <ng-container *ngIf="!paused">
+  <ng-container *ngIf="!(paused||expired)">
     <span class="primary weight-300 title">{{surveyState.getTitle()}}</span>
     <span class="primary weight-300 greeting">{{surveyState.getGreeting()}}</span>
   </ng-container>
@@ -7,8 +7,11 @@
     <span class="primary weight-300 title">Ankieta tymczasowo wstrzymana.</span>
     <span class="accent weight-700 greeting">Spróbuj ponownie później.</span>
   </ng-container>
+  <ng-container *ngIf="expired">
+    <span class="primary weight-300 title">Ankieta zakończona</span>
+  </ng-container>
   <div id="divider" class="radius-10"></div>
-  <ng-container *ngIf="!paused">
+  <ng-container *ngIf="!(paused||expired)">
     <button mat-flat-button color="primary" id="button" class="radius-10" type="button" (click)="onBeginClick()">
       Rozpocznij
     </button>
