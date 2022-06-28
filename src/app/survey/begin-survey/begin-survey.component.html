@@ -1,7 +1,7 @@
 <div id="main-container">
   <ng-container *ngIf="!(paused||expired)">
-    <span class="primary weight-300 title">{{surveyState.getTitle()}}</span>
-    <span class="primary weight-300 greeting">{{surveyState.getGreeting()}}</span>
+    <span class="primary weight-300 title">{{state.getTitle()}}</span>
+    <span class="primary weight-300 greeting">{{state.getGreeting()}}</span>
   </ng-container>
   <ng-container *ngIf="paused">
     <span class="primary weight-300 title">Ankieta tymczasowo wstrzymana.</span>
