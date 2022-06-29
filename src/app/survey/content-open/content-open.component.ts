@@ -39,7 +39,7 @@ export class ContentOpenComponent extends ContentComponent implements OnChanges 
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       if (event.keyCode !== 13 && this.surveyId && this.item) {
-        this.submission.submitString(this.item.questions[0].id, this.control.value, false).subscribe((value) => {
+        this.submission.submitString(this.item.questions[0].id, this.control.value).subscribe((value) => {
           console.log(value)
         });
       }
