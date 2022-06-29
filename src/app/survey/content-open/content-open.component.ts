@@ -2,6 +2,7 @@ import {Component, OnChanges, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {InputType} from "../../shared/types/input-type";
 import {ContentComponent} from "../classes/content.component";
+import {SubmissionService} from "../services/submission/submission.service";
 
 @Component({
   selector: 'app-content-open',
@@ -12,8 +13,11 @@ export class ContentOpenComponent extends ContentComponent implements OnChanges 
   displayAsTextarea: boolean;
   control: FormControl;
   inputType: InputType;
+  timeout: any = null;
 
-  constructor(private builder: FormBuilder) {
+  constructor(private builder: FormBuilder,
+              private submission: SubmissionService
+  ) {
     super();
     this.displayAsTextarea = false;
     this.inputType = 'text';
@@ -31,4 +35,14 @@ export class ContentOpenComponent extends ContentComponent implements OnChanges 
     }
   }
 
+  submitResponse(event: KeyboardEvent) {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      if (event.keyCode !== 13 && this.surveyId && this.item) {
+        this.submission.submitString(this.item.questions[0].id, this.control.value, false).subscribe((value) => {
+          console.log(value)
+        });
+      }
+    }, 5000);
+  }
 }

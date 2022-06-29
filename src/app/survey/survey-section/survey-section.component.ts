@@ -28,7 +28,6 @@ export class SurveySectionComponent {
   constructor(public surveyState: SurveyStateService,
               private router: Router) {
     if (!this.surveyState.checkSurvey()) {
-      console.log(this.router.url.split('/').slice(0, 3).join('/'));
       this.router.navigateByUrl(this.router.url.split('/').slice(0, 3).join('/')).then(Function.prototype());
     } else {
       this.setContent(this.router.url);
