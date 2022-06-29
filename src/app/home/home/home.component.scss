@@ -1,17 +1,22 @@
-
 .home-button {
   font-size: 30px;
   font-weight: 800;
   cursor: pointer;
-  
+
 }
 
 .info-container {
-  padding-left: 300px;
-  padding-top: 200px;
-  padding-bottom: 200px;
   font-size: 30px;
   font-family: Inter;
+  display: flex;
+  flex-direction: column;
 }
 
+:host{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 72vh;
+  margin-bottom: 10vh;
+}
 
