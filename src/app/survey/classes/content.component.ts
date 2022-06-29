@@ -5,4 +5,5 @@ import {Item} from "../interfaces/item";
 export abstract class ContentComponent {
   @Input() item?: Item;
   @Input() surveyId?: string;
+  answerId?: string;
 }
