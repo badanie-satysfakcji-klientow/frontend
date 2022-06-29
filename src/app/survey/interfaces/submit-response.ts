@@ -1,4 +1,4 @@
 export interface SubmitResponse {
   status: string;
-  submission_id: string;
+  answer_id: string;
 }
