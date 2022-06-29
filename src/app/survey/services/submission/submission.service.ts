@@ -4,19 +4,34 @@ import {API_URL} from "../../../shared/constants/api-url";
 import {HttpClient} from "@angular/common/http";
 import {SubmissionBody} from "../../interfaces/submission-body";
 import {SubmitResponse} from "../../interfaces/submit-response";
+import {SubmitType} from "../../types/SubmitType";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubmissionService {
   private submissionId: string;
+  private readonly rootUrl: string;
 
   constructor(private client: HttpClient) {
     this.submissionId = '';
+    this.rootUrl = `${API_URL}/api/questions`;
   }
 
-  private static getTargetUrl(questionId: string) {
-    return `${API_URL}/api/questions/${questionId}/answer`;
+  private getSubmissionBody(type: SubmitType, response: string | number): SubmissionBody {
+    const body: SubmissionBody = {submission: this.submissionId};
+    if (typeof response === 'string' && type === "string") {
+      body.content_character = response;
+    } else if (typeof response === 'string' && type === 'option') {
+      body.option = response;
+    } else if (typeof response === 'number' && type === 'number') {
+      body.content_numeric = response;
+    }
+    return body;
+  }
+
+  setId(id: string) {
+    this.submissionId = id;
   }
 
   createSubmission(surveyId: string, intervieweeId?: string) {
@@ -24,37 +39,13 @@ export class SubmissionService {
     return this.client.post<SubmissionResponse>(`${API_URL}/api/surveys/${surveyId}/submit`, body);
   }
 
-  setId(id: string) {
-    this.submissionId = id;
+  submit(questionId: string, type: SubmitType, response: string | number) {
+    const body: SubmissionBody = this.getSubmissionBody(type, response);
+    return this.client.post<SubmitResponse>(`${this.rootUrl}/${questionId}/answer`, body);
   }
 
-  submitString(questionId: string, response: string) {
-    const body: SubmissionBody = {submission: this.submissionId, content_character: response};
-    return this.client.post<SubmitResponse>(SubmissionService.getTargetUrl(questionId), body);
-  }
-
-  submitOption(questionId: string, optionId: string) {
-    const body: SubmissionBody = {submission: this.submissionId, option: optionId};
-    return this.client.post<SubmitResponse>(SubmissionService.getTargetUrl(questionId), body);
-  }
-
-  submitNumber(questionId: string, response: number) {
-    const body: SubmissionBody = {submission: this.submissionId, content_numeric: response};
-    return this.client.post<SubmitResponse>(SubmissionService.getTargetUrl(questionId), body);
-  }
-
-  patchString(questionId: string, answerId: string, response: string) {
-    const body: SubmissionBody = {submission: this.submissionId, content_character: response};
-    return this.client.patch(`${SubmissionService.getTargetUrl(questionId)}/${answerId}`, body);
-  }
-
-  patchOption(questionId: string, answerId: string, optionId: string) {
-    const body: SubmissionBody = {submission: this.submissionId, option: optionId};
-    return this.client.patch(`${SubmissionService.getTargetUrl(questionId)}/${answerId}`, body);
-  }
-
-  patchNumber(questionId: string, answerId: string, response: number) {
-    const body: SubmissionBody = {submission: this.submissionId, content_numeric: response};
-    return this.client.patch(`${SubmissionService.getTargetUrl(questionId)}/${answerId}`, body);
+  patch(questionId: string, answerId: string, type: SubmitType, response: string | number) {
+    const body: SubmissionBody = this.getSubmissionBody(type, response);
+    return this.client.patch(`${this.rootUrl}/${questionId}/answer/${answerId}`, body);
   }
 }
