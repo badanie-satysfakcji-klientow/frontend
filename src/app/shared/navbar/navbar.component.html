@@ -4,7 +4,7 @@
       <span id="app-name" routerLink="">Ankieter</span>
     </div>
     <div>
-      <button 
+      <button
         mat-button
         routerLink="surveys/create"
         type="button"
@@ -27,14 +27,16 @@
         </button>
     </div>
     <div id="user-info-container">
-      <span id="user-name">Jan Kowalski</span>
+      <button mat-icon-button matTooltip="Zalogowano jako: Jan Kowalski" matTooltipPosition="below">
+        <mat-icon>account_circle</mat-icon>
+      </button>
       <button mat-icon-button matTooltip="Kontakty" matTooltipPosition="below">
         <mat-icon>contacts</mat-icon>
       </button>
       <button mat-icon-button matTooltip="Ustawienia" matTooltipPosition="below">
         <mat-icon>settings</mat-icon>
       </button>
-      <button mat-icon-button matTooltip="Wyloguj" matTooltipPosition="below">
+      <button mat-icon-button matTooltip="Wyloguj" matTooltipPosition="below" color="primary">
         <mat-icon>logout</mat-icon>
       </button>
     </div>
