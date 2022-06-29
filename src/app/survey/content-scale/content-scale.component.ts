@@ -20,6 +20,7 @@ export class ContentScaleComponent extends ContentComponent implements OnChanges
     this.radiosNumber = 5;
     this.control = this.builder.control(null);
     this.indexFromZero = false;
+    this.submitType = 'number';
   }
 
   ngOnChanges(changes: SimpleChanges): void {

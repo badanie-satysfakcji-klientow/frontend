@@ -20,12 +20,12 @@ export class SubmissionService {
 
   private getSubmissionBody(type: SubmitType, response: string | number): SubmissionBody {
     const body: SubmissionBody = {submission: this.submissionId};
-    if (typeof response === 'string' && type === "string") {
-      body.content_character = response;
-    } else if (typeof response === 'string' && type === 'option') {
-      body.option = response;
-    } else if (typeof response === 'number' && type === 'number') {
-      body.content_numeric = response;
+    if (type === "string") {
+      body.content_character = String(response);
+    } else if (type === 'option') {
+      body.option = String(response);
+    } else if (type === 'number') {
+      body.content_numeric = Number(response);
     }
     return body;
   }

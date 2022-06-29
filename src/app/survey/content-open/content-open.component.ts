@@ -27,7 +27,12 @@ export class ContentOpenComponent extends ContentComponent implements OnChanges 
   ngOnChanges(changes: SimpleChanges) {
     if (this.item) {
       this.displayAsTextarea = /Long/.test(this.item.type);
-      this.inputType = /Numeric/.test(this.item.type) ? 'number' : 'text';
+      if (/Numeric/.test(this.item.type)) {
+        this.inputType = 'number';
+        this.submitType = 'number';
+      } else {
+        this.submitType = 'string';
+      }
       if (this.item.required) {
         this.control.setValidators(Validators.required);
         this.control.updateValueAndValidity();
@@ -39,10 +44,22 @@ export class ContentOpenComponent extends ContentComponent implements OnChanges 
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       if (event.keyCode !== 13 && this.surveyId && this.item) {
-        this.submission.submitString(this.item.questions[0].id, this.control.value).subscribe((value) => {
-          console.log(value)
-        });
+        this.f();
       }
     }, 5000);
+  }
+
+  f() {
+    const questionId = this.item?.questions[0].id;
+    if (!questionId) return;
+    if (this.answerId) {
+      this.submission.patch(questionId, this.answerId, this.submitType, this.control.value).subscribe((value)=>{
+        console.log(value);
+      })
+    } else{
+      this.submission.submit(questionId, this.submitType, this.control.value).subscribe(({answer_id})=> {
+        this.answerId = answer_id
+      });
+    }
   }
 }
