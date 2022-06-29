@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {SubmissionBody} from "../../interfaces/submission-body";
 import {SubmitResponse} from "../../interfaces/submit-response";
 import {SubmitType} from "../../types/SubmitType";
+import {PatchResponse} from "../../interfaces/patch-response";
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +47,6 @@ export class SubmissionService {
 
   patch(questionId: string, answerId: string, type: SubmitType, response: string | number) {
     const body: SubmissionBody = this.getSubmissionBody(type, response);
-    return this.client.patch(`${this.rootUrl}/${questionId}/answer/${answerId}`, body);
+    return this.client.patch<PatchResponse>(`${this.rootUrl}/${questionId}/answer/${answerId}`, body);
   }
 }

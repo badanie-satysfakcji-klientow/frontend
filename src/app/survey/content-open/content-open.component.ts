@@ -44,18 +44,17 @@ export class ContentOpenComponent extends ContentComponent implements OnChanges 
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       if (event.keyCode !== 13 && this.surveyId && this.item) {
-        this.f();
+        this.executeRequest();
       }
-    }, 5000);
+    }, 4000);
   }
 
-  f() {
+  executeRequest() {
     const questionId = this.item?.questions[0].id;
     if (!questionId) return;
     if (this.answerId) {
-      this.submission.patch(questionId, this.answerId, this.submitType, this.control.value).subscribe((value)=>{
-        console.log(value);
-      })
+      this.submission.patch(questionId, this.answerId, this.submitType, this.control.value)
+        .subscribe(Function.prototype());
     } else{
       this.submission.submit(questionId, this.submitType, this.control.value).subscribe(({answer_id})=> {
         this.answerId = answer_id

@@ -2,6 +2,7 @@ import {Component, SimpleChanges} from '@angular/core';
 import {ContentComponent} from "../classes/content.component";
 import {OnChanges} from "@angular/core";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {SubmissionService} from "../services/submission/submission.service";
 
 @Component({
   selector: 'app-content-scale',
@@ -15,7 +16,8 @@ export class ContentScaleComponent extends ContentComponent implements OnChanges
   control: FormControl;
   indexFromZero: boolean;
 
-  constructor(private builder: FormBuilder) {
+  constructor(private builder: FormBuilder,
+              private submission: SubmissionService) {
     super();
     this.radiosNumber = 5;
     this.control = this.builder.control(null);
