@@ -6,6 +6,7 @@
 @use "src/app/shared/dropdown/dropdown.component.theme" as dpdwn;
 @use "src/app/surveys/survey-item/survey-item.component.theme" as survey-item;
 @use 'src/app/browse-surveys/browse-surveys/browse-surveys.component.theme' as browse-surveys;
+@use 'src/app/home/home/home.component.theme' as home;
 
 @include mat.core();
 
@@ -33,6 +34,7 @@ $custom-theme: mat.define-light-theme((
 @include dpdwn.theme($custom-theme);
 @include survey-item.theme($custom-theme);
 @include browse-surveys.theme($custom-theme);
+@include home.theme($custom-theme);
 
 html,
 body {
