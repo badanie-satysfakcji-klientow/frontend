@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 import {SurveyItem} from "../interfaces/survey-item";
 import {FormControl} from "@angular/forms";
 import {FormBuilder} from "@angular/forms";
-import {QuestionsStateService} from "../services/questions-state.service";
+import {ItemsStateService} from "../services/items-state.service";
+import {SectionsStateService} from "../services/sections-state.service";
 
 @Component({
   selector: 'app-survey-questions',
@@ -21,7 +22,8 @@ export class SurveyQuestionsComponent {
   ]
 
   constructor(private formBuilder: FormBuilder,
-              public questionsState: QuestionsStateService
+              public itemsState: ItemsStateService,
+              public sectionsState: SectionsStateService
   ) {
     this.newItemType = this.formBuilder.control(null, {initialValueIsDefault: true})
   }

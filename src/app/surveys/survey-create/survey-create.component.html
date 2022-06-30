@@ -16,7 +16,7 @@
         <button mat-flat-button routerLink="" color="accent" class="navigation-button">Anuluj</button>
       </div>
     </mat-step>
-    <mat-step [completed]="questionsState.areQuestionsValid()" label="Dodawanie pytań">
+    <mat-step [completed]="itemsStateService.areItemsValid()" label="Dodawanie pytań">
       <form [formGroup]="surveyConfiguration">
         <ng-template matStepContent>
           <app-survey-questions></app-survey-questions>
@@ -26,7 +26,8 @@
               matStepperNext
               color="primary"
               class="navigation-button"
-              [disabled]="!questionsState.areQuestionsValid()"
+              [disabled]="!itemsStateService.areItemsValid()"
+              (click)="onAddRulesClick()"
             >
               Dodaj reguły przejść
             </button>
@@ -36,9 +37,10 @@
         </ng-template>
       </form>
     </mat-step>
-    <mat-step [completed]="questionsState.areQuestionsValid()" label="Reguły przejść">
+    <mat-step [completed]="itemsStateService.areItemsValid()" label="Reguły przejść">
       <form [formGroup]="surveyConfiguration">
         <ng-template matStepContent>
+          <img src="assets/precondtions.svg" alt="preconditions-figma markup">
           <div class="buttons-container">
             <button mat-flat-button matStepperNext color="primary" class="navigation-button">Podsumowanie</button>
             <button mat-flat-button matStepperPrevious color="accent" class="navigation-button">Powrót</button>
@@ -47,7 +49,7 @@
         </ng-template>
       </form>
     </mat-step>
-    <mat-step label="Podsumowanie" [completed]="questionsState.areQuestionsValid()">
+    <mat-step label="Podsumowanie" [completed]="itemsStateService.areItemsValid()">
       <ng-template matStepContent>
         <app-survey-summary [surveyConfiguration]="surveyConfiguration.value"></app-survey-summary>
         <div class="buttons-container">

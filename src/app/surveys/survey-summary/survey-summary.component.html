@@ -10,7 +10,7 @@
         {{surveyConfiguration.startDate|date:dateFormat}} - {{surveyConfiguration.endDate|date:dateFormat}}
       </span>
       <span class="label">Liczba pytań</span>
-      <span class="value">{{questionsState.getQuestionsLength()}}</span>
+      <span class="value">{{itemsState.getItems().length}}</span>
       <span class="label">Anonimowość ankiety</span>
       <span class="value">
         ankieta {{surveyConfiguration.anonymous|booleanString:'anonimowa':'jawna'}}

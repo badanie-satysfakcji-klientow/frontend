@@ -1,0 +1,20 @@
+<ng-container *ngIf="item">
+  <ng-container *ngIf="!multipleChoice && control">
+    <mat-radio-group
+      class="cc-flex cc-column cc-align-start cc-gap-20"
+      [formControl]="control"
+      (change)="sendResponse()"
+    >
+      <mat-radio-button *ngFor="let option of item.options" [value]="option.id">{{option.content}}</mat-radio-button>
+    </mat-radio-group>
+  </ng-container>
+  <ng-container *ngIf="multipleChoice">
+    <section class="cc-flex cc-column cc-align-start cc-gap-20">
+      <ng-container *appTimes="item.options.length; let i = index">
+        <mat-checkbox color="primary" (change)="sendMultipleResponse(item.options[i].id, i)">
+          {{item.options[i].content}}
+        </mat-checkbox>
+      </ng-container>
+    </section>
+  </ng-container>
+</ng-container>

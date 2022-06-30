@@ -36,8 +36,8 @@
         <ng-container matColumnDef="buttons">
           <th mat-header-cell *matHeaderCellDef>Opcje</th>
           <td *matCellDef="let survey" mat-cell>
-            <button mat-icon-button (click)="onEditClick(survey)" type="button">
-              <mat-icon>edit</mat-icon>
+            <button mat-icon-button (click)="onGetResultsClick(survey)">
+              <mat-icon>analytics</mat-icon>
             </button>
             <button mat-icon-button (click)="onEditTimeFramesClick(survey)" type="button">
               <mat-icon>date_range</mat-icon>
@@ -46,7 +46,7 @@
               <mat-icon>{{survey.paused ? 'play_circle' : 'pause_circle'}}</mat-icon>
             </button>
             <button mat-icon-button (click)="onDeleteClick(survey)" type="button">
-              <mat-icon>delete</mat-icon>
+              <mat-icon color="warn">delete</mat-icon>
             </button>
           </td>
         </ng-container>

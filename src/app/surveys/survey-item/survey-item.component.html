@@ -1,14 +1,17 @@
 <div class="main-container-survey-item" [style]="style">
   <div class="top-container">
     <span id="question-view-value">{{label}}</span>
-    <div class="buttons-container">
-      <button mat-icon-button matTooltip="Dodaj sekcję" matTooltipPosition="above">
-        <mat-icon>add_circle_outline</mat-icon>
+    <ng-container *ngIf="index!==undefined">
+      <button
+        mat-icon-button
+        *ngIf="!sectionsState.isSectionLeader(itemsState.getItemId(index))"
+        matTooltip="Nowa sekcja"
+        matTooltipPosition="left"
+        (click)="onSectionAdd(index)"
+      >
+        <mat-icon color="primary">add_circle_outline</mat-icon>
       </button>
-      <button mat-icon-button matTooltip="Podgląd pytania" matTooltipPosition="above">
-        <mat-icon>remove_red_eye</mat-icon>
-      </button>
-    </div>
+    </ng-container>
   </div>
   <div class="content-container" [formGroup]="itemForm">
     <app-input
@@ -62,18 +65,18 @@
         [disabled]="itemForm.invalid"
         color="primary"
       >
-        Dodaj
+        {{loading ? 'Dodawanie...' : 'Dodaj'}}
       </button>
       <button mat-flat-button color="accent" class="bottom-button" (click)="onCancelClick()">Anuluj</button>
     </ng-container>
     <button
       mat-flat-button
       *ngIf="index!==undefined"
-      color="primary"
+      color="warn"
       class="bottom-button"
       (click)="onDeleteClick(index)"
     >
-      Usuń
+      {{loading ? 'Usuwanie...' : 'Usuń'}}
     </button>
   </div>
 </div>

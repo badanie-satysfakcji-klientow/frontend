@@ -13,13 +13,15 @@ import { DeleteSurveyComponent } from './delete-survey/delete-survey.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { TimeFramesEditComponent } from './time-frames-edit/time-frames-edit.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { SurveyDetailsComponent } from './survey-details/survey-details.component';
 
 
 @NgModule({
   declarations: [
     BrowseSurveysComponent,
     DeleteSurveyComponent,
-    TimeFramesEditComponent
+    TimeFramesEditComponent,
+    SurveyDetailsComponent
   ],
     imports: [
         CommonModule,

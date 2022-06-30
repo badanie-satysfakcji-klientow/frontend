@@ -11,6 +11,7 @@ import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {DeleteSurveyComponent} from "../delete-survey/delete-survey.component";
 import {DeleteData} from "../interfaces/delete-data";
 import {TimeFramesEditComponent} from "../time-frames-edit/time-frames-edit.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-browse-surveys',
@@ -19,8 +20,8 @@ import {TimeFramesEditComponent} from "../time-frames-edit/time-frames-edit.comp
 })
 export class BrowseSurveysComponent implements AfterViewInit {
   displayedColumns = ['title', 'description', 'created_at', 'anonymous', 'starts_at', 'expires_at', 'buttons'];
+  creatorId = 'a96152a1-2b1f-4ab9-8b1b-acd0b4d9c3f1';
   pageSizes = [5, 10, 20];
-  creatorId = 'a36c108c-3d99-4b4e-9af0-b210934ab79d';
   dateFormat = DATE_FORMAT;
   dataSource = new MatTableDataSource<Survey>([]);
   dialogConfig: MatDialogConfig;
@@ -28,9 +29,10 @@ export class BrowseSurveysComponent implements AfterViewInit {
   @ViewChild(MatPaginator) matPaginator!: MatPaginator;
 
   constructor(private savedSurveys: SavedSurveysService,
-              private matDialog: MatDialog
+              private matDialog: MatDialog,
+              private router: Router
   ) {
-    this.savedSurveys.getSurveysByCreatorId(this.creatorId)
+    this.savedSurveys.getSurveys(this.creatorId)
       .subscribe((response) => this.dataSource.data = response);
     this.dialogConfig = {
       autoFocus: true,
@@ -44,17 +46,13 @@ export class BrowseSurveysComponent implements AfterViewInit {
     this.dataSource.paginator = this.matPaginator;
   }
 
-  onEditClick(survey: any) {
-    console.log(`edit ${(survey as Survey).id}`)
-  }
-
-  onTitleClick(survey: any) {
-    console.log(`preview ${(survey as Survey).id}`);
+  onTitleClick(survey: Survey) {
+    this.router.navigateByUrl(`/surveys/browse/${survey.id}`).then(Function.prototype());
   }
 
   onPauseClick(survey: any) {
     this.savedSurveys.pauseSurvey(survey)
-    .subscribe(() => this.dataSource.data.find((s) => s === survey, survey.paused = !survey.paused));
+      .subscribe(() => this.dataSource.data.find((s) => s === survey, survey.paused = !survey.paused));
   }
 
   clearConfigData() {
@@ -75,5 +73,14 @@ export class BrowseSurveysComponent implements AfterViewInit {
     this.dialogConfig.data = survey;
     this.matDialog.open(TimeFramesEditComponent, this.dialogConfig);
     this.clearConfigData();
+  }
+
+  onGetResultsClick(survey: Survey) {
+    this.savedSurveys.getResultsXLSX(survey.id)
+      .subscribe((response) => {
+        const blob = new Blob([response], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+      })
   }
 }

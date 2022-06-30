@@ -14,6 +14,7 @@ export class InputComponent {
   @Input() type: InputType = 'text';
   @Input() placeholder!: string;
   @Input() errorMessage?: string = 'Pole nie może być puste';
+  @Input() readonly: boolean = false;
 
   constructor() {
   }

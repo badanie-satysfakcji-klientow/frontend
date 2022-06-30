@@ -1,0 +1,9 @@
+<app-input
+  placeholder="Odpowiedź"
+  [displayAsTextarea]="displayAsTextarea"
+  [control]="control"
+  [type]="inputType"
+  errorMessage="Odpowiedź na to pytanie jest wymagana"
+  (keyup)="submitResponse($event)"
+>
+</app-input>

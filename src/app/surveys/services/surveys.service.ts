@@ -5,6 +5,7 @@ import {SurveyConfiguration} from "../interfaces/survey-configuration";
 import {CreateSurveyResponse} from "../interfaces/create-survey-response";
 import {SurveyItemFormValue} from "../interfaces/survey-item-form-value";
 import {CreateItemResponse} from "../interfaces/create-item-response";
+import {SectionFormValue} from "../interfaces/section-form-value";
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,18 @@ export class SurveysService {
 
   createItem(formValue: SurveyItemFormValue, surveyId: string) {
     return this.httpClient.post<CreateItemResponse>(`${this.rootURL}/${surveyId}/items`, formValue);
+  }
+
+  deleteItem(itemId: string) {
+    return this.httpClient.delete(`${API_URL}/api/items/${itemId}`);
+  }
+
+  createSection(surveyId: string, formValue: SectionFormValue, items: string[]) {
+    return this.httpClient.post(`${this.rootURL}/${surveyId}/sections`, {
+      start_item: items[0],
+      end_item: items[items.length - 1],
+      title: formValue.name,
+      description: formValue.description
+    })
   }
 }
