@@ -11,14 +11,14 @@
   display: inherit;
   flex-direction: column;
   align-items: start;
-  width: 100%;
 }
 
 .left-input {
-  width: 870px;
+  width: 100%;
 }
 
 .left-container {
+  width: 60.42%;
   justify-content: flex-start;
   gap: 1em;
 }
@@ -27,6 +27,7 @@
   justify-content: flex-end;
   margin-top: 1.125em;
   gap: 1.25em;
+  max-width: 100%;
 }
 
 .label {
