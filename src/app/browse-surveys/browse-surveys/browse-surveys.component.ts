@@ -11,6 +11,7 @@ import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {DeleteSurveyComponent} from "../delete-survey/delete-survey.component";
 import {DeleteData} from "../interfaces/delete-data";
 import {TimeFramesEditComponent} from "../time-frames-edit/time-frames-edit.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-browse-surveys',
@@ -28,7 +29,8 @@ export class BrowseSurveysComponent implements AfterViewInit {
   @ViewChild(MatPaginator) matPaginator!: MatPaginator;
 
   constructor(private savedSurveys: SavedSurveysService,
-              private matDialog: MatDialog
+              private matDialog: MatDialog,
+              private router: Router
   ) {
     this.savedSurveys.getSurveys(this.creatorId)
       .subscribe((response) => this.dataSource.data = response);
@@ -44,8 +46,8 @@ export class BrowseSurveysComponent implements AfterViewInit {
     this.dataSource.paginator = this.matPaginator;
   }
 
-  onTitleClick(survey: any) {
-    console.log(`preview ${(survey as Survey).id}`);
+  onTitleClick(survey: Survey) {
+    this.router.navigateByUrl(`/surveys/browse/${survey.id}`).then(Function.prototype());
   }
 
   onPauseClick(survey: any) {
@@ -75,7 +77,7 @@ export class BrowseSurveysComponent implements AfterViewInit {
 
   onGetResultsClick(survey: Survey) {
     this.savedSurveys.getResultsXLSX(survey.id)
-      .subscribe((response)=>{
+      .subscribe((response) => {
         const blob = new Blob([response], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
         const url = window.URL.createObjectURL(blob);
         window.open(url);
