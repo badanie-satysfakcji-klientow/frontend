@@ -41,4 +41,18 @@ export class ContentScaleComponent extends ContentComponent implements OnChanges
       this.control.updateValueAndValidity();
     }
   }
+
+  sendResponse() {
+    const questionId = this.item?.questions[0].id;
+    if (!questionId) return;
+
+    const {value} = this.control;
+    if (this.answerId) {
+      this.submission.patch(questionId, this.answerId, this.submitType, value).subscribe(Function.prototype());
+    } else {
+      this.submission.submit(questionId, this.submitType, value).subscribe(({answer_id})=>{
+        this.answerId = answer_id;
+      })
+    }
+  }
 }
