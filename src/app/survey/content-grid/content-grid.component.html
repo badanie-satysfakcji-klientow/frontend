@@ -14,14 +14,10 @@
             </mat-radio-button>
           </mat-radio-group>
         </ng-container>
-        <ng-container *ngIf="multipleChoice && checkboxArray">
+        <ng-container *ngIf="multipleChoice">
           <section class="flex cg-gap-40 align-center">
-            <ng-container *ngFor="let option of item.options; let j=index">
-              <mat-checkbox
-                color="primary"
-                [ngModel]="checkboxArray[i][j]"
-                (change)="sendMultipleResponse(i,j,item.options[j].id)"
-              >
+            <ng-container *appTimes="this.item.options.length; let j=index">
+              <mat-checkbox color="primary" (change)="sendMultipleResponse(i,j,item.options[j].id)">
                 {{item.options[j].content}}
               </mat-checkbox>
             </ng-container>

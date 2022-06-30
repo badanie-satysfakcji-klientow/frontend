@@ -1,6 +1,6 @@
 import {Component, OnChanges, SimpleChanges} from '@angular/core';
 import {ContentComponent} from "../classes/content.component";
-import {FormArray, FormBuilder, FormControl} from "@angular/forms";
+import {FormBuilder, FormControl} from "@angular/forms";
 import {SubmissionService} from "../services/submission/submission.service";
 
 @Component({
@@ -11,7 +11,6 @@ import {SubmissionService} from "../services/submission/submission.service";
 export class ContentClosedComponent extends ContentComponent implements OnChanges {
   multipleChoice: boolean;
   control?: FormControl;
-  array?: FormArray;
   answerIds?: string[];
 
   constructor(private builder: FormBuilder,
@@ -21,19 +20,11 @@ export class ContentClosedComponent extends ContentComponent implements OnChange
     this.multipleChoice = false;
   }
 
-  getCheckboxControls() {
-    return this.array?.controls as FormControl[] || [];
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
     if (this.item && /Multiple/.test(this.item.type)) {
       this.multipleChoice = true;
-      this.array = this.builder.array([]);
       this.answerIds = [];
-      this.item.options.forEach(() => {
-        this.array?.push(this.builder.control(false));
-        this.answerIds?.push('');
-      });
+      this.item.options.forEach(() => this.answerIds?.push(''));
     } else if (this.item && /Single/.test(this.item.type)) {
       this.control = this.builder.control(null);
     }
@@ -67,7 +58,5 @@ export class ContentClosedComponent extends ContentComponent implements OnChange
           if (this.answerIds) this.answerIds[index] = answer_id;
         });
     }
-
-
   }
 }

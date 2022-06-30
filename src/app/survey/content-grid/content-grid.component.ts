@@ -11,7 +11,6 @@ import {SubmissionService} from "../services/submission/submission.service";
 export class ContentGridComponent extends ContentComponent implements OnChanges {
   multipleChoice: boolean;
   radioArray?: FormArray;
-  checkboxArray?: boolean[][];
   radioAnswerIds?: string[];
   checkboxAnswerIds?: string[][];
 
@@ -28,16 +27,12 @@ export class ContentGridComponent extends ContentComponent implements OnChanges 
     }
     if (/Multiple/.test(this.item.type)) {
       this.multipleChoice = true;
-      this.checkboxArray = [];
       this.checkboxAnswerIds = [];
       for (let i = 0; i < this.item.questions.length; i++) {
-        let row: boolean[] = [];
         let answerRow: string[] = [];
         for (let j = 0; j < this.item.options.length; j++) {
-          row.push(false);
           answerRow.push('');
         }
-        this.checkboxArray.push(row);
         this.checkboxAnswerIds.push(answerRow);
       }
     } else if (/Single/.test(this.item.type)) {
