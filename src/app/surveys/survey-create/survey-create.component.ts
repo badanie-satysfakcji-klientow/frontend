@@ -48,7 +48,7 @@ export class SurveyCreateComponent implements OnDestroy {
       return;
     }
     this.surveysService.createSurvey(this.surveyConfiguration.value, this.creatorId)
-      .pipe(pluck('survey_id'))
+      .pipe(pluck('id'))
       .subscribe(value => this.surveyIdState.setSurveyId(value));
   }
 
