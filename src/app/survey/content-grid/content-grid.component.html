@@ -4,8 +4,12 @@
       <div class="flex align-center cg-gap-40">
         <span class="cg-label">{{item.questions[i].value}}</span>
         <ng-container *ngIf="!multipleChoice && radioArray">
-          <mat-radio-group class="flex align-center cg-gap-40" [formControl]="$any(radioArray.controls[i])">
-            <mat-radio-button *ngFor="let option of item.options" labelPosition="before" [value]="option.id">
+          <mat-radio-group
+            class="flex align-center cg-gap-40"
+            [formControl]="$any(radioArray.controls[i])"
+            (change)="sendResponse(i)"
+          >
+            <mat-radio-button *ngFor="let option of item.options" labelPosition="after" [value]="option.id">
               {{option.content}}
             </mat-radio-button>
           </mat-radio-group>
@@ -13,7 +17,13 @@
         <ng-container *ngIf="multipleChoice && checkboxArray">
           <section class="flex cg-gap-40 align-center">
             <ng-container *ngFor="let option of item.options; let j=index">
-              <mat-checkbox color="primary" [ngModel]="checkboxArray[i][j]">{{item.options[j].content}}</mat-checkbox>
+              <mat-checkbox
+                color="primary"
+                [ngModel]="checkboxArray[i][j]"
+                (change)="sendMultipleResponse(i,j,item.options[j].id)"
+              >
+                {{item.options[j].content}}
+              </mat-checkbox>
             </ng-container>
           </section>
         </ng-container>
