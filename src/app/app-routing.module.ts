@@ -22,6 +22,7 @@ const routes: Routes = [
       }
     ]
   },
+  {path: 'survey', loadChildren: () => import('./survey/survey.module').then(m => m.SurveyModule)},
   {path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule)}
 ];
 

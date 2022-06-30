@@ -1,6 +1,7 @@
 <ng-container *ngFor="let item of itemsState.getItems().controls; let i = index;">
   <app-section
     [itemId]="itemsState.getItemId(i)"
+    [precedingItemId]="itemsState.getItemId(i-1)"
     [form]="sectionsState.getSection(itemsState.getItemId(i))"
   >
   </app-section>

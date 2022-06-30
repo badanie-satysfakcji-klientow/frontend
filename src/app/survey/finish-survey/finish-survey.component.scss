@@ -1,0 +1,31 @@
+:host {
+  font-family: Inter, serif;
+  font-style: normal;
+}
+
+#divider {
+  height: 4px;
+  align-self: stretch;
+  margin-top: 40px;
+  margin-bottom: 1em;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 231px 122px 0;
+}
+
+#farewell {
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.radius-10 {
+  border-radius: 10px;
+}
+
+.weight-400 {
+  font-weight: 400;
+}

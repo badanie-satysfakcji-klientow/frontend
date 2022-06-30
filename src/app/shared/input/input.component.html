@@ -6,6 +6,7 @@
     matInput
     [placeholder]="placeholder"
     [autocomplete]="false"
+    [readonly]="readonly"
   >
   <textarea
     *ngIf="displayAsTextarea"
@@ -13,6 +14,7 @@
     [type]="type"
     matInput
     [placeholder]="placeholder"
+    [readonly]="readonly"
   >
   </textarea>
   <mat-error *ngIf="control.errors">{{errorMessage}}</mat-error>

@@ -1,0 +1,13 @@
+<ng-container *ngIf="items">
+  <app-section-label [section]="section"></app-section-label>
+  <app-item *ngFor="let item of items" [item]="item"></app-item>
+  <section id="ss-main-container">
+    <button mat-flat-button color="accent" class="ss-button" (click)="onPreviousClick()" *ngIf="!onFirstSection">
+      Powrót
+    </button>
+    <button mat-flat-button color="primary" class="ss-button" (click)="onNextClick()">
+      {{onLastSection ? 'Prześlij' : 'Dalej'}}
+    </button>
+  </section>
+</ng-container>
+<mat-spinner *ngIf="!items" color="accent" diameter="250"></mat-spinner>

@@ -8,19 +8,25 @@ import {SharedModule} from "./shared/shared.module";
 import {HttpClientModule} from "@angular/common/http";
 import {MatPaginatorIntl} from "@angular/material/paginator";
 import {MatPaginatorIntlPolishService} from "./shared/services/mat-paginator-intl-polish.service";
+import {MAT_RADIO_DEFAULT_OPTIONS} from "@angular/material/radio";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    SharedModule,
-    HttpClientModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        SharedModule,
+        HttpClientModule,
+        MatProgressSpinnerModule
+    ],
+  providers: [
+    {provide: MatPaginatorIntl, useClass: MatPaginatorIntlPolishService},
+    {provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: {color: 'primary'}}
   ],
-  providers: [{provide: MatPaginatorIntl, useClass: MatPaginatorIntlPolishService}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

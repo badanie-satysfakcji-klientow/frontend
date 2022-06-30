@@ -1,1 +1,1 @@
-export type InputType = 'text' | 'datetime-local';
+export type InputType = 'text' | 'datetime-local' | 'number';
