@@ -54,7 +54,7 @@ export class SurveyItemScaleComponent extends AbstractOptions implements OnInit,
 
   private createOptions() {
     for (let i = 0; i < 2; i++) {
-      this.itemForm.controls.options.push(this.formBuilder.control(''));
+      this.itemForm.controls.options.push(this.formBuilder.control('', {validators: Validators.required}));
     }
   }
 }
