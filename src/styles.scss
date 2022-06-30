@@ -11,6 +11,8 @@
 @use 'src/app/survey/item/item.component.theme' as item;
 @use 'src/app/survey/content-grid/content-grid.component.theme' as c-grid;
 @use 'src/app/survey/section-label/section-label.component-theme' as sect-lab;
+@use 'src/app/home/home/home.component.theme' as home;
+
 
 @include mat.core();
 
@@ -43,6 +45,7 @@ $custom-theme: mat.define-light-theme((
 @include item.theme($custom-theme);
 @include c-grid.theme($custom-theme);
 @include sect-lab.theme($custom-theme);
+@include home.theme($custom-theme);
 
 html,
 body {

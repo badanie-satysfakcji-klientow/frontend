@@ -6,63 +6,36 @@
     <div>
       <button
         mat-button
-        [matMenuTriggerFor]="surveys"
-        class="menu-button"
+        routerLink="surveys/create"
         type="button"
-        routerLinkActive="menu-item-active"
-        [ngClass]="{'menu-button-active':getUrl().includes('surveys')}"
-      >
-        Ankiety
-      </button>
-      <mat-menu #surveys="matMenu">
-        <button
-          mat-menu-item
-          routerLink="surveys/create"
-          type="button"
-          class="menu-item"
-          routerLinkActive="menu-item-active"
-        >
-          Utwórz
-        </button>
-        <button
-          mat-menu-item
+        class="menu-button">Utwórz</button>
+    </div>
+    <div>
+      <button
+        mat-button
           routerLink="surveys/browse"
           type="button"
-          class="menu-item"
-          routerLinkActive="menu-item-active"
-        >
-          Przeglądaj
+          class="menu-button">Przeglądaj
         </button>
-        <button
-          mat-menu-item
+    </div>
+    <div>
+      <button
+          mat-button
           routerLink="surveys/send"
           type="button"
-          class="menu-item"
-          routerLinkActive="menu-item-active"
-        >
-          Wyślij
+          class="menu-button"> Wyślij
         </button>
-        <button mat-menu-item type="button" class="menu-item">Wyniki</button>
-      </mat-menu>
-    </div>
-    <div>
-      <button mat-button [matMenuTriggerFor]="contacts" class="menu-button" type="button">Kontakty</button>
-      <mat-menu #contacts="matMenu">
-        <button mat-menu-item type="button" class="menu-item">Kontakty 1</button>
-        <button mat-menu-item type="button" class="menu-item">Kontakty 2</button>
-        <button mat-menu-item type="button" class="menu-item">Kontakty 3</button>
-      </mat-menu>
-    </div>
-    <div>
-      <button mat-button [matMenuTriggerFor]="settings" class="menu-button" type="button">Ustawienia</button>
-      <mat-menu #settings="matMenu">
-        <button mat-menu-item type="button" class="menu-item">Ustawienia 1</button>
-        <button mat-menu-item type="button" class="menu-item">Ustawienia 2</button>
-        <button mat-menu-item type="button" class="menu-item">Ustawienia 3</button>
-      </mat-menu>
     </div>
     <div id="user-info-container">
-      <span id="user-name">Jan Kowalski</span>
+      <button mat-icon-button matTooltip="Zalogowano jako: Jan Kowalski" matTooltipPosition="below">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Kontakty" matTooltipPosition="below">
+        <mat-icon>contacts</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Ustawienia" matTooltipPosition="below">
+        <mat-icon>settings</mat-icon>
+      </button>
       <button mat-icon-button matTooltip="Wyloguj" matTooltipPosition="below" color="primary">
         <mat-icon>logout</mat-icon>
       </button>
