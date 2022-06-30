@@ -49,4 +49,8 @@ export class SubmissionService {
     const body: SubmissionBody = this.getSubmissionBody(type, response);
     return this.client.patch<PatchResponse>(`${this.rootUrl}/${questionId}/answer/${answerId}`, body);
   }
+
+  deleteSubmit(questionId: string, answerId: string) {
+    return this.client.delete(`${this.rootUrl}/${questionId}/answer/${answerId}`);
+  }
 }
