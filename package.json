@@ -1,6 +1,10 @@
 {
-  "name": "untitled",
-  "version": "0.0.0",
+  "name": "Badanie satyfakcji klientów",
+  "author": {
+    "name": "Jakub Wierzchowiec Izabella Juwa",
+    "email": "kuba.wierzchowiec@interia.pl izabella.juwa@gmail.com"
+  },
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
